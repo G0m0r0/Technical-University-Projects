@@ -1,0 +1,7 @@
+D:\C#\My projects\counter of char\how many dots and commas\bin\Debug\how many dots and commas.exe.config
+D:\C#\My projects\counter of char\how many dots and commas\bin\Debug\how many dots and commas.exe
+D:\C#\My projects\counter of char\how many dots and commas\bin\Debug\how many dots and commas.pdb
+D:\C#\My projects\counter of char\how many dots and commas\obj\Debug\how many dots and commas.csproj.CoreCompileInputs.cache
+D:\C#\My projects\counter of char\how many dots and commas\obj\Debug\how many dots and commas.exe
+D:\C#\My projects\counter of char\how many dots and commas\obj\Debug\how many dots and commas.pdb
+D:\C#\My projects\counter of char\how many dots and commas\obj\Debug\how many dots and commas.csprojAssemblyReference.cache

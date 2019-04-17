@@ -1,0 +1,7 @@
+D:\C#\University\jogged[][] mass\jogged[][] mass\bin\Debug\jogged[][] mass.exe.config
+D:\C#\University\jogged[][] mass\jogged[][] mass\bin\Debug\jogged[][] mass.exe
+D:\C#\University\jogged[][] mass\jogged[][] mass\bin\Debug\jogged[][] mass.pdb
+D:\C#\University\jogged[][] mass\jogged[][] mass\obj\Debug\jogged[][] mass.csprojAssemblyReference.cache
+D:\C#\University\jogged[][] mass\jogged[][] mass\obj\Debug\jogged[][] mass.csproj.CoreCompileInputs.cache
+D:\C#\University\jogged[][] mass\jogged[][] mass\obj\Debug\jogged[][] mass.exe
+D:\C#\University\jogged[][] mass\jogged[][] mass\obj\Debug\jogged[][] mass.pdb

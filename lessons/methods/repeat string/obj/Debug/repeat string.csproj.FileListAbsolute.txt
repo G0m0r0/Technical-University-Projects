@@ -1,0 +1,6 @@
+D:\C#\My projects\Methods\repeat string\bin\Debug\repeat string.exe.config
+D:\C#\My projects\Methods\repeat string\bin\Debug\repeat string.exe
+D:\C#\My projects\Methods\repeat string\bin\Debug\repeat string.pdb
+D:\C#\My projects\Methods\repeat string\obj\Debug\repeat string.csproj.CoreCompileInputs.cache
+D:\C#\My projects\Methods\repeat string\obj\Debug\repeat string.exe
+D:\C#\My projects\Methods\repeat string\obj\Debug\repeat string.pdb

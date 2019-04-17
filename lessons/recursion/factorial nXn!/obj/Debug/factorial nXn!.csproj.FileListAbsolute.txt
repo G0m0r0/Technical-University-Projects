@@ -1,0 +1,6 @@
+D:\C#\University\recursion\factorial nXn!\bin\Debug\factorial nXn!.exe.config
+D:\C#\University\recursion\factorial nXn!\bin\Debug\factorial nXn!.exe
+D:\C#\University\recursion\factorial nXn!\bin\Debug\factorial nXn!.pdb
+D:\C#\University\recursion\factorial nXn!\obj\Debug\factorial nXn!.csproj.CoreCompileInputs.cache
+D:\C#\University\recursion\factorial nXn!\obj\Debug\factorial nXn!.exe
+D:\C#\University\recursion\factorial nXn!\obj\Debug\factorial nXn!.pdb

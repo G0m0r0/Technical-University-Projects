@@ -1,0 +1,7 @@
+D:\C#\University\lessons\sort array\selection bubble insertion\obj\Debug\selection bubble insertion.csprojAssemblyReference.cache
+D:\C#\University\lessons\sort array\selection bubble insertion\obj\Debug\selection bubble insertion.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\sort array\selection bubble insertion\bin\Debug\selection bubble insertion.exe.config
+D:\C#\University\lessons\sort array\selection bubble insertion\bin\Debug\selection bubble insertion.exe
+D:\C#\University\lessons\sort array\selection bubble insertion\bin\Debug\selection bubble insertion.pdb
+D:\C#\University\lessons\sort array\selection bubble insertion\obj\Debug\selection bubble insertion.exe
+D:\C#\University\lessons\sort array\selection bubble insertion\obj\Debug\selection bubble insertion.pdb

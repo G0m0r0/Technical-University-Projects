@@ -1,0 +1,7 @@
+D:\C#\My projects\counter of char\counter of char\bin\Debug\counter of char.exe.config
+D:\C#\My projects\counter of char\counter of char\bin\Debug\counter of char.exe
+D:\C#\My projects\counter of char\counter of char\bin\Debug\counter of char.pdb
+D:\C#\My projects\counter of char\counter of char\obj\Debug\counter of char.csprojAssemblyReference.cache
+D:\C#\My projects\counter of char\counter of char\obj\Debug\counter of char.csproj.CoreCompileInputs.cache
+D:\C#\My projects\counter of char\counter of char\obj\Debug\counter of char.exe
+D:\C#\My projects\counter of char\counter of char\obj\Debug\counter of char.pdb

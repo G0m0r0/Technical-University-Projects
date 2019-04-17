@@ -1,0 +1,6 @@
+D:\C#\University\switch two numbers\smaller of two numbers\obj\Debug\smaller of two numbers.csproj.CoreCompileInputs.cache
+D:\C#\University\switch two numbers\smaller of two numbers\bin\Debug\smaller of two numbers.exe.config
+D:\C#\University\switch two numbers\smaller of two numbers\bin\Debug\smaller of two numbers.exe
+D:\C#\University\switch two numbers\smaller of two numbers\bin\Debug\smaller of two numbers.pdb
+D:\C#\University\switch two numbers\smaller of two numbers\obj\Debug\smaller of two numbers.exe
+D:\C#\University\switch two numbers\smaller of two numbers\obj\Debug\smaller of two numbers.pdb

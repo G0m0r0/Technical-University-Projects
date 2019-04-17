@@ -1,0 +1,7 @@
+D:\C#\My projects\n sequence of elements recursion\n sequence of elements recursion\bin\Debug\n sequence of elements recursion.exe.config
+D:\C#\My projects\n sequence of elements recursion\n sequence of elements recursion\bin\Debug\n sequence of elements recursion.exe
+D:\C#\My projects\n sequence of elements recursion\n sequence of elements recursion\bin\Debug\n sequence of elements recursion.pdb
+D:\C#\My projects\n sequence of elements recursion\n sequence of elements recursion\obj\Debug\n sequence of elements recursion.csprojAssemblyReference.cache
+D:\C#\My projects\n sequence of elements recursion\n sequence of elements recursion\obj\Debug\n sequence of elements recursion.csproj.CoreCompileInputs.cache
+D:\C#\My projects\n sequence of elements recursion\n sequence of elements recursion\obj\Debug\n sequence of elements recursion.exe
+D:\C#\My projects\n sequence of elements recursion\n sequence of elements recursion\obj\Debug\n sequence of elements recursion.pdb

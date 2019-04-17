@@ -1,0 +1,7 @@
+D:\C#\University\lessons\sort array\sort matrix file with insertion\bin\Debug\sort matrix file with insertion.exe.config
+D:\C#\University\lessons\sort array\sort matrix file with insertion\bin\Debug\sort matrix file with insertion.exe
+D:\C#\University\lessons\sort array\sort matrix file with insertion\bin\Debug\sort matrix file with insertion.pdb
+D:\C#\University\lessons\sort array\sort matrix file with insertion\obj\Debug\sort matrix file with insertion.csprojAssemblyReference.cache
+D:\C#\University\lessons\sort array\sort matrix file with insertion\obj\Debug\sort matrix file with insertion.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\sort array\sort matrix file with insertion\obj\Debug\sort matrix file with insertion.exe
+D:\C#\University\lessons\sort array\sort matrix file with insertion\obj\Debug\sort matrix file with insertion.pdb

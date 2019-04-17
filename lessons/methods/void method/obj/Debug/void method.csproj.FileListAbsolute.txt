@@ -1,0 +1,6 @@
+D:\C#\University\lessons\methods\void method\bin\Debug\void method.exe.config
+D:\C#\University\lessons\methods\void method\bin\Debug\void method.exe
+D:\C#\University\lessons\methods\void method\bin\Debug\void method.pdb
+D:\C#\University\lessons\methods\void method\obj\Debug\void method.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\methods\void method\obj\Debug\void method.exe
+D:\C#\University\lessons\methods\void method\obj\Debug\void method.pdb

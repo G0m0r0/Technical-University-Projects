@@ -1,0 +1,7 @@
+D:\C#\University\switch two numbers\swap two numbers with functions\bin\Debug\swap two numbers with functions.exe.config
+D:\C#\University\switch two numbers\swap two numbers with functions\bin\Debug\swap two numbers with functions.exe
+D:\C#\University\switch two numbers\swap two numbers with functions\bin\Debug\swap two numbers with functions.pdb
+D:\C#\University\switch two numbers\swap two numbers with functions\obj\Debug\swap two numbers with functions.csprojAssemblyReference.cache
+D:\C#\University\switch two numbers\swap two numbers with functions\obj\Debug\swap two numbers with functions.csproj.CoreCompileInputs.cache
+D:\C#\University\switch two numbers\swap two numbers with functions\obj\Debug\swap two numbers with functions.exe
+D:\C#\University\switch two numbers\swap two numbers with functions\obj\Debug\swap two numbers with functions.pdb

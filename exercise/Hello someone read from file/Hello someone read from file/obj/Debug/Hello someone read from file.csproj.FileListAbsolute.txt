@@ -1,0 +1,7 @@
+D:\C#\University\Hello someone read from file\Hello someone read from file\bin\Debug\Hello someone read from file.exe.config
+D:\C#\University\Hello someone read from file\Hello someone read from file\bin\Debug\Hello someone read from file.exe
+D:\C#\University\Hello someone read from file\Hello someone read from file\bin\Debug\Hello someone read from file.pdb
+D:\C#\University\Hello someone read from file\Hello someone read from file\obj\Debug\Hello someone read from file.csprojAssemblyReference.cache
+D:\C#\University\Hello someone read from file\Hello someone read from file\obj\Debug\Hello someone read from file.csproj.CoreCompileInputs.cache
+D:\C#\University\Hello someone read from file\Hello someone read from file\obj\Debug\Hello someone read from file.exe
+D:\C#\University\Hello someone read from file\Hello someone read from file\obj\Debug\Hello someone read from file.pdb

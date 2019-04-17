@@ -1,0 +1,6 @@
+D:\C#\My projects\Methods\Grades\bin\Debug\Grades.exe.config
+D:\C#\My projects\Methods\Grades\bin\Debug\Grades.exe
+D:\C#\My projects\Methods\Grades\bin\Debug\Grades.pdb
+D:\C#\My projects\Methods\Grades\obj\Debug\Grades.csproj.CoreCompileInputs.cache
+D:\C#\My projects\Methods\Grades\obj\Debug\Grades.exe
+D:\C#\My projects\Methods\Grades\obj\Debug\Grades.pdb

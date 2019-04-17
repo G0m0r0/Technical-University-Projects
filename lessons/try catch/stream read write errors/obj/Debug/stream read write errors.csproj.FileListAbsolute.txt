@@ -1,0 +1,7 @@
+D:\C#\University\lessons\try catch\stream read write errors\bin\Debug\stream read write errors.exe.config
+D:\C#\University\lessons\try catch\stream read write errors\bin\Debug\stream read write errors.exe
+D:\C#\University\lessons\try catch\stream read write errors\bin\Debug\stream read write errors.pdb
+D:\C#\University\lessons\try catch\stream read write errors\obj\Debug\stream read write errors.csprojAssemblyReference.cache
+D:\C#\University\lessons\try catch\stream read write errors\obj\Debug\stream read write errors.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\try catch\stream read write errors\obj\Debug\stream read write errors.exe
+D:\C#\University\lessons\try catch\stream read write errors\obj\Debug\stream read write errors.pdb

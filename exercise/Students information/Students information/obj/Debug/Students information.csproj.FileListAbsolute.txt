@@ -1,0 +1,7 @@
+D:\C#\University\Students information\Students information\bin\Debug\Students information.exe.config
+D:\C#\University\Students information\Students information\bin\Debug\Students information.exe
+D:\C#\University\Students information\Students information\bin\Debug\Students information.pdb
+D:\C#\University\Students information\Students information\obj\Debug\Students information.csprojAssemblyReference.cache
+D:\C#\University\Students information\Students information\obj\Debug\Students information.csproj.CoreCompileInputs.cache
+D:\C#\University\Students information\Students information\obj\Debug\Students information.exe
+D:\C#\University\Students information\Students information\obj\Debug\Students information.pdb
