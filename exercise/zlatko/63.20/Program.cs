@@ -17,9 +17,9 @@ namespace _63._20
         public int value;
         public Node left, right;
 
-        public Node(int d)
+        public Node(int integer)
         {
-            value = d;
+            value = integer;
             left = right = null;
         }
     }
@@ -34,7 +34,7 @@ namespace _63._20
             {
                   parentNode = parentNode.left;
             }
-            return (parentNode.value);
+            return parentNode.value;
         }
         public int MaxValue(Node node)
         {
