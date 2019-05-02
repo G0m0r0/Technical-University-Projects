@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 //page 94 exercise 6
@@ -8,10 +9,10 @@ namespace _94._6
 {
     class Program
     {
-        //not finished
         static int[,] apples;
-        static List<char> paths;
-        static StringBuilder path=new StringBuilder();
+        static Dictionary<string,int> paths=new Dictionary<string, int>();
+        static int value;
+        static List<char> path = new List<char>();
         static void Main(string[] args)
         {
             Console.Write("Enter N: ");
@@ -25,25 +26,50 @@ namespace _94._6
             PrintApples(apples);
 
             FindAllCombinations(0, 0, ' ');
+
+            Console.WriteLine("All paths ordered by total sum:");
+            foreach (var kvp in paths.OrderByDescending(x=>x.Value))
+            {
+                Console.WriteLine($"{kvp.Key} -> {kvp.Value}");
+            }
         }
         private static void FindAllCombinations(int x, int y, char direction)
         {
-            
+            if (OutSide(x, y))
+            {
+                return;
+            }
+
+            value += apples[x, y];
+            path.Add(direction);
+
+            if (x==apples.GetLength(0)-1&&y==apples.GetLength(1)-1)
+            {
+                //add to dictionary
+                paths.Add(string.Join("",path), value);
+            }
+
+            FindAllCombinations(x + 1, y, 'D'); //Down
+            FindAllCombinations(x, y + 1, 'R'); //Right
+
+            path.RemoveAt(path.Count - 1);
+            value -= apples[x, y];
         }
 
         private static bool OutSide(int x, int y)
         {
-            if (x < 0 || y < 0)
-            {
-                return true;
-            }
-            if (x>apples.GetLength(0)||y>apples.GetLength(1))
-            {
-                return true;
-            }
-            return false;
-        }
+                if (x < 0 || x >= apples.GetLength(0))
+                {
+                    return true;
+                }
 
+                if (y < 0 || y >= apples.GetLength(1))
+                {
+                    return true;
+                }
+
+                return false;
+        }
 
         private static void PrintApples(int[,] apples)
         {

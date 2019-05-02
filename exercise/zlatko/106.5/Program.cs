@@ -6,7 +6,7 @@ namespace _106._5
     {
         static void Main(string[] args)
         {
-            //sort colors in array- not finished
+            //sort colors in array-not finished
             Console.Write("Enter lenght of the array: ");
             int n = int.Parse(Console.ReadLine());
             string[] colorArray = new string[n];
@@ -21,31 +21,27 @@ namespace _106._5
         {
             int redIndex = 0;
             int whiteIndex = colorArray.Length - 1;
-            for (int i = 0; i < colorArray.Length; i++)
+            for (int i = 0; i <= whiteIndex; i++)
             {
-                switch (colorArray[i])
-                {
-                    case "Red":
-                        swap(ref colorArray[i], ref colorArray[redIndex]);
-                        redIndex++;
-                        break;
-                    case "White":
-                        swap(ref colorArray[i], ref colorArray[whiteIndex]);
-                        i--;
-                        whiteIndex--;
-                        break;
-                }
+                if (colorArray[i] == "Red")
+                    swap(colorArray, redIndex++, i--);
+
+                else if (colorArray[i] == "White")
+                    swap(colorArray, i-- , whiteIndex--);
             }
         }
-        static void swap(ref string colorOne, ref string colorTwo)
+
+
+        static void swap(string[] colorArray, int first, int second)
         {
-            string swap = colorOne;
-            colorOne = colorTwo;
-            colorTwo = swap;
+            string swap = colorArray[first];
+            colorArray[first] = colorArray[second];
+            colorArray[second] = swap;
         }
+
         private static void FillColorArray(string[] colorArray)
         {
-            Random rnd = new Random(5);
+            Random rnd = new Random();
             string[] colors = new string[]
             {
                  "Red","White","Blue"
