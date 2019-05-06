@@ -6,7 +6,7 @@ namespace _106._5
     {
         static void Main(string[] args)
         {
-            //sort colors in array-not finished
+            //sort colors in array
             Console.Write("Enter lenght of the array: ");
             int n = int.Parse(Console.ReadLine());
             string[] colorArray = new string[n];
@@ -41,7 +41,7 @@ namespace _106._5
 
         private static void FillColorArray(string[] colorArray)
         {
-            Random rnd = new Random();
+            Random rnd = new Random(10);
             string[] colors = new string[]
             {
                  "Red","White","Blue"
