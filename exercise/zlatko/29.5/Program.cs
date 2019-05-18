@@ -8,13 +8,14 @@ namespace _29._5
     {
         static void Main(string[] args)
         {
-            //polygon page 29 exercise 5
-            //Complexity O(n^2)
+            // 29/5
+
             Console.WriteLine("Enter number of pairs");
             int numOfPairs = int.Parse(Console.ReadLine());
 
             List<string> pairs = new List<string>();
             Console.WriteLine("Enter pairs separeted by space");
+
             for (int i = 0; i <numOfPairs; i++)
             {
                 pairs.Add(Console.ReadLine());
