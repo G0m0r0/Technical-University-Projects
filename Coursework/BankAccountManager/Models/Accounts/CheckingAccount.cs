@@ -1,12 +1,14 @@
-﻿namespace BankAccountManager.Models
+﻿namespace BankAccountManager.Models.Accounts
 {
     using System;
     using System.Security;
+    using BankAccountManager.Models.Person.Contracts;
+    using Person;
 
     class CheckingAccount : Account
     {
         private const decimal arrangeFeeForOverdraft = 0.05m;
-        public CheckingAccount(Person person, decimal balance, float interestRate, SecureString Iban)
+        public CheckingAccount(IPerson person, decimal balance, float interestRate, SecureString Iban)
             : base(person, balance, interestRate, Iban)
         {
             //create account with deactivated overdraft
@@ -30,7 +32,7 @@
             {
                 if (value < 0.0m)
                 {
-                    throw new Exception("Negative overdraft limit");
+                    throw new ArgumentOutOfRangeException("Negative overdraft limit");
                 }
                 overdraftLimit = value;
             }

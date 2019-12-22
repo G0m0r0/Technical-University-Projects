@@ -1,13 +1,17 @@
-﻿namespace BankAccountManager.Models
+﻿namespace BankAccountManager.Models.Accounts
 {
     using System;
     using System.Security;
-    public abstract class Account
+    using Person;
+    using Models.Accounts.Contracts;
+    using BankAccountManager.Models.Person.Contracts;
+
+    public abstract class Account : IAccount
     {
         private const int IBANLenght = 13;
         private const float maxInterestRate = 1.0F;
 
-        protected Account(Person person, decimal balance, float interestRate, SecureString Iban)
+        protected Account(IPerson person, decimal balance, float interestRate, SecureString Iban)
         {
             this.Person = person;
             this.Balance = balance;
@@ -15,7 +19,7 @@
             this.IBAN = Iban;
         }
 
-        public Person person;
+        private IPerson person;
         protected decimal balance;
         private float interestRate;
         private SecureString Iban;
@@ -23,21 +27,25 @@
         public SecureString IBAN
         {
             get { return Iban; }
-            set
+            private set
             {
-                if (value.Length < 0 || value.Length > IBANLenght)
-                    Iban = value;
+                if (String.IsNullOrEmpty(value.ToString()))
+                {
+                    throw new ArgumentException("IBAN cannot be null or empty!");
+                }
+
+                Iban = value;
             }
         }
 
         public float InterestRate
         {
             get { return interestRate; }
-            set
+            protected set
             {
                 if (value < 0.0F || value > maxInterestRate)
                 {
-                    throw new Exception("Interest rate should be between 0 and 1");
+                    throw new ArgumentException("Interest rate should be between 0 and 1");
                 }
                 interestRate = value;
             }
@@ -47,21 +55,33 @@
         public decimal Balance
         {
             get { return balance; }
-            set { balance = value; }
+            protected set 
+            { 
+                if(value<0)
+                {
+                    throw new ArgumentException("Balance can not be negative!");
+                }
+                        
+                balance = value; 
+            }
         }
 
-        public Person Person
+        public IPerson Person
         {
             get { return person; }
             private set
             {
                 if (value == null)
                 {
-                    throw new NullReferenceException("Person doesn't exsist");
+                    throw new ArgumentNullException("Person doesn't exsist");
                 }
                 person = value;
             }
         }
+
+        public decimal GetBalance => this.Balance;
+
+        SecureString IAccount.Iban => this.IBAN;
 
         public virtual void Withdraw(decimal amount)
         {
@@ -75,7 +95,7 @@
         {
             if (amountToWithdraw > this.Balance)
             {
-                throw new Exception("Insufficient amount, not enough money to widraw!");
+                throw new ArgumentException("Insufficient amount, not enough money to widraw!");
             }
 
             return true;
@@ -98,7 +118,7 @@
         {
             if (amount <= 0.0m)
             {
-                throw new Exception("Negative amount!");
+                throw new ArgumentOutOfRangeException("Negative amount!");
             }
 
             return true;

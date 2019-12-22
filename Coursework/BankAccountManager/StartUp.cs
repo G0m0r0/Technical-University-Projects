@@ -15,6 +15,7 @@ namespace BankAccountManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+            //System.Diagnostics.Process.Start(@"cmd.exe", @"/k D:\Programming\University\Coursework\BankAccountManager");
         }
     }
 }
