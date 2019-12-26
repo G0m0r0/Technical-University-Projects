@@ -36,6 +36,7 @@
             this.LoginButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.CreateAccountButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // label1
             // 
@@ -80,6 +81,7 @@
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(154, 23);
             this.PasswordTextBox.TabIndex = 7;
+            this.PasswordTextBox.UseSystemPasswordChar = true;
             // 
             // LoginButton
             // 
@@ -130,6 +132,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Login";
             this.Text = "Login";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -36,5 +36,20 @@ namespace BankAccountManager
                 Environment.Exit(1);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

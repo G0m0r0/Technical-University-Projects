@@ -19,27 +19,32 @@
 
         public Controller()
         {
-            this.persons = new List<IPerson>();
+            this.person = null;
             this.accountRepository = new AccountRepository();
         }
 
-        private List<IPerson> persons;
+        //private List<IPerson> persons;
+        private IPerson person;
         private IRepository<IAccount> accountRepository;
+
+        public IPerson Person => this.person;
+        public IRepository<IAccount> Account => this.accountRepository;
 
         public string AddAccount(string accountType,SecureString idPerson, decimal balance, float interestRate, SecureString Iban)
         {
             IAccount account = null;
             IPerson person = CheckIfPersonExistByID(idPerson);
+            accountType = accountType.ToLower();
 
-            if(accountType=="CheckingAccount")
+            if(accountType=="checkingaccount")
             {
                 account = new CheckingAccount(person, balance, interestRate, Iban);
             }
-            else if(accountType== "ChildSavingsAccount")
+            else if(accountType== "childsavingsaccount")
             {
                 account = new ChildSavingsAccount(person, balance, interestRate, Iban);
             }
-            else if(accountType=="RetirmentAccount")
+            else if(accountType=="retirmentaccount")
             {
                 account = new RetirmentAccount(person, balance, interestRate, Iban);
             }
@@ -56,7 +61,7 @@
         public string AddPerson(string firstName, string lastName, int age, SecureString ID)
         {
             IPerson person = new Person(firstName,lastName,age,ID);
-            this.persons.Add(person);
+            //this.persons.Add(person);
 
             return "Seccessfully added person!";
         }
@@ -115,13 +120,12 @@
         }
 
         private IPerson CheckIfPersonExistByID(SecureString id)
-        {
-            var person = this.persons.FirstOrDefault(x => x.Id == id);
-            if (person == null)
+        {            
+            if (this.person.Id!=id)
             {
                 throw new ArgumentException("There is no person matching given id!");
             }
-            return person;
+            return this.person;
         }
     }
 }

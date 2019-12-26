@@ -25,10 +25,10 @@
             {
                 var tokens = input.Split(new char[] {' ',',','\r','\n'}, System.StringSplitOptions.RemoveEmptyEntries);
 
+                string resultMessage = string.Empty;
                 string command = tokens[0];
                 try
-                {
-                    string resultMessage = string.Empty;
+                {                    
                     switch (command.ToLower())
                     {
                         case "add account":
@@ -80,6 +80,8 @@
                 {
                     writer.WriteLine(ex.Message);
                 }
+
+                writer.WriteLine(resultMessage);
             }
         }
 

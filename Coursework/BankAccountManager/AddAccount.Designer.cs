@@ -31,7 +31,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +49,9 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // radioButton1
             // 
@@ -85,33 +87,22 @@
             this.radioButton3.Text = "Child Saving ";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(39, 216);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(94, 19);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(39, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 15);
+            this.label1.Size = new System.Drawing.Size(91, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "Type of account";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(194, 300);
+            this.button1.Location = new System.Drawing.Point(219, 216);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(234, 30);
+            this.button1.Size = new System.Drawing.Size(169, 30);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Save";
+            this.button1.Text = "Save person";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -120,9 +111,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(219, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.Size = new System.Drawing.Size(62, 15);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Full Name:";
+            this.label2.Text = "Full name:";
             // 
             // label3
             // 
@@ -196,6 +187,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(547, 140);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 23);
@@ -203,6 +195,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(547, 96);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 23);
@@ -224,6 +217,7 @@
             // 
             // textBox6
             // 
+            this.textBox6.Enabled = false;
             this.textBox6.Location = new System.Drawing.Point(547, 177);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 23);
@@ -249,12 +243,36 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(444, 212);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(203, 34);
+            this.button4.TabIndex = 23;
+            this.button4.Text = "Save account";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(191, 300);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(265, 30);
+            this.button5.TabIndex = 24;
+            this.button5.Text = "Edit";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // AddAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(688, 358);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox6);
@@ -271,15 +289,15 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Name = "AddAccount";
             this.Text = "AddAccount";
             this.Load += new System.EventHandler(this.AddAccount_Load_1);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -288,7 +306,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
@@ -307,5 +324,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
