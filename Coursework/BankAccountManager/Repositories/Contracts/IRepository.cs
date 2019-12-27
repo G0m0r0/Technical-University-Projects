@@ -1,6 +1,9 @@
 ﻿namespace BankAccountManager.Repositories.Contracts
-{ 
+{
+    using BankAccountManager.Models.Accounts.Contracts;
     using System.Collections.Generic;
+    using System.Security;
+
     public interface IRepository<T>
     {
         IReadOnlyCollection<T> Models { get; }
@@ -9,6 +12,8 @@
 
         bool Remove(T model);
 
-        T FindByType(string type);
+        bool FindByIdentification(SecureString identification);
+
+        IEnumerator<IAccount> GetEnumerator();
     }
 }

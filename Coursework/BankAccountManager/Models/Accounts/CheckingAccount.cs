@@ -8,6 +8,7 @@
     class CheckingAccount : Account
     {
         private const decimal arrangeFeeForOverdraft = 0.05m;
+        private const string separator = "___";
         public CheckingAccount(IPerson person, decimal balance, float interestRate, SecureString Iban)
             : base(person, balance, interestRate, Iban)
         {
@@ -81,7 +82,7 @@
         public override string ToString()
         {
             string overdraftStatus = activeOverdraft ? "activated" : "deactivated";
-            return base.ToString()+$" with {overdraftStatus}.";
+            return "Checking"+separator+ base.ToString()+separator+$"overdraft {overdraftStatus}.";
         }
 
     }

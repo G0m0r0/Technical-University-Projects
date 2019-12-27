@@ -12,6 +12,7 @@
     using BankAccountManager.Models.Accounts;
     using System.Linq;
     using System.Text;
+    using System.Runtime.InteropServices;
 
     public class Controller : IController
     {
@@ -27,26 +28,30 @@
         private IPerson person;
         private IRepository<IAccount> accountRepository;
 
-        public IPerson Person => this.person;
-        public IRepository<IAccount> Account => this.accountRepository;
+       // public IPerson Person => this.person;
+       // public IRepository<IAccount> Account => this.accountRepository;
 
         public string AddAccount(string accountType,SecureString idPerson, decimal balance, float interestRate, SecureString Iban)
         {
             IAccount account = null;
-            IPerson person = CheckIfPersonExistByID(idPerson);
+            if(this.accountRepository.FindByIdentification(Iban))
+            {
+                throw new Exception("Iban already exist!");
+            }
+            //IPerson person = CheckIfPersonExistByID(idPerson);
             accountType = accountType.ToLower();
 
             if(accountType=="checkingaccount")
             {
-                account = new CheckingAccount(person, balance, interestRate, Iban);
+                account = new CheckingAccount(this.person, balance, interestRate, Iban);
             }
             else if(accountType== "childsavingsaccount")
             {
-                account = new ChildSavingsAccount(person, balance, interestRate, Iban);
+                account = new ChildSavingsAccount(this.person, balance, interestRate, Iban);
             }
             else if(accountType=="retirmentaccount")
             {
-                account = new RetirmentAccount(person, balance, interestRate, Iban);
+                account = new RetirmentAccount(this.person, balance, interestRate, Iban);
             }
             else
             {
@@ -60,7 +65,7 @@
 
         public string AddPerson(string firstName, string lastName, int age, SecureString ID)
         {
-            IPerson person = new Person(firstName,lastName,age,ID);
+            this.person= new Person(firstName, lastName, age, ID);
             //this.persons.Add(person);
 
             return "Seccessfully added person!";
@@ -68,36 +73,37 @@
 
         public string CalculateAllMoney(SecureString id)
         {
-            var person = CheckIfPersonExistByID(id);
+            //var person = CheckIfPersonExistByID(id);
             var sum= person.Accounts.Sum(x => x.GetBalance);
 
             return $"Money available in all accounts {sum:F2}.";
         }
 
-        public string Deposit(SecureString id,decimal amount,SecureString iban)
+        public string Deposit(decimal amount,SecureString iban)
         {
-            var person = CheckIfPersonExistByID(id);
+            IAccount accountToDepositMoney = checkIfAccountExistByIban(iban);
 
-            var accountOfPerson = checkIfAccountExistByIban(iban,person);
+            if(accountToDepositMoney==null)
+            {
+                throw new ArgumentNullException($"Account does not exist");
+            }
 
-            accountOfPerson.Deposit(amount);
+            accountToDepositMoney.Deposit(amount);
 
-            return $"Seccessfully deposited {amount} to {accountOfPerson.Iban}.";
+            return $"Seccessfully deposited {amount} to your account.";
         }
-        public string Withdraw(SecureString id,decimal amount,SecureString iban)
+        public string Withdraw(decimal amount,SecureString iban)
         {
-            var person = CheckIfPersonExistByID(id);
+            IAccount accountToWithdraw = checkIfAccountExistByIban(iban);
 
-            var accountOfPerson = checkIfAccountExistByIban(iban, person);
+            accountToWithdraw.Withdraw(amount);
 
-            accountOfPerson.Withdraw(amount);
-
-            return $"Seccessfully withdraw {amount} from {accountOfPerson.Iban}";
+            return $"Seccessfully withdraw {amount} from your account.";
         }
 
         public string Report(SecureString id)
         {
-            var person = CheckIfPersonExistByID(id);
+           // var person = CheckIfPersonExistByID(id);
             var sb = new StringBuilder();
             sb.AppendLine($"Account Name: {person.GetFullName} with {person.Accounts.Count}");
             foreach (var account in person.Accounts)
@@ -109,23 +115,36 @@
             return sb.ToString().TrimEnd();
         }
 
-        private IAccount checkIfAccountExistByIban(SecureString iban, IPerson person)
+        private string DecriptSecureString(SecureString value)
         {
-            var account = person.Accounts.FirstOrDefault(x => x.Iban == iban);
-            if (account == null)
+            IntPtr valuePtr = IntPtr.Zero;
+            try
             {
-                throw new ArgumentException("Thre is no iban matching given one!");
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                return Marshal.PtrToStringUni(valuePtr);
             }
-            return account;
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
         }
 
-        private IPerson CheckIfPersonExistByID(SecureString id)
-        {            
-            if (this.person.Id!=id)
+        public IReadOnlyCollection<IAccount> TakeAllAccounts() => this.accountRepository.Models;
+
+        private IAccount checkIfAccountExistByIban(SecureString iban)
+        {
+            var ibanToLookFor = DecriptSecureString(iban);
+
+            foreach (var accountToCheck in accountRepository.Models)
             {
-                throw new ArgumentException("There is no person matching given id!");
+                var ibanOfAccount = DecriptSecureString(accountToCheck.Iban);
+                if(ibanOfAccount==ibanToLookFor)
+                {
+                    return accountToCheck;
+                }
             }
-            return this.person;
+
+            return null;
         }
     }
 }

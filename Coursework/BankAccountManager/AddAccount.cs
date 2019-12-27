@@ -1,32 +1,18 @@
-﻿using BankAccountManager.Core;
-using BankAccountManager.Core.Contracts;
-using BankAccountManager.Models.Accounts;
-using BankAccountManager.Models.Accounts.Contracts;
-using BankAccountManager.Models.Person;
-using BankAccountManager.Models.Person.Contracts;
-using BankAccountManager.Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Windows.Forms;
-
-namespace BankAccountManager
+﻿namespace BankAccountManager
 {
+    using BankAccountManager.Core.Contracts;
+    using System;
+    using System.Linq;
+    using System.Windows.Forms;
     public partial class AddAccount : Form
     {
         private const char space = ' ';
-        IController controller;
-
-        public AddAccount()
+        private IEngineWF Engine;
+        public AddAccount(IEngineWF engine)
         {
             InitializeComponent();
 
-            this.controller = new Controller();
+            this.Engine = engine;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -51,54 +37,34 @@ namespace BankAccountManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var personId = new SecureString();
-            try
+
+            var fullName = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var firstName = string.Empty;
+            var lastName = string.Empty;
+            if (fullName.Length != 3)
             {
-                var fullName = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
-                var firstName = string.Empty;
-                var lastName = string.Empty;
-                if (fullName.Length != 3)
-                {
-                    throw new ArgumentException("Please enter full name!");
-                }
-                else
-                {
-                    firstName = fullName[0];
-                    lastName = fullName[2];
-                }
-                if (string.IsNullOrWhiteSpace(textBox5.Text))
-                {
-                    throw new ArgumentNullException("Age can not be empty!");
-                }
-                var age = int.Parse(textBox5.Text);
-                if (string.IsNullOrWhiteSpace(textBox4.Text))
-                {
-                    throw new ArgumentNullException("Person ID can not be empty!");
-                }
-                personId = MakeStringSecureString(textBox4.Text);
-
-
-                controller.AddPerson(firstName, lastName, age, personId);               
-
-                textBox2.Enabled = true;
-                textBox3.Enabled = true;
-                textBox6.Enabled = true;
-                button4.Enabled = true;
-
-                textBox1.Enabled = false;
-                textBox5.Enabled = false;
-                textBox4.Enabled = false;
-                button1.Enabled = false;
-
+                throw new ArgumentException("Please enter full name!");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                firstName = fullName[0];
+                lastName = fullName[2];
             }
-            finally
-            {
-                personId.Dispose();
-            }
+            var age = textBox5.Text;
+            var personId = textBox4.Text;
+
+            string command = "addperson" + space + firstName + space + lastName + space + age + space + personId;
+            this.Engine.Run(command);
+
+            textBox2.Enabled = true;
+            textBox3.Enabled = true;
+            textBox6.Enabled = true;
+            button4.Enabled = true;
+
+            textBox1.Enabled = false;
+            textBox5.Enabled = false;
+            textBox4.Enabled = false;
+            button1.Enabled = false;
 
         }
 
@@ -131,59 +97,32 @@ namespace BankAccountManager
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var personIdToaddAccount = new SecureString();
-            var iban = new SecureString();
-            try
+
+            var accountType = string.Empty;
+            if (radioButton1.Checked)
             {
-                var accountType = string.Empty;
-                if (radioButton1.Checked)
-                {
-                    accountType = "CheckingAccount";
-                }
-                else if (radioButton2.Checked)
-                {
-                    accountType = "ChildSavingsAccount";
-                }
-                else if (radioButton3.Checked)
-                {
-                    accountType = "RetirmentAccount";
-                }
-
-                personIdToaddAccount = this.controller.Person.Id;
-
-                if (string.IsNullOrWhiteSpace(textBox2.Text))
-                {
-                    throw new ArgumentNullException("Balance can not be empty!");
-                }
-                var balance = decimal.Parse(textBox2.Text);
-
-                if (string.IsNullOrWhiteSpace(textBox6.Text))
-                {
-                    throw new ArgumentNullException("Interest rate can not be empty!");
-                }
-                var interestRate =float.Parse( textBox6.Text);
-
-                if (string.IsNullOrWhiteSpace(textBox3.Text))
-                {
-                    throw new ArgumentNullException("IBAN can not be empty!");
-                }
-                iban = MakeStringSecureString(textBox3.Text);
-
-                controller.AddAccount(accountType, personIdToaddAccount, balance, interestRate, iban);
-
-                textBox2.Clear();
-                textBox3.Clear();
-                textBox6.Clear();
+                accountType = "CheckingAccount";
             }
-            catch (Exception ex)
+            else if (radioButton2.Checked)
             {
-                MessageBox.Show(ex.Message);
+                accountType = "ChildSavingsAccount";
             }
-            finally
+            else if (radioButton3.Checked)
             {
-                personIdToaddAccount.Dispose();
-                iban.Dispose();
+                accountType = "RetirmentAccount";
             }
+
+            var personIdToaddAccount = textBox4.Text;
+            var balance = textBox2.Text;
+            var interestRate = textBox6.Text;
+            var iban = textBox3.Text;
+
+            string command ="addaccount"+space+ accountType + space + personIdToaddAccount + space + balance + space + interestRate + space + iban;
+            this.Engine.Run(command);
+
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox6.Clear();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -197,19 +136,6 @@ namespace BankAccountManager
             textBox3.Enabled = false;
             textBox6.Enabled = false;
             button4.Enabled = false;
-        }
-        private SecureString MakeStringSecureString(string str)
-        {
-            using (var secureString = new SecureString())
-            {
-                foreach (var chr in str.ToCharArray())
-                {
-                    secureString.AppendChar(chr);
-                }
-
-                return secureString;
-            }
-            //dispose with using
         }
     }
 }

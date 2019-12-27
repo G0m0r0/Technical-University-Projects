@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-namespace BankAccountManager
+﻿namespace BankAccountManager
 {
+    using BankAccountManager.Core;
+    using BankAccountManager.Core.Contracts;
+    using System;
+    using System.Security;
+    using System.Windows.Forms;
+    using System.Runtime.InteropServices;
+    using System.Linq;
+
     public partial class Wallet : Form
     {
+        private const char space = ' ';
         private AddAccount addAccountForm;
-        private string personInfo;
-        private List<string> accountsList;
+        private IEngineWF engine;
         public Wallet()
         {
             InitializeComponent();
-            addAccountForm = new AddAccount();
+            this.engine = new Engine();
+            this.addAccountForm = new AddAccount(engine);
         }
 
         private void Wallet_Load(object sender, EventArgs e)
@@ -25,17 +25,15 @@ namespace BankAccountManager
 
         }
 
-        private void RecentTransactionButton_Click(object sender, EventArgs e)
+        private void Refresh_Click(object sender, EventArgs e)
         {
-           //this.personInfo = addAccountForm.PersonInfo;
-           //this.accountsList = addAccountForm.AccountsInfo;
+            comboBox1.Items.Clear();
+
+            var accountsList = engine.GetAllAccounts();
 
             foreach (var account in accountsList)
             {
-                var typeAccount = account.ToArray()[0];
-                var iban = string.Join(" ", account.Split().TakeLast(1));
-                string comboBoxDisplayLine = typeAccount + " " + iban;
-                comboBox1.Items.Add(comboBoxDisplayLine);
+                comboBox1.Items.Add(account);
             }
         }
 
@@ -54,6 +52,32 @@ namespace BankAccountManager
         private void AddAccountButton_Click(object sender, EventArgs e)
         {
             addAccountForm.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var iban = comboBox1.SelectedItem.ToString().Split("___", StringSplitOptions.RemoveEmptyEntries)[1].Remove(0,4);
+            IbanLabel.Text = iban;
+
+            DepositButton.Enabled = true;
+            WithdrawButton.Enabled = true;
+            AllMoneyButton.Enabled = true;
+
+            BalanceTextBox.Text= comboBox1.SelectedItem.ToString().Split("___", StringSplitOptions.RemoveEmptyEntries)[2];
+        }
+
+        private void DepositButton_Click(object sender, EventArgs e)
+        {
+            var iban = IbanLabel.Text;
+
+            string command = $"deposit {AmounthTextBox.Text} {iban}";
+
+            engine.Run(command);
+
+            decimal newBalance = decimal.Parse(BalanceTextBox.Text.Remove(BalanceTextBox.Text.Length - 1, 1)) + decimal.Parse(AmounthTextBox.Text);
+            BalanceTextBox.Text = newBalance.ToString()+"$";
+
+            AmounthTextBox.Clear();
         }
     }
 }

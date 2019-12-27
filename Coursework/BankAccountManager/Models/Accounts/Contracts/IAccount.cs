@@ -1,12 +1,9 @@
-﻿using System.Security;
-
-namespace BankAccountManager.Models.Accounts.Contracts
+﻿namespace BankAccountManager.Models.Accounts.Contracts
 {
-    public interface IAccount
+    using System.Security;
+    public interface IAccount : IAccountActions
     {
         public SecureString Iban { get; }
-        void Deposit(decimal amount);
-        void Withdraw(decimal amount);
-        decimal GetBalance{get;}
+        decimal GetBalance { get; }
     }
 }

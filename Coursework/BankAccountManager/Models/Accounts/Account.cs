@@ -5,11 +5,13 @@
     using Person;
     using Models.Accounts.Contracts;
     using BankAccountManager.Models.Person.Contracts;
+    using System.Runtime.InteropServices;
 
     public abstract class Account : IAccount
     {
         private const int IBANLenght = 13;
         private const float maxInterestRate = 1.0F;
+        private const string separator= "___";
 
         protected Account(IPerson person, decimal balance, float interestRate, SecureString Iban)
         {
@@ -123,10 +125,24 @@
 
             return true;
         }
+        private string DecriptSecureString(SecureString value)
+        {
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
+        }
 
         public override string ToString()
         {
-            return $"Person{Person.FirstName} {Person.LastName} have ${Balance} in account {IBAN}";
+            var iban = DecriptSecureString(this.IBAN);
+            return $"IBAN{iban}{separator}{this.Balance}$";
         }
     }
 }

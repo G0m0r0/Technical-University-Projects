@@ -3,8 +3,12 @@
     using BankAccountManager.Models.Accounts.Contracts;
     using BankAccountManager.Repositories.Contracts;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
-    public class AccountRepository : IRepository<IAccount>
+    using System.Runtime.InteropServices;
+    using System.Security;
+
+    public class AccountRepository : IRepository<IAccount>,IEnumerable<IAccount>
     {
         public AccountRepository()
         {
@@ -22,10 +26,19 @@
             this.accounts.Add(model);
         }
 
-        public IAccount FindByType(string type)
+        public bool FindByIdentification(SecureString Iban)
         {
-            //TODO: find by type or find by name
-            throw new NotImplementedException();
+            var decriptedIbanToLookFor = DecriptSecureString(Iban);
+
+            foreach (var account in this.accounts)
+            {
+                var IbanToCompare = DecriptSecureString(account.Iban);
+                if(IbanToCompare==decriptedIbanToLookFor)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool Remove(IAccount model)
@@ -36,6 +49,32 @@
             }
 
             return this.accounts.Remove(model);
+        }
+        private string DecriptSecureString(SecureString value)
+        {
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
+        }
+
+        public IEnumerator<IAccount> GetEnumerator()
+        {
+            foreach (var account in this.accounts)
+            {
+                yield return account;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

@@ -10,8 +10,5 @@
             : base(person, balance, interestRate, Iban)
         {
         }
-
- 
-
     }
 }

@@ -67,7 +67,7 @@
                 }
                 if (!ValidName(value))
                 {
-                    throw new ArgumentException("Inavalid first name!");
+                    throw new ArgumentException("Inavalid last name!");
                 }
                 lastName = value; 
             }
@@ -84,7 +84,7 @@
                 }
                 if (!ValidName(value))
                 {
-                    throw new ArgumentException("Inavalid last name!");
+                    throw new ArgumentException("Inavalid first name!");
                 }
                 firstName = value; 
             }

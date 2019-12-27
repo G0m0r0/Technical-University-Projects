@@ -54,9 +54,9 @@
             this.UsernameLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UsernameLabel.Location = new System.Drawing.Point(37, 90);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(76, 19);
+            this.UsernameLabel.Size = new System.Drawing.Size(74, 19);
             this.UsernameLabel.TabIndex = 4;
-            this.UsernameLabel.Text = "UserName:";
+            this.UsernameLabel.Text = "Username:";
             // 
             // PasswordLabel
             // 
