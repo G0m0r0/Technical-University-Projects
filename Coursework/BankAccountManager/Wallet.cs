@@ -12,12 +12,14 @@
     {
         private const char space = ' ';
         private AddAccount addAccountForm;
+        private Transactions transactions;
         private IEngineWF engine;
         public Wallet()
         {
             InitializeComponent();
             this.engine = new Engine();
             this.addAccountForm = new AddAccount(engine);
+            this.transactions = new Transactions();
         }
 
         private void Wallet_Load(object sender, EventArgs e)
@@ -74,10 +76,48 @@
 
             engine.Run(command);
 
-            decimal newBalance = decimal.Parse(BalanceTextBox.Text.Remove(BalanceTextBox.Text.Length - 1, 1)) + decimal.Parse(AmounthTextBox.Text);
-            BalanceTextBox.Text = newBalance.ToString()+"$";
+            var account = engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
+            BalanceTextBox.Text = account.GetBalance.ToString()+'$';
 
             AmounthTextBox.Clear();
+        }
+
+        private void WithdrawButton_Click(object sender, EventArgs e)
+        {
+            var iban = IbanLabel.Text;
+
+            string command = $"withdraw {AmounthTextBox.Text} {iban}";
+
+            engine.Run(command);
+
+            var account = engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
+            BalanceTextBox.Text = account.GetBalance.ToString()+'$';
+
+            AmounthTextBox.Clear();
+        }
+        private string DecriptSecureString(SecureString value)
+        {
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
+        }
+
+        private void AllMoneyButton_Click(object sender, EventArgs e)
+        {
+            var command = "balanceofallaccounts";
+            engine.Run(command);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            transactions.Show();
         }
     }
 }

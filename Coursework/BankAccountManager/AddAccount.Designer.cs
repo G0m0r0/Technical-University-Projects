@@ -138,9 +138,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(219, 59);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 15);
+            this.label6.Size = new System.Drawing.Size(109, 15);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Personal Information";
+            this.label6.Text = "Billing information:";
             // 
             // label7
             // 

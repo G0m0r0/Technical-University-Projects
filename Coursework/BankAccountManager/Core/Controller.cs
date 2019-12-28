@@ -71,10 +71,9 @@
             return "Seccessfully added person!";
         }
 
-        public string CalculateAllMoney(SecureString id)
+        public string CalculateAllMoney()
         {
-            //var person = CheckIfPersonExistByID(id);
-            var sum= person.Accounts.Sum(x => x.GetBalance);
+            var sum = accountRepository.Models.Sum(x => x.GetBalance);
 
             return $"Money available in all accounts {sum:F2}.";
         }
@@ -90,7 +89,7 @@
 
             accountToDepositMoney.Deposit(amount);
 
-            return $"Seccessfully deposited {amount} to your account.";
+            return $"Seccessfully deposited {amount}$ to your account.";
         }
         public string Withdraw(decimal amount,SecureString iban)
         {
@@ -98,7 +97,7 @@
 
             accountToWithdraw.Withdraw(amount);
 
-            return $"Seccessfully withdraw {amount} from your account.";
+            return $"Seccessfully withdraw {amount}$ from your account.";
         }
 
         public string Report(SecureString id)
