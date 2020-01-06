@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Delyan\\Programing\\University\\Coursework\\BankAccountManager\\BankAccountManager.csproj",
+      "projectUniqueName": "D:\\Programming\\University\\Coursework\\BankAccountManager\\BankAccountManager.csproj",
       "projectName": "BankAccountManager",
-      "projectPath": "E:\\Delyan\\Programing\\University\\Coursework\\BankAccountManager\\BankAccountManager.csproj",
+      "projectPath": "D:\\Programming\\University\\Coursework\\BankAccountManager\\BankAccountManager.csproj",
       "packagesPath": "C:\\Users\\dimit\\.nuget\\packages\\",
-      "outputPath": "E:\\Delyan\\Programing\\University\\Coursework\\BankAccountManager\\obj\\",
+      "outputPath": "D:\\Programming\\University\\Coursework\\BankAccountManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
