@@ -123,16 +123,17 @@
             this.WithdrawButton.TabIndex = 10;
             this.WithdrawButton.Text = "Withdraw";
             this.WithdrawButton.UseVisualStyleBackColor = true;
+            this.WithdrawButton.Click += new System.EventHandler(this.WithdrawButton_Click);
             // 
             // AllMoneyButton
             // 
-            this.AllMoneyButton.Enabled = false;
             this.AllMoneyButton.Location = new System.Drawing.Point(283, 120);
             this.AllMoneyButton.Name = "AllMoneyButton";
             this.AllMoneyButton.Size = new System.Drawing.Size(89, 36);
             this.AllMoneyButton.TabIndex = 11;
             this.AllMoneyButton.Text = "All money";
             this.AllMoneyButton.UseVisualStyleBackColor = true;
+            this.AllMoneyButton.Click += new System.EventHandler(this.AllMoneyButton_Click);
             // 
             // BalanceTextBox
             // 
@@ -169,12 +170,14 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(236, 222);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 23);
             this.button1.TabIndex = 17;
             this.button1.Text = "Resent transactions";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Wallet
             // 

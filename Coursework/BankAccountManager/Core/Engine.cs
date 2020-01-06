@@ -56,9 +56,7 @@
                         resultMessage = controller.AddPerson(firstName, lastName, age, personId);
                         break;
                     case "balanceofallaccounts":
-                        var personIdToTakeBalance = MakeStringSecureString(tokens[1]);
-
-                        resultMessage = controller.CalculateAllMoney(personIdToTakeBalance);
+                        resultMessage = controller.CalculateAllMoney();
                         break;
                     case "deposit":                       
                         var moneyTodeposit = decimal.Parse(tokens[1]);
@@ -67,8 +65,8 @@
                         resultMessage = controller.Deposit(moneyTodeposit, ibanToAddMoney);
                         break;
                     case "withdraw":
-                        var moneyTowithDraw = decimal.Parse(tokens[2]);
-                        var ibanToWithdrawMoney = MakeStringSecureString(tokens[3]);
+                        var moneyTowithDraw = decimal.Parse(tokens[1]);
+                        var ibanToWithdrawMoney = MakeStringSecureString(tokens[2]);
 
                         resultMessage = controller.Withdraw( moneyTowithDraw, ibanToWithdrawMoney);
                         break;

@@ -20,7 +20,7 @@
 
         //void AddCard();
 
-        string CalculateAllMoney(SecureString id);
+        string CalculateAllMoney();
 
         string Report(SecureString id);
     }
