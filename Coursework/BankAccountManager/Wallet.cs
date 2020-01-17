@@ -10,16 +10,14 @@
 
     public partial class Wallet : Form
     {
-        private const char space = ' ';
-        private AddAccount addAccountForm;
+        private readonly AddAccount addAccountForm;
         private Transactions transactions;
-        private IEngineWF engine;
+        private readonly IEngineWF engine;
         public Wallet()
         {
             InitializeComponent();
             this.engine = new Engine();
             this.addAccountForm = new AddAccount(engine);
-            this.transactions = new Transactions();
         }
 
         private void Wallet_Load(object sender, EventArgs e)
@@ -41,9 +39,7 @@
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = new DialogResult();
-
-            dialog = MessageBox.Show("Do you want to close?", "Alert!", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Do you want to close?", "Alert!", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
             {
@@ -56,7 +52,7 @@
             addAccountForm.Show();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             var iban = comboBox1.SelectedItem.ToString().Split("___", StringSplitOptions.RemoveEmptyEntries)[1].Remove(0,4);
             IbanLabel.Text = iban;
@@ -115,8 +111,9 @@
             engine.Run(command);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
+            this.transactions = new Transactions(engine);
             transactions.Show();
         }
     }

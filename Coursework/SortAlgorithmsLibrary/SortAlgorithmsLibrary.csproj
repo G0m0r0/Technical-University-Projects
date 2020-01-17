@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>SortAlgorithms</PackageId>
+    <Version>1.1.0</Version>
+    <Authors>Dido</Authors>
+    <Company>Dido's House</Company>
+    <Product>SortAlgorithms</Product>
+    <Description>Sorting Algorithms- includes:
+1) Bubble Sort
+2) Selection Sort
+3)  Insertion Sort</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>D:\Programming\NugetPackages\Sorts\</OutputPath>
+  </PropertyGroup>
+
+</Project>

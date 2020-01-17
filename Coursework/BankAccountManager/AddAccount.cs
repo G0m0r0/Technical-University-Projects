@@ -7,7 +7,7 @@
     public partial class AddAccount : Form
     {
         private const char space = ' ';
-        private IEngineWF Engine;
+        private readonly IEngineWF Engine;
         public AddAccount(IEngineWF engine)
         {
             InitializeComponent();
@@ -15,32 +15,12 @@
             this.Engine = engine;
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddAccount_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
 
             var fullName = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
-            var firstName = string.Empty;
-            var lastName = string.Empty;
+            string firstName;
+            string lastName;
             if (fullName.Length != 3)
             {
                 throw new ArgumentException("Please enter full name!");
@@ -73,11 +53,9 @@
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = new DialogResult();
-
-            dialog = MessageBox.Show("Do you want to close?", "Alert!", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Do you want to close?", "Alert!", MessageBoxButtons.YesNo);
 
             if (dialog == DialogResult.Yes)
             {
@@ -85,17 +63,12 @@
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
 
             var accountType = string.Empty;
@@ -125,7 +98,7 @@
             textBox6.Clear();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
             textBox1.Enabled = true;
             textBox5.Enabled = true;

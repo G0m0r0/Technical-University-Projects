@@ -104,12 +104,12 @@
         {
            // var person = CheckIfPersonExistByID(id);
             var sb = new StringBuilder();
-            sb.AppendLine($"Account Name: {person.GetFullName} with {person.Accounts.Count}");
-            foreach (var account in person.Accounts)
-            {
-                sb.AppendLine(account.ToString());
+            //sb.AppendLine($"Account Name: {person.GetFullName} with {person.Accounts.Count}");
+           foreach (var account in person.Accounts)
+           {
+               sb.AppendLine(account.ToString());
                 sb.AppendLine(SepratorOfAccounts);
-            }
+           }
 
             return sb.ToString().TrimEnd();
         }

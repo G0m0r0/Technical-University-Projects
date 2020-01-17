@@ -32,8 +32,8 @@
         private void LoginButton_Click(object sender, EventArgs e)
         {
             Wallet wallet = new Wallet();
-            //wallet.Show();
-            //this.Hide(); 
+            wallet.Show();
+            this.Hide(); 
 
             var userList = this.registerForm.UserList;
             var username = UserNameTextBox.Text;

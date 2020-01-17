@@ -30,12 +30,13 @@
             {
                 Environment.Exit(1);
             }
-            var tokens = input.Split(new char[] { ' ', ',', '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
 
             string resultMessage = string.Empty;
-            string command = tokens[0];
             try
             {
+                var tokens = input.Split(new char[] { ' ', ',', '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+                string command = tokens[0];
+
                 switch (command.ToLower())
                 {
                     case "addaccount":
@@ -58,7 +59,7 @@
                     case "balanceofallaccounts":
                         resultMessage = controller.CalculateAllMoney();
                         break;
-                    case "deposit":                       
+                    case "deposit":
                         var moneyTodeposit = decimal.Parse(tokens[1]);
                         var ibanToAddMoney = MakeStringSecureString(tokens[2]);
 
@@ -68,7 +69,7 @@
                         var moneyTowithDraw = decimal.Parse(tokens[1]);
                         var ibanToWithdrawMoney = MakeStringSecureString(tokens[2]);
 
-                        resultMessage = controller.Withdraw( moneyTowithDraw, ibanToWithdrawMoney);
+                        resultMessage = controller.Withdraw(moneyTowithDraw, ibanToWithdrawMoney);
                         break;
                     case "report":
                         var personIDToGetInfo = MakeStringSecureString(tokens[1]);
@@ -100,14 +101,14 @@
             // using (var secureString = new SecureString())
             //{
             var secureString = new SecureString();
-                foreach (var chr in str.ToCharArray())
-                {
-                    secureString.AppendChar(chr);
-                }
+            foreach (var chr in str.ToCharArray())
+            {
+                secureString.AppendChar(chr);
+            }
 
-                return secureString;
+            return secureString;
             //}
-        //
+            //
         }
     }
 }

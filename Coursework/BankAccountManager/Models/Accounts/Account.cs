@@ -2,10 +2,13 @@
 {
     using System;
     using System.Security;
-    using Person;
     using Models.Accounts.Contracts;
     using BankAccountManager.Models.Person.Contracts;
     using System.Runtime.InteropServices;
+    using System.Collections.Generic;
+    using BankAccountManager.Models.Transactions.Contracts;
+    using BankAccountManager.Models.Enums;
+    using BankAccountManager.Models.Transactions;
 
     public abstract class Account : IAccount
     {
@@ -19,12 +22,15 @@
             this.Balance = balance;
             this.InterestRate = interestRate;
             this.IBAN = Iban;
+            this.transactions = new List<ITransaction>();
         }
 
         private IPerson person;
         protected decimal balance;
         private float interestRate;
         private SecureString Iban;
+        public IReadOnlyCollection<ITransaction> Transactions 
+            => this.transactions.AsReadOnly();
 
         public SecureString IBAN
         {
@@ -34,6 +40,10 @@
                 if (String.IsNullOrEmpty(value.ToString()))
                 {
                     throw new ArgumentException("IBAN cannot be null or empty!");
+                }
+                if(value.Length<0&&value.Length>IBANLenght)
+                {
+                    throw new ArgumentException("IBAN lenght should be between 0 and 13 symbols");
                 }
 
                 Iban = value;
@@ -73,13 +83,10 @@
             get { return person; }
             private set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Person doesn't exsist");
-                }
-                person = value;
+                person = value?? throw new ArgumentNullException("Person doesn't exsist"); ;
             }
         }
+        protected List<ITransaction> transactions;
 
         public decimal GetBalance => this.Balance;
 
@@ -87,10 +94,41 @@
 
         public virtual void Withdraw(decimal amount)
         {
-            if (CheckPossitiveAmount(amount) && IsBalanceEnough(amount))
+            if (CheckPossitiveAmount(amount)&& IsBalanceEnough(amount))
             {
                 this.Balance -= amount;
             }
+
+            AddToTransactionHistory(amount, "Withdraw");
+        }
+
+        public virtual void Deposit(decimal amount)
+        {
+            if (CheckPossitiveAmount(amount))
+            {
+                this.Balance += amount;
+            }
+
+            AddToTransactionHistory(amount, "Deposit");
+        }
+        //TODO: impliment interest rate montly
+        public virtual void AddInterests()
+        {
+            this.Balance += (this.Balance * (Decimal)(this.InterestRate / 12.0));
+        }
+        protected void AddToTransactionHistory(decimal amount, string type)
+        {
+            ITransaction currentTransaction = null;
+            if (type == "Withdraw")
+            {
+                currentTransaction = new TransactionCurrent(amount, TypeTransaction.Withdraw);
+            }
+            else if (type == "Deposit")
+            {
+                currentTransaction = new TransactionCurrent(amount, TypeTransaction.Deposit);
+            }
+
+            this.transactions.Add(currentTransaction);
         }
 
         protected bool IsBalanceEnough(decimal amountToWithdraw)
@@ -101,19 +139,6 @@
             }
 
             return true;
-        }
-
-        public virtual void Deposit(decimal amount)
-        {
-            if (CheckPossitiveAmount(amount))
-            {
-                this.Balance += amount;
-            }
-        }
-        //TODO: impliment interest rate montly
-        public virtual void AddInterests()
-        {
-            this.Balance += (this.Balance * (Decimal)(this.InterestRate / 12.0));
         }
 
         protected bool CheckPossitiveAmount(decimal amount)
