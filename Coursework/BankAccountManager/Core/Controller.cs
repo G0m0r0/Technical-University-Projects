@@ -100,6 +100,34 @@
             return $"Seccessfully withdraw {amount}$ from your account.";
         }
 
+        public string ActivateOverdraft(SecureString iban,decimal amount)
+        {
+            var account = (ICheckingAccount)checkIfAccountExistByIban(iban);
+
+            if(account==null)
+            {
+                throw new ArgumentNullException("Account does not exist!");
+            }
+
+            account.ActivateOverdraft(amount);
+
+            return "Overdraft is enabled.";
+        }
+
+        public string DeactivateOverdraft(SecureString iban)
+        {
+            var account = (ICheckingAccount)checkIfAccountExistByIban(iban);
+
+            if (account == null)
+            {
+                throw new ArgumentNullException("Account does not exist!");
+            }
+
+            account.DeactivateOverdraft();
+
+            return "Overdraft is disabled.";
+        }
+
         public string Report(SecureString id)
         {
            // var person = CheckIfPersonExistByID(id);

@@ -62,7 +62,7 @@
             {
                 Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
             }
-        }
+        }       
 
         public IEnumerator<IAccount> GetEnumerator()
         {

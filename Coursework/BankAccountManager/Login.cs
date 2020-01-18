@@ -39,6 +39,8 @@
             var username = UserNameTextBox.Text;
             var password = PasswordTextBox.Text;
 
+            BankDBDataSet bank = new BankDBDataSet();
+           
             try
             {
                 CheckIfEmpty(username);

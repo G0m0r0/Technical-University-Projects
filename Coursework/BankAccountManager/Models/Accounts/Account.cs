@@ -29,7 +29,7 @@
         protected decimal balance;
         private float interestRate;
         private SecureString Iban;
-        public IReadOnlyCollection<ITransaction> Transactions 
+        public IList<ITransaction> Transactions 
             => this.transactions.AsReadOnly();
 
         public SecureString IBAN
@@ -64,16 +64,11 @@
         }
 
         //TODO: validation balance
-        public decimal Balance
+        public virtual decimal Balance
         {
             get { return balance; }
             protected set 
-            { 
-                if(value<0)
-                {
-                    throw new ArgumentException("Balance can not be negative!");
-                }
-                        
+            {                       
                 balance = value; 
             }
         }

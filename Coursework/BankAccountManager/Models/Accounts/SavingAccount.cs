@@ -10,5 +10,18 @@
             : base(person, balance, interestRate, Iban)
         {
         }
+
+        public override decimal Balance
+        {
+            get => base.Balance;
+            protected set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Balance can not be less than overdraft limit!");
+                }
+                base.Balance = value;
+            }
+        }
     }
 }

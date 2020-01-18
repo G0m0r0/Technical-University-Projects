@@ -41,3 +41,8 @@ D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcore
 D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\EntityFramework.dll
+D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Programming\University\Coursework\BankAccountManagerConsole\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

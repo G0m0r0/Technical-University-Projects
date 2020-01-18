@@ -2,13 +2,11 @@
 {
     using System;
     using System.Security;
-    using BankAccountManager.Models.Enums;
+    using BankAccountManager.Models.Accounts.Contracts;
     using BankAccountManager.Models.Person.Contracts;
-    using BankAccountManager.Models.Transactions;
-    using BankAccountManager.Models.Transactions.Contracts;
     using Person;
 
-    class CheckingAccount : Account
+    class CheckingAccount : Account, ICheckingAccount
     {
         private const decimal arrangeFeeForOverdraft = 0.05m;
         private const string separator = "___";
@@ -19,7 +17,7 @@
             //create account with deactivated overdraft
             activeOverdraft = false;
         }
-        public CheckingAccount(Person person, decimal balance, float interestRate, SecureString IBAN,decimal overdraftLimit)
+        public CheckingAccount(Person person, decimal balance, float interestRate, SecureString IBAN, decimal overdraftLimit)
             : base(person, balance, interestRate, IBAN)
         {
             //create account with acctive overdraft
@@ -29,6 +27,19 @@
 
         private bool activeOverdraft;
         private decimal overdraftLimit;
+
+        public override decimal Balance 
+        { 
+            get => base.Balance;
+            protected set
+            {
+                if(value<-overdraftLimit)
+                {
+                    throw new ArgumentException("Balance can not be less than overdraft limit!");
+                }
+                base.Balance = value;
+            }
+        }
 
         private decimal OverdraftLimit
         {
@@ -45,7 +56,7 @@
 
         public void ActivateOverdraft(decimal amountOverdraft)
         {
-            if(activeOverdraft)
+            if (activeOverdraft)
             {
                 throw new Exception("Your overdraft is active!");
             }
@@ -73,25 +84,21 @@
                 if (base.CheckPossitiveAmount(amount) && (this.Balance + OverdraftLimit) >= amount)
                 {
                     this.Balance -= amount;
-                    //TODO: take money from saving account for overdraft
-                    if (base.CheckPossitiveAmount(this.balance) )
-                    {
-                        this.Balance -= OverdraftLimit * arrangeFeeForOverdraft;
-                    }
+                    this.Balance -= OverdraftLimit * arrangeFeeForOverdraft;
+
+                    AddToTransactionHistory(amount, "Withdraw");
                 }
             }
             else
             {
                 base.Withdraw(amount);
             }
-
-            AddToTransactionHistory(amount, "Withdraw");
         }
 
         public override string ToString()
         {
             string overdraftStatus = activeOverdraft ? "activated" : "deactivated";
-            return "Checking"+separator+ base.ToString()+separator+$"overdraft {overdraftStatus}.";
+            return "Checking" + separator + base.ToString() + separator + $"overdraft {overdraftStatus}.";
         }
 
     }

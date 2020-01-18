@@ -55,12 +55,25 @@
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Do you want to close?", "Alert!", MessageBoxButtons.YesNo);
+            var iban = textBox8.Text;
+            var amount = textBox9.Text;
 
-            if (dialog == DialogResult.Yes)
+            string operationOverdraft = string.Empty;
+            if(checkBox1.Checked)
             {
-                Environment.Exit(1);
+                operationOverdraft = "activateoverdraft";
             }
+            else if(checkBox2.Checked)
+            {
+                operationOverdraft = "deactivateoverdraft";
+                textBox8.Enabled = false;
+            }
+
+            string command = operationOverdraft + space + iban + space + amount;
+            this.Engine.Run(command.TrimEnd());
+
+            textBox8.Clear();
+            textBox9.Clear();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -91,7 +104,7 @@
             var iban = textBox3.Text;
 
             string command ="addaccount"+space+ accountType + space + personIdToaddAccount + space + balance + space + interestRate + space + iban;
-            this.Engine.Run(command);
+            this.Engine.Run(command.TrimEnd());
 
             textBox2.Clear();
             textBox3.Clear();
@@ -109,6 +122,57 @@
             textBox3.Enabled = false;
             textBox6.Enabled = false;
             button4.Enabled = false;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox1.Enabled = true;
+            checkBox2.Enabled = true;
+
+            textBox8.Enabled = true;
+            textBox9.Enabled = true;
+
+            button2.Enabled = true;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox9.Enabled = false;
+            textBox9.Clear();
+
+            textBox8.Enabled = false;
+            textBox8.Clear();
+
+            checkBox1.Enabled = false;
+            checkBox2.Enabled = false;
+
+            button2.Enabled = false;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox9.Enabled = false;
+            textBox9.Clear();
+
+            textBox8.Enabled = false;
+            textBox8.Clear();
+
+            checkBox1.Enabled = false;
+            checkBox2.Enabled = false;
+
+            button2.Enabled = false;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox9.Enabled = false;
+            
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox9.Enabled = true;
+
         }
     }
 }

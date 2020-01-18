@@ -6,6 +6,6 @@
     {
         void Deposit(decimal amount);
         void Withdraw(decimal amount);
-        IReadOnlyCollection<ITransaction> Transactions { get; }
+        IList<ITransaction> Transactions { get; }
     }
 }

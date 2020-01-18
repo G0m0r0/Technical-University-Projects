@@ -61,20 +61,31 @@
                         break;
                     case "deposit":
                         var moneyTodeposit = decimal.Parse(tokens[1]);
-                        var ibanToAddMoney = MakeStringSecureString(tokens[2]);
+                        iban = MakeStringSecureString(tokens[2]);
 
-                        resultMessage = controller.Deposit(moneyTodeposit, ibanToAddMoney);
+                        resultMessage = controller.Deposit(moneyTodeposit, iban);
                         break;
                     case "withdraw":
                         var moneyTowithDraw = decimal.Parse(tokens[1]);
-                        var ibanToWithdrawMoney = MakeStringSecureString(tokens[2]);
+                        iban = MakeStringSecureString(tokens[2]);
 
-                        resultMessage = controller.Withdraw(moneyTowithDraw, ibanToWithdrawMoney);
+                        resultMessage = controller.Withdraw(moneyTowithDraw, iban);
                         break;
                     case "report":
                         var personIDToGetInfo = MakeStringSecureString(tokens[1]);
 
                         resultMessage = controller.Report(personIDToGetInfo);
+                        break;
+                    case "activateoverdraft":
+                        iban = MakeStringSecureString(tokens[1]);
+                        var amounthForOverdraft =decimal.Parse(tokens[2]);
+
+                        resultMessage = controller.ActivateOverdraft(iban, amounthForOverdraft);
+                        break;
+                    case "deactivateoverdraft":
+                        iban = MakeStringSecureString(tokens[1]);
+
+                        resultMessage = controller.DeactivateOverdraft(iban);
                         break;
                     default:
                         throw new ArgumentException($"Command of type {command} does not exist!");

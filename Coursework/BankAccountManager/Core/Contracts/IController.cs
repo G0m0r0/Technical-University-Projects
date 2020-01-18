@@ -5,8 +5,6 @@
     using System.Security;
     public interface IController
     {
-        // IPerson Person { get; }
-        // IRepository<IAccount> Account { get; }
         IReadOnlyCollection<IAccount> TakeAllAccounts();
         string AddAccount(string accountType,SecureString personId,decimal balance,float interestRate, SecureString Iban);
 
@@ -16,9 +14,9 @@
 
         string Withdraw(decimal amount, SecureString iban);
 
-        //void AddInterests();
+        string DeactivateOverdraft(SecureString iban);
 
-        //void AddCard();
+        string ActivateOverdraft(SecureString iban, decimal amount);
 
         string CalculateAllMoney();
 

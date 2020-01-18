@@ -33,11 +33,11 @@
             this.Num = new System.Windows.Forms.ColumnHeader();
             this.IBAN = new System.Windows.Forms.ColumnHeader();
             this.Date = new System.Windows.Forms.ColumnHeader();
+            this.Type = new System.Windows.Forms.ColumnHeader();
+            this.Amount = new System.Windows.Forms.ColumnHeader();
             this.BackButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Type = new System.Windows.Forms.ColumnHeader();
-            this.Amount = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // button2
@@ -69,6 +69,7 @@
             this.ListTransactions.TabIndex = 5;
             this.ListTransactions.UseCompatibleStateImageBehavior = false;
             this.ListTransactions.View = System.Windows.Forms.View.Details;
+            this.ListTransactions.SelectedIndexChanged += new System.EventHandler(this.ListTransactions_SelectedIndexChanged);
             // 
             // Num
             // 
@@ -88,6 +89,18 @@
             this.Date.Text = "Date";
             this.Date.Width = 100;
             // 
+            // Type
+            // 
+            this.Type.Name = "Type";
+            this.Type.Text = "Type";
+            this.Type.Width = 80;
+            // 
+            // Amount
+            // 
+            this.Amount.Name = "Amount";
+            this.Amount.Text = "Amount";
+            this.Amount.Width = 70;
+            // 
             // BackButton
             // 
             this.BackButton.Location = new System.Drawing.Point(24, 399);
@@ -102,7 +115,6 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Number",
             "Date",
             "Type- Withdraw",
             "Type- Deposit",
@@ -112,6 +124,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 11;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // label5
             // 
@@ -122,18 +135,6 @@
             this.label5.Size = new System.Drawing.Size(83, 25);
             this.label5.TabIndex = 12;
             this.label5.Text = "Filter by:";
-            // 
-            // Type
-            // 
-            this.Type.Name = "Type";
-            this.Type.Text = "Type";
-            this.Type.Width = 80;
-            // 
-            // Amount
-            // 
-            this.Amount.Name = "Amount";
-            this.Amount.Text = "Amount";
-            this.Amount.Width = 70;
             // 
             // Transactions
             // 
