@@ -13,9 +13,9 @@
 
     public partial class Transactions : Form
     {
-        private readonly IEngineWF Engin;
+        private readonly IEngine Engin;
         private readonly Dictionary<SecureString, IList<ITransaction>> transactionDictionary;
-        public Transactions(IEngineWF engin)
+        public Transactions(IEngine engin)
         {
             InitializeComponent();
             this.Engin = engin;
@@ -40,15 +40,7 @@
             {
                 foreach (var transaction in kvp.Value)
                 {
-                    ListViewItem lvi = new ListViewItem(number.ToString());
-
-                    lvi.SubItems.Add(DecriptSecureString(kvp.Key));
-                    lvi.SubItems.Add(string.Format("{0:MM/dd/yyyy hh:mm tt}", transaction.DateTime));
-                    lvi.SubItems.Add(transaction.TypeTransaction.ToString());
-                    lvi.SubItems.Add(transaction.Amount.ToString());
-
-                    ListTransactions.Items.Add(lvi);
-                    number++;
+                    CreateListView(transaction, ref number, kvp.Key);
                 }
             }
         }
@@ -82,117 +74,117 @@
             }
         }
 
+        private void CreateListView(ITransaction transaction, ref int number, SecureString key)
+        {
+            ListViewItem lvi = new ListViewItem(number.ToString());
+
+            lvi.SubItems.Add(DecriptSecureString(key));
+            lvi.SubItems.Add(string.Format("{0:MM/dd/yyyy hh:mm tt}", transaction.DateTime));
+            lvi.SubItems.Add(transaction.TypeTransaction.ToString());
+            lvi.SubItems.Add(transaction.Amount.ToString());
+
+            ListTransactions.Items.Add(lvi);
+            number++;
+        }
+
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            int number = 1;
             for (int i = 0; i < ListTransactions.Items.Count; i++)
             {
-                ListTransactions.Items.RemoveAt(i);
+                ListTransactions.Items.RemoveAt(i--);
             }
+
+           // foreach (var kvp in transactionDictionary)
+           // {
+           //     foreach (var transaction in kvp.Value.OrderBy(x => x.DateTime))
+           //     {
+           //         CreateListView(transaction, ref number, kvp.Key);
+           //     }
+           // }
 
             if (comboBox1.SelectedIndex == 0)
             {
-                int number = 1;
-               foreach (var kvp in transactionDictionary)
-               {
-                   foreach (var transaction in kvp.Value.OrderBy(x => x.DateTime))
-                   {
-                       ListViewItem lvi = new ListViewItem(number.ToString());
-              
-                       lvi.SubItems.Add(DecriptSecureString(kvp.Key));
-                       lvi.SubItems.Add(string.Format("{0:MM/dd/yyyy hh:mm tt}", transaction.DateTime));
-                       lvi.SubItems.Add(transaction.TypeTransaction.ToString());
-                       lvi.SubItems.Add(transaction.Amount.ToString());
-              
-                       ListTransactions.Items.Add(lvi);
-                       number++;
-                   }
-               }
+                textBox1.Enabled = false;
+                textBox1.Clear();
+
+                foreach (var kvp in transactionDictionary)
+                {
+                    foreach (var transaction in kvp.Value.OrderBy(x => x.DateTime))
+                    {
+                        CreateListView(transaction, ref number, kvp.Key);
+                    }
+                }
             }
             else if (comboBox1.SelectedIndex == 1)
             {
-                int number = 1;
+                textBox1.Enabled = false;
+                textBox1.Clear();
+
                 foreach (var kvp in transactionDictionary)
                 {
                     foreach (var transaction in kvp.Value.Where(x => x.TypeTransaction.ToString() == "Withdraw"))
                     {
-                        ListViewItem lvi = new ListViewItem(number.ToString());
-
-                        lvi.SubItems.Add(DecriptSecureString(kvp.Key));
-                        lvi.SubItems.Add(string.Format("{0:MM/dd/yyyy hh:mm tt}", transaction.DateTime));
-                        lvi.SubItems.Add(transaction.TypeTransaction.ToString());
-                        lvi.SubItems.Add(transaction.Amount.ToString());
-
-                        ListTransactions.Items.Add(lvi);
-                        number++;
+                        CreateListView(transaction, ref number, kvp.Key);
                     }
                 }
             }
             else if (comboBox1.SelectedIndex == 2)
             {
-                int number = 1;
+                textBox1.Enabled = false;
+                textBox1.Clear();
+
                 foreach (var kvp in transactionDictionary)
                 {
                     foreach (var transaction in kvp.Value.Where(x => x.TypeTransaction.ToString() == "Deposit"))
                     {
-                        ListViewItem lvi = new ListViewItem(number.ToString());
-
-                        lvi.SubItems.Add(DecriptSecureString(kvp.Key));
-                        lvi.SubItems.Add(string.Format("{0:MM/dd/yyyy hh:mm tt}", transaction.DateTime));
-                        lvi.SubItems.Add(transaction.TypeTransaction.ToString());
-                        lvi.SubItems.Add(transaction.Amount.ToString());
-
-                        ListTransactions.Items.Add(lvi);
-                        number++;
+                        CreateListView(transaction, ref number, kvp.Key);
                     }
                 }
             }
             else if (comboBox1.SelectedIndex == 3)
             {
-                int number = 1;
+                textBox1.Enabled = false;
+                textBox1.Clear();
+
                 foreach (var kvp in transactionDictionary)
                 {
                     foreach (var transaction in kvp.Value
                         .Where(x => x.TypeTransaction.ToString() == "Withdraw")
-                        .OrderBy(x=>x.Amount))
+                        .OrderBy(x => x.Amount))
                     {
-                        ListViewItem lvi = new ListViewItem(number.ToString());
-
-                        lvi.SubItems.Add(DecriptSecureString(kvp.Key));
-                        lvi.SubItems.Add(string.Format("{0:MM/dd/yyyy hh:mm tt}", transaction.DateTime));
-                        lvi.SubItems.Add(transaction.TypeTransaction.ToString());
-                        lvi.SubItems.Add(transaction.Amount.ToString());
-
-                        ListTransactions.Items.Add(lvi);
-                        number++;
+                        CreateListView(transaction, ref number, kvp.Key);
                     }
                 }
             }
             else if (comboBox1.SelectedIndex == 4)
             {
-                int number = 1;
+                textBox1.Enabled = false;
+                textBox1.Clear();
+
                 foreach (var kvp in transactionDictionary)
                 {
                     foreach (var transaction in kvp.Value
                         .Where(x => x.TypeTransaction.ToString() == "Deposit")
                         .OrderBy(x => x.Amount))
                     {
-                        ListViewItem lvi = new ListViewItem(number.ToString());
-
-                        lvi.SubItems.Add(DecriptSecureString(kvp.Key));
-                        lvi.SubItems.Add(string.Format("{0:MM/dd/yyyy hh:mm tt}", transaction.DateTime));
-                        lvi.SubItems.Add(transaction.TypeTransaction.ToString());
-                        lvi.SubItems.Add(transaction.Amount.ToString());
-
-                        ListTransactions.Items.Add(lvi);
-                        number++;
+                        CreateListView(transaction, ref number, kvp.Key);
                     }
                 }
             }
-        }
+            else if (comboBox1.SelectedIndex == 5)
+            {
+                textBox1.Enabled = true;
 
-        private void ListTransactions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+                foreach (var kvp in transactionDictionary)
+                {
+                    if (DecriptSecureString(kvp.Key) == textBox1.Text)
+                        foreach (var transaction in kvp.Value)
+                        {
+                            CreateListView(transaction, ref number, kvp.Key);
+                        }
+                }
+            }
         }
     }
 }

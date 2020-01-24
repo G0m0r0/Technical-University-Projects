@@ -8,7 +8,7 @@
     using System.Runtime.InteropServices;
     using System.Security;
 
-    public class AccountRepository : IRepository<IAccount>,IEnumerable<IAccount>
+    public class AccountRepository : IRepository<IAccount>,IEnumerable<IAccount>,IAccountEnumerable
     {
         public AccountRepository()
         {

@@ -9,3 +9,11 @@ D:\Programming\University\Coursework\SortAlgorithmsLibrary\obj\Debug\netstandard
 D:\Programming\NugetPackages\Sorts\netstandard2.0\SortAlgorithmsLibrary.deps.json
 D:\Programming\NugetPackages\Sorts\netstandard2.0\SortAlgorithmsLibrary.dll
 D:\Programming\NugetPackages\Sorts\netstandard2.0\SortAlgorithmsLibrary.pdb
+E:\Delyan\Programing\NugetPackages\Sort\netstandard2.0\SortAlgorithmsLibrary.deps.json
+E:\Delyan\Programing\NugetPackages\Sort\netstandard2.0\SortAlgorithmsLibrary.dll
+E:\Delyan\Programing\NugetPackages\Sort\netstandard2.0\SortAlgorithmsLibrary.pdb
+E:\Delyan\Programing\University\Coursework\SortAlgorithmsLibrary\obj\Debug\netstandard2.0\SortAlgorithmsLibrary.csprojAssemblyReference.cache
+E:\Delyan\Programing\University\Coursework\SortAlgorithmsLibrary\obj\Debug\netstandard2.0\SortAlgorithmsLibrary.AssemblyInfoInputs.cache
+E:\Delyan\Programing\University\Coursework\SortAlgorithmsLibrary\obj\Debug\netstandard2.0\SortAlgorithmsLibrary.AssemblyInfo.cs
+E:\Delyan\Programing\University\Coursework\SortAlgorithmsLibrary\obj\Debug\netstandard2.0\SortAlgorithmsLibrary.dll
+E:\Delyan\Programing\University\Coursework\SortAlgorithmsLibrary\obj\Debug\netstandard2.0\SortAlgorithmsLibrary.pdb

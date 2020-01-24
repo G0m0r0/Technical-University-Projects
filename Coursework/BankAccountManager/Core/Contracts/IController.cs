@@ -1,11 +1,13 @@
 ﻿namespace BankAccountManager.Core.Contracts
 {
     using BankAccountManager.Models.Accounts.Contracts;
+    using BankAccountManager.Models.Person.Contracts;
     using System.Collections.Generic;
     using System.Security;
     public interface IController
     {
         IReadOnlyCollection<IAccount> TakeAllAccounts();
+        IReadOnlyCollection<IUser> TakeAllUsers();
         string AddAccount(string accountType,SecureString personId,decimal balance,float interestRate, SecureString Iban);
 
         string AddPerson(string firstName,string lastName,int age,SecureString ID);
@@ -21,5 +23,7 @@
         string CalculateAllMoney();
 
         string Report(SecureString id);
+
+        string CreateNewUser(string password, string username);
     }
 }

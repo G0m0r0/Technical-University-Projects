@@ -1,14 +1,17 @@
 ﻿namespace BankAccountManager
 {
+    using BankAccountManager.Core.Contracts;
     using System;
+    using System.Linq;
     using System.Windows.Forms;
     public partial class Login : Form
     {
         private RegisterNewUser registerForm;
-        public Login()
+        private IEngine Engin;
+        public Login(IEngine engin)
         {
-            InitializeComponent();
-            registerForm = new RegisterNewUser();
+            InitializeComponent();        
+            this.Engin = engin;
         }
 
 
@@ -26,58 +29,36 @@
 
         private void CreateAccountButton_Click(object sender, EventArgs e)
         {
+            registerForm = new RegisterNewUser(Engin);
             registerForm.Show();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            Wallet wallet = new Wallet();
-            wallet.Show();
-            this.Hide(); 
-
-            var userList = this.registerForm.UserList;
+            //Wallet wallet = new Wallet(this.Engin);
+           // wallet.Show();
+            //this.Hide(); 
+          
+            var userList = Engin.GetAllUsers();
+          
             var username = UserNameTextBox.Text;
             var password = PasswordTextBox.Text;
-
-            BankDBDataSet bank = new BankDBDataSet();
-           
-            try
+          
+            var account = userList.SingleOrDefault(acc => acc.Username == username);
+          
+            if (account == null)
             {
-                CheckIfEmpty(username);
-                CheckIfEmpty(password);
-
-                if(userList.ContainsKey(username))
-                {
-                    if (password != userList[username])
-                    {
-                        MessageBox.Show("Wrong passowrd, try again!");
-                    }
-                    else
-                    {
-                        wallet.Show();
-                        this.Hide();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Username with that name does not exist!");
-                }
-
-                PasswordTextBox.Clear(); 
+                throw new ArgumentException("User does not exist!");
             }
-            catch (Exception ex)
+          
+            if (account.Password != password)
             {
-
-                MessageBox.Show(ex.Message);
+                throw new ArgumentException("Wrong password, try again!");
             }
-        }
-
-        private void CheckIfEmpty(string value)
-        {
-            if(string.IsNullOrWhiteSpace(value))
-            {
-                throw new ArgumentNullException("Please enter correct information!");
-            }
+          
+            Wallet wallet = new Wallet(this.Engin);
+            wallet.Show();
+            this.Hide();
         }
     }
 }

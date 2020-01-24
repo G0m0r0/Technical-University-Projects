@@ -22,14 +22,24 @@
         {
             this.person = null;
             this.accountRepository = new AccountRepository();
+            this.userRepository = new UserRepository();
         }
 
         //private List<IPerson> persons;
         private IPerson person;
         private IRepository<IAccount> accountRepository;
+        private IRepository<IUser> userRepository;
 
        // public IPerson Person => this.person;
        // public IRepository<IAccount> Account => this.accountRepository;
+       public string CreateNewUser(string username,string password)
+        {
+            IUser user = new User(username,password);
+            this.userRepository.Add(user);
+
+
+            return $"Successfully added user {username}.";
+        }
 
         public string AddAccount(string accountType,SecureString idPerson, decimal balance, float interestRate, SecureString Iban)
         {
@@ -157,6 +167,25 @@
         }
 
         public IReadOnlyCollection<IAccount> TakeAllAccounts() => this.accountRepository.Models;
+        public IReadOnlyCollection<IUser> TakeAllUsers() => this.userRepository.Models;
+
+      // public string LoginIntoUser(string username,string password)
+      // {
+      //     var account = this.userRepository.Models.SingleOrDefault(acc => acc.Username == username);
+      //
+      //     if(account==null)
+      //     {
+      //         throw new ArgumentException("User does not exist!");
+      //     }
+      //
+      //     if(account.Password!=password)
+      //     {
+      //         throw new ArgumentException("Wrong password, try again!");
+      //     }
+      //
+      //     Wallet wallet = new Wallet(this.Engin);
+      //     wallet.Show();
+      // }
 
         private IAccount checkIfAccountExistByIban(SecureString iban)
         {

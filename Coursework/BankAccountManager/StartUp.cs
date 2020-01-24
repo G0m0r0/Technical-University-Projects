@@ -1,7 +1,5 @@
+using BankAccountManager.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankAccountManager
@@ -14,7 +12,8 @@ namespace BankAccountManager
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Login(new Engine()));
+            //Application.Run(new Engine());
             //System.Diagnostics.Process.Start(@"cmd.exe", @"/k D:\Programming\University\Coursework\BankAccountManager");
         }
     }

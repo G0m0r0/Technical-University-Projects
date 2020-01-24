@@ -4,11 +4,12 @@
     using BankAccountManager.IO;
     using BankAccountManager.IO.Contracts;
     using BankAccountManager.Models.Accounts.Contracts;
+    using BankAccountManager.Models.Person.Contracts;
     using System;
     using System.Collections.Generic;
     using System.Security;
 
-    public class Engine : IEngineWF
+    public class Engine : IEngine
     {
         //private IWriter writer;
         //private IReader reader;
@@ -40,6 +41,8 @@
                 switch (command.ToLower())
                 {
                     case "addaccount":
+                        CheckCorrectInformation(6, tokens.Length);
+
                         string accountType = tokens[1];
                         var personIdToaddAccount = MakeStringSecureString(tokens[2]);
                         var balance = decimal.Parse(tokens[3]);
@@ -49,6 +52,8 @@
                         resultMessage = controller.AddAccount(accountType, personIdToaddAccount, balance, interestRate, iban);
                         break;
                     case "addperson":
+                        CheckCorrectInformation(5, tokens.Length);
+
                         var firstName = tokens[1];
                         var lastName = tokens[2];
                         var age = int.Parse(tokens[3]);
@@ -60,32 +65,58 @@
                         resultMessage = controller.CalculateAllMoney();
                         break;
                     case "deposit":
+                        CheckCorrectInformation(3, tokens.Length);
+
                         var moneyTodeposit = decimal.Parse(tokens[1]);
                         iban = MakeStringSecureString(tokens[2]);
 
                         resultMessage = controller.Deposit(moneyTodeposit, iban);
                         break;
                     case "withdraw":
+                        CheckCorrectInformation(3, tokens.Length);
+
                         var moneyTowithDraw = decimal.Parse(tokens[1]);
                         iban = MakeStringSecureString(tokens[2]);
 
                         resultMessage = controller.Withdraw(moneyTowithDraw, iban);
                         break;
                     case "report":
+                        CheckCorrectInformation(2, tokens.Length);
+
                         var personIDToGetInfo = MakeStringSecureString(tokens[1]);
 
                         resultMessage = controller.Report(personIDToGetInfo);
                         break;
                     case "activateoverdraft":
+                        CheckCorrectInformation(3, tokens.Length);
+
                         iban = MakeStringSecureString(tokens[1]);
                         var amounthForOverdraft =decimal.Parse(tokens[2]);
 
                         resultMessage = controller.ActivateOverdraft(iban, amounthForOverdraft);
                         break;
                     case "deactivateoverdraft":
+                        CheckCorrectInformation(2, tokens.Length);
+
                         iban = MakeStringSecureString(tokens[1]);
 
                         resultMessage = controller.DeactivateOverdraft(iban);
+                        break;
+                    case "adduser":
+                        CheckCorrectInformation(3, tokens.Length);
+
+                        string username = tokens[1];
+                        string password = tokens[2];
+
+                        resultMessage = controller.CreateNewUser(username, password);
+                        break;
+                    case "login":
+                        CheckCorrectInformation(3, tokens.Length);
+
+                        username = tokens[1];
+                        password = tokens[2];
+
+                        //resultMessage=
                         break;
                     default:
                         throw new ArgumentException($"Command of type {command} does not exist!");
@@ -105,7 +136,16 @@
             // }
         }
 
+        private void CheckCorrectInformation(int numOfNeededOperations, int operations)
+        {
+            if(numOfNeededOperations!=operations)
+            {
+                throw new ArgumentNullException("Not enough information!");
+            }
+        }
+
         public IReadOnlyCollection<IAccount> GetAllAccounts() => this.controller.TakeAllAccounts();
+        public IReadOnlyCollection<IUser> GetAllUsers() => this.controller.TakeAllUsers();
 
         private SecureString MakeStringSecureString(string str)
         {

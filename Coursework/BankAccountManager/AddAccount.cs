@@ -7,8 +7,8 @@
     public partial class AddAccount : Form
     {
         private const char space = ' ';
-        private readonly IEngineWF Engine;
-        public AddAccount(IEngineWF engine)
+        private readonly IEngine Engine;
+        public AddAccount(IEngine engine)
         {
             InitializeComponent();
 

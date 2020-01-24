@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj": {}
+    "E:\\Delyan\\Programing\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj": {
+    "E:\\Delyan\\Programing\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj": {
       "version": "1.1.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj",
+        "projectUniqueName": "E:\\Delyan\\Programing\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj",
         "projectName": "SortAlgorithms",
-        "projectPath": "D:\\Programming\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj",
+        "projectPath": "E:\\Delyan\\Programing\\University\\Coursework\\SortAlgorithmsLibrary\\SortAlgorithmsLibrary.csproj",
         "packagesPath": "C:\\Users\\dimit\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\University\\Coursework\\SortAlgorithmsLibrary\\obj\\",
+        "outputPath": "E:\\Delyan\\Programing\\University\\Coursework\\SortAlgorithmsLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -25,8 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Programming\\NugetPackages": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "E:\\Delyan\\Programing\\NugetPackages\\Sort": {}
         },
         "frameworks": {
           "netstandard2.0": {

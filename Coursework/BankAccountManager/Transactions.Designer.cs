@@ -38,6 +38,7 @@
             this.BackButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button2
@@ -69,7 +70,6 @@
             this.ListTransactions.TabIndex = 5;
             this.ListTransactions.UseCompatibleStateImageBehavior = false;
             this.ListTransactions.View = System.Windows.Forms.View.Details;
-            this.ListTransactions.SelectedIndexChanged += new System.EventHandler(this.ListTransactions_SelectedIndexChanged);
             // 
             // Num
             // 
@@ -119,7 +119,8 @@
             "Type- Withdraw",
             "Type- Deposit",
             "Amounth- Withdraw",
-            "Amounth- Deposit"});
+            "Amounth- Deposit",
+            "IBAN"});
             this.comboBox1.Location = new System.Drawing.Point(113, 18);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
@@ -136,12 +137,21 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Filter by:";
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(257, 18);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(150, 23);
+            this.textBox1.TabIndex = 13;
+            // 
             // Transactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(426, 450);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ListTransactions);
@@ -167,5 +177,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ColumnHeader Type;
         private System.Windows.Forms.ColumnHeader Amount;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

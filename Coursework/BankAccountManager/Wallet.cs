@@ -10,14 +10,14 @@
 
     public partial class Wallet : Form
     {
-        private readonly AddAccount addAccountForm;
+        private AddAccount addAccountForm;
         private Transactions transactions;
-        private readonly IEngineWF engine;
-        public Wallet()
+        private readonly IEngine Engine;
+        public Wallet(IEngine engin)
         {
             InitializeComponent();
-            this.engine = new Engine();
-            this.addAccountForm = new AddAccount(engine);
+            ///this.engine = new Engine();
+            this.Engine = engin;
         }
 
         private void Wallet_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@
         {
             comboBox1.Items.Clear();
 
-            var accountsList = engine.GetAllAccounts();
+            var accountsList = Engine.GetAllAccounts();
 
             foreach (var account in accountsList)
             {
@@ -49,6 +49,7 @@
 
         private void AddAccountButton_Click(object sender, EventArgs e)
         {
+            this.addAccountForm = new AddAccount(Engine);
             addAccountForm.Show();
         }
 
@@ -70,9 +71,9 @@
 
             string command = $"deposit {AmounthTextBox.Text} {iban}";
 
-            engine.Run(command);
+            Engine.Run(command);
 
-            var account = engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
+            var account = Engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
             BalanceTextBox.Text = account.GetBalance.ToString()+'$';
 
             AmounthTextBox.Clear();
@@ -84,9 +85,9 @@
 
             string command = $"withdraw {AmounthTextBox.Text} {iban}";
 
-            engine.Run(command);
+            Engine.Run(command);
 
-            var account = engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
+            var account = Engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
             BalanceTextBox.Text = account.GetBalance.ToString()+'$';
 
             AmounthTextBox.Clear();
@@ -108,12 +109,12 @@
         private void AllMoneyButton_Click(object sender, EventArgs e)
         {
             var command = "balanceofallaccounts";
-            engine.Run(command);
+            Engine.Run(command);
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            this.transactions = new Transactions(engine);
+            this.transactions = new Transactions(Engine);
             transactions.Show();
         }
     }

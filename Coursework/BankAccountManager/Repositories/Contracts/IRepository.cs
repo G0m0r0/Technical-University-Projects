@@ -14,6 +14,5 @@
 
         bool FindByIdentification(SecureString identification);
 
-        IEnumerator<IAccount> GetEnumerator();
     }
 }
