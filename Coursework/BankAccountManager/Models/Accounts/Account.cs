@@ -13,8 +13,8 @@
     public abstract class Account : IAccount
     {
         private const int IBANLenght = 13;
-        private const float maxInterestRate = 1.0F;
-        private const string separator= "___";
+        private const float maxInterestRate = 5.0F;
+        private const string separator = "___";
 
         protected Account(IPerson person, decimal balance, float interestRate, SecureString Iban)
         {
@@ -23,14 +23,16 @@
             this.InterestRate = interestRate;
             this.IBAN = Iban;
             this.transactions = new List<ITransaction>();
+            DateTime TimeOfCreation = DateTime.Now;
         }
 
         private IPerson person;
         protected decimal balance;
         private float interestRate;
         private SecureString Iban;
-        public IList<ITransaction> Transactions 
+        public IList<ITransaction> Transactions
             => this.transactions.AsReadOnly();
+        protected DateTime TimeOfCreation { get; }
 
         public SecureString IBAN
         {
@@ -41,7 +43,7 @@
                 {
                     throw new ArgumentException("IBAN cannot be null or empty!");
                 }
-                if(value.Length<0&&value.Length>IBANLenght)
+                if (value.Length < 0 && value.Length > IBANLenght)
                 {
                     throw new ArgumentException("IBAN lenght should be between 0 and 13 symbols");
                 }
@@ -50,26 +52,25 @@
             }
         }
 
-        public float InterestRate
+        public virtual float InterestRate
         {
             get { return interestRate; }
             protected set
             {
                 if (value < 0.0F || value > maxInterestRate)
                 {
-                    throw new ArgumentException("Interest rate should be between 0 and 1");
+                    throw new ArgumentException($"Interest rate should be between 0 and {maxInterestRate}%");
                 }
                 interestRate = value;
             }
         }
 
-        //TODO: validation balance
         public virtual decimal Balance
         {
             get { return balance; }
-            protected set 
-            {                       
-                balance = value; 
+            protected set
+            {
+                balance = value;
             }
         }
 
@@ -78,7 +79,7 @@
             get { return person; }
             private set
             {
-                person = value?? throw new ArgumentNullException("Person doesn't exsist"); ;
+                person = value ?? throw new ArgumentNullException("Person doesn't exsist"); ;
             }
         }
         protected List<ITransaction> transactions;
@@ -89,7 +90,7 @@
 
         public virtual void Withdraw(decimal amount)
         {
-            if (CheckPossitiveAmount(amount)&& IsBalanceEnough(amount))
+            if (CheckPossitiveAmount(amount) && IsBalanceEnough(amount))
             {
                 this.Balance -= amount;
             }
@@ -106,11 +107,7 @@
 
             AddToTransactionHistory(amount, "Deposit");
         }
-        //TODO: impliment interest rate montly
-        public virtual void AddInterests()
-        {
-            this.Balance += (this.Balance * (Decimal)(this.InterestRate / 12.0));
-        }
+
         protected void AddToTransactionHistory(decimal amount, string type)
         {
             ITransaction currentTransaction = null;
@@ -121,6 +118,10 @@
             else if (type == "Deposit")
             {
                 currentTransaction = new TransactionCurrent(amount, TypeTransaction.Deposit);
+            }
+            else if (type == "InterestIncome")
+            {
+                currentTransaction = new TransactionCurrent(amount, TypeTransaction.InterestIncome);
             }
 
             this.transactions.Add(currentTransaction);
@@ -163,6 +164,14 @@
         {
             var iban = DecriptSecureString(this.IBAN);
             return $"IBAN{iban}{separator}{this.Balance}$";
+        }
+
+        public void AddInterest()
+        {
+            var currentInterest = this.Balance * (1 + (decimal)this.interestRate / 100);
+            this.Balance += currentInterest;
+
+            AddToTransactionHistory(currentInterest, "InterestIncome");
         }
     }
 }

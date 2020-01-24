@@ -19,38 +19,33 @@
         {
 
             var fullName = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
-            string firstName;
-            string lastName;
-            if (fullName.Length != 3)
-            {
-                throw new ArgumentException("Please enter full name!");
-            }
-            else
+            string firstName=string.Empty;
+            string lastName=string.Empty;
+
+           if(fullName.Length==2)
             {
                 firstName = fullName[0];
-                lastName = fullName[2];
+                lastName = fullName[1];
             }
+
             var age = textBox5.Text;
             var personId = textBox4.Text;
 
             string command = "addperson" + space + firstName + space + lastName + space + age + space + personId;
             this.Engine.Run(command);
 
-            textBox2.Enabled = true;
-            textBox3.Enabled = true;
-            textBox6.Enabled = true;
-            button4.Enabled = true;
+            if(!string.IsNullOrEmpty(textBox1.Text)&&!string.IsNullOrEmpty(textBox5.Text)&&!string.IsNullOrEmpty(textBox4.Text))
+            {
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                textBox6.Enabled = true;
+                button4.Enabled = true;
 
-            textBox1.Enabled = false;
-            textBox5.Enabled = false;
-            textBox4.Enabled = false;
-            button1.Enabled = false;
-
-        }
-
-        private void AddAccount_Load_1(object sender, EventArgs e)
-        {
-
+                textBox1.Enabled = false;
+                textBox5.Enabled = false;
+                textBox4.Enabled = false;
+                button1.Enabled = false;
+            }
         }
 
         private void Button2_Click(object sender, EventArgs e)

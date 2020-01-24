@@ -30,36 +30,36 @@
         private IRepository<IAccount> accountRepository;
         private IRepository<IUser> userRepository;
 
-       // public IPerson Person => this.person;
-       // public IRepository<IAccount> Account => this.accountRepository;
-       public string CreateNewUser(string username,string password)
+        // public IPerson Person => this.person;
+        // public IRepository<IAccount> Account => this.accountRepository;
+        public string CreateNewUser(string username, string password)
         {
-            IUser user = new User(username,password);
+            IUser user = new User(username, password);
             this.userRepository.Add(user);
 
 
             return $"Successfully added user {username}.";
         }
 
-        public string AddAccount(string accountType,SecureString idPerson, decimal balance, float interestRate, SecureString Iban)
+        public string AddAccount(string accountType, SecureString idPerson, decimal balance, float interestRate, SecureString Iban)
         {
             IAccount account = null;
-            if(this.accountRepository.FindByIdentification(Iban))
+            if (this.accountRepository.FindByIdentification(Iban))
             {
                 throw new Exception("Iban already exist!");
             }
             //IPerson person = CheckIfPersonExistByID(idPerson);
             accountType = accountType.ToLower();
 
-            if(accountType=="checkingaccount")
+            if (accountType == "checkingaccount")
             {
                 account = new CheckingAccount(this.person, balance, interestRate, Iban);
             }
-            else if(accountType== "childsavingsaccount")
+            else if (accountType == "childsavingsaccount")
             {
                 account = new ChildSavingsAccount(this.person, balance, interestRate, Iban);
             }
-            else if(accountType=="retirmentaccount")
+            else if (accountType == "retirmentaccount")
             {
                 account = new RetirmentAccount(this.person, balance, interestRate, Iban);
             }
@@ -75,7 +75,7 @@
 
         public string AddPerson(string firstName, string lastName, int age, SecureString ID)
         {
-            this.person= new Person(firstName, lastName, age, ID);
+            this.person = new Person(firstName, lastName, age, ID);
             //this.persons.Add(person);
 
             return "Seccessfully added person!";
@@ -88,11 +88,11 @@
             return $"Money available in all accounts {sum:F2}.";
         }
 
-        public string Deposit(decimal amount,SecureString iban)
+        public string Deposit(decimal amount, SecureString iban)
         {
             IAccount accountToDepositMoney = checkIfAccountExistByIban(iban);
 
-            if(accountToDepositMoney==null)
+            if (accountToDepositMoney == null)
             {
                 throw new ArgumentNullException($"Account does not exist");
             }
@@ -101,7 +101,7 @@
 
             return $"Seccessfully deposited {amount}$ to your account.";
         }
-        public string Withdraw(decimal amount,SecureString iban)
+        public string Withdraw(decimal amount, SecureString iban)
         {
             IAccount accountToWithdraw = checkIfAccountExistByIban(iban);
 
@@ -110,11 +110,11 @@
             return $"Seccessfully withdraw {amount}$ from your account.";
         }
 
-        public string ActivateOverdraft(SecureString iban,decimal amount)
+        public string ActivateOverdraft(SecureString iban, decimal amount)
         {
             var account = (ICheckingAccount)checkIfAccountExistByIban(iban);
 
-            if(account==null)
+            if (account == null)
             {
                 throw new ArgumentNullException("Account does not exist!");
             }
@@ -138,16 +138,24 @@
             return "Overdraft is disabled.";
         }
 
+        public void AddInterestToAllAccounts()
+        {
+            foreach (var account in this.accountRepository.Models)
+            {
+                account.AddInterest();
+            }
+        }
+
         public string Report(SecureString id)
         {
-           // var person = CheckIfPersonExistByID(id);
+            // var person = CheckIfPersonExistByID(id);
             var sb = new StringBuilder();
             //sb.AppendLine($"Account Name: {person.GetFullName} with {person.Accounts.Count}");
-           foreach (var account in person.Accounts)
-           {
-               sb.AppendLine(account.ToString());
+            foreach (var account in person.Accounts)
+            {
+                sb.AppendLine(account.ToString());
                 sb.AppendLine(SepratorOfAccounts);
-           }
+            }
 
             return sb.ToString().TrimEnd();
         }
@@ -169,23 +177,23 @@
         public IReadOnlyCollection<IAccount> TakeAllAccounts() => this.accountRepository.Models;
         public IReadOnlyCollection<IUser> TakeAllUsers() => this.userRepository.Models;
 
-      // public string LoginIntoUser(string username,string password)
-      // {
-      //     var account = this.userRepository.Models.SingleOrDefault(acc => acc.Username == username);
-      //
-      //     if(account==null)
-      //     {
-      //         throw new ArgumentException("User does not exist!");
-      //     }
-      //
-      //     if(account.Password!=password)
-      //     {
-      //         throw new ArgumentException("Wrong password, try again!");
-      //     }
-      //
-      //     Wallet wallet = new Wallet(this.Engin);
-      //     wallet.Show();
-      // }
+        // public string LoginIntoUser(string username,string password)
+        // {
+        //     var account = this.userRepository.Models.SingleOrDefault(acc => acc.Username == username);
+        //
+        //     if(account==null)
+        //     {
+        //         throw new ArgumentException("User does not exist!");
+        //     }
+        //
+        //     if(account.Password!=password)
+        //     {
+        //         throw new ArgumentException("Wrong password, try again!");
+        //     }
+        //
+        //     Wallet wallet = new Wallet(this.Engin);
+        //     wallet.Show();
+        // }
 
         private IAccount checkIfAccountExistByIban(SecureString iban)
         {
@@ -194,7 +202,7 @@
             foreach (var accountToCheck in accountRepository.Models)
             {
                 var ibanOfAccount = DecriptSecureString(accountToCheck.Iban);
-                if(ibanOfAccount==ibanToLookFor)
+                if (ibanOfAccount == ibanToLookFor)
                 {
                     return accountToCheck;
                 }

@@ -1,6 +1,5 @@
 ﻿namespace BankAccountManager
 {
-    using BankAccountManager.Core;
     using BankAccountManager.Core.Contracts;
     using System;
     using System.Security;
@@ -13,23 +12,55 @@
         private AddAccount addAccountForm;
         private Transactions transactions;
         private readonly IEngine Engine;
+        private System.Timers.Timer myTimer;
+        private int hours, minutes, seconds;
+
         public Wallet(IEngine engin)
         {
             InitializeComponent();
-            ///this.engine = new Engine();
             this.Engine = engin;
+            this.addAccountForm = new AddAccount(Engine);
         }
 
         private void Wallet_Load(object sender, EventArgs e)
         {
+            this.myTimer = new System.Timers.Timer();
+            this.myTimer.Interval = 1000; //1s
+            this.myTimer.Elapsed += OnTimeEven;
+        }
 
+        private void OnTimeEven(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                seconds++;
+                if (seconds == 60)
+                {
+                    seconds = 0;
+                    minutes++;
+                }
+                if (minutes == 60)
+                {
+                    minutes = 0;
+                    hours++;
+                }
+                if (hours == 24)
+                {
+                    hours = 0;
+                    Engine.Run("addinterest");
+                }
+
+                textBox1.Text = string.Format($"{hours.ToString().PadLeft(2, '0')}:{minutes.ToString().PadLeft(2, '0')}:{seconds.ToString().PadLeft(2, '0')}");
+            }));
         }
 
         private void Refresh_Click(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
-
             var accountsList = Engine.GetAllAccounts();
+
+            if (textBox1.Text == "00:00:00"&&accountsList.Count>0)
+                myTimer.Start();
 
             foreach (var account in accountsList)
             {
@@ -48,21 +79,20 @@
         }
 
         private void AddAccountButton_Click(object sender, EventArgs e)
-        {
-            this.addAccountForm = new AddAccount(Engine);
+        {            
             addAccountForm.Show();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var iban = comboBox1.SelectedItem.ToString().Split("___", StringSplitOptions.RemoveEmptyEntries)[1].Remove(0,4);
+            var iban = comboBox1.SelectedItem.ToString().Split("___", StringSplitOptions.RemoveEmptyEntries)[1].Remove(0, 4);
             IbanLabel.Text = iban;
 
             DepositButton.Enabled = true;
             WithdrawButton.Enabled = true;
             AllMoneyButton.Enabled = true;
 
-            BalanceTextBox.Text= comboBox1.SelectedItem.ToString().Split("___", StringSplitOptions.RemoveEmptyEntries)[2];
+            BalanceTextBox.Text = comboBox1.SelectedItem.ToString().Split("___", StringSplitOptions.RemoveEmptyEntries)[2];
         }
 
         private void DepositButton_Click(object sender, EventArgs e)
@@ -74,7 +104,7 @@
             Engine.Run(command);
 
             var account = Engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
-            BalanceTextBox.Text = account.GetBalance.ToString()+'$';
+            BalanceTextBox.Text = account.GetBalance.ToString() + '$';
 
             AmounthTextBox.Clear();
         }
@@ -88,7 +118,7 @@
             Engine.Run(command);
 
             var account = Engine.GetAllAccounts().FirstOrDefault(x => DecriptSecureString(x.Iban) == iban);
-            BalanceTextBox.Text = account.GetBalance.ToString()+'$';
+            BalanceTextBox.Text = account.GetBalance.ToString() + '$';
 
             AmounthTextBox.Clear();
         }

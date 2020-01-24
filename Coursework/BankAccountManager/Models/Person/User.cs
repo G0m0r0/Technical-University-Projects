@@ -2,7 +2,6 @@
 {
     using BankAccountManager.Models.Person.Contracts;
     using System;
-    using System.Collections.Generic;
     public class User : IUser
     {
         private const int lengthOfUsername = 15;

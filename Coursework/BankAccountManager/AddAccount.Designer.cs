@@ -368,7 +368,6 @@
             this.Controls.Add(this.radioButton1);
             this.Name = "AddAccount";
             this.Text = "AddAccount";
-            this.Load += new System.EventHandler(this.AddAccount_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

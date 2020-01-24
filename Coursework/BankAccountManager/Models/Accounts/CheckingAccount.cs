@@ -9,6 +9,7 @@
     class CheckingAccount : Account, ICheckingAccount
     {
         private const decimal arrangeFeeForOverdraft = 0.05m;
+        private const float maxInterestRate = 3.0F;
         private const string separator = "___";
         private const decimal ChargesForDeactivatingOverdraft = 50;
         public CheckingAccount(IPerson person, decimal balance, float interestRate, SecureString Iban)
@@ -27,6 +28,19 @@
 
         private bool activeOverdraft;
         private decimal overdraftLimit;
+
+        public override float InterestRate 
+        {
+            get { return base.InterestRate; }
+            protected set
+            {
+                if (value < 0.0F || value > maxInterestRate)
+                {
+                    throw new ArgumentException($"Interest rate should be between 0 and {maxInterestRate}%");
+                }
+                base.InterestRate = value;
+            }
+        }
 
         public override decimal Balance 
         { 

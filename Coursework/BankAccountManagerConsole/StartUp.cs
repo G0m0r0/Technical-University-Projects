@@ -1,8 +1,7 @@
-﻿using BankAccountManager.Core;
-using System;
-
-namespace BankAccountManagerConsole
+﻿namespace BankAccountManagerConsole
 {
+    using BankAccountManager.Core;
+    using System;
     class StartUp
     {
         static void Main()

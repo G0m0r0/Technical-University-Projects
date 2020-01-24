@@ -3,12 +3,25 @@
     using System;
     using System.Security;
     using BankAccountManager.Models.Person.Contracts;
-    using Person;
     abstract class SavingAccount : Account
     {
+        private const float maxInterestRate = 4.0F;
         protected SavingAccount(IPerson person, decimal balance, float interestRate, SecureString Iban) 
             : base(person, balance, interestRate, Iban)
         {
+        }
+
+        public override float InterestRate
+        {
+            get { return base.InterestRate; }
+            protected set
+            {
+                if (value < 0.0F || value > maxInterestRate)
+                {
+                    throw new ArgumentException($"Interest rate should be between 0 and {maxInterestRate}%");
+                }
+                base.InterestRate = value;
+            }
         }
 
         public override decimal Balance

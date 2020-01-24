@@ -1,9 +1,7 @@
 ﻿namespace BankAccountManager
 {
     using BankAccountManager.Core.Contracts;
-    using BankAccountManager.Models.Person;
     using System;
-    using System.Collections.Generic;
     using System.Windows.Forms;
 
     public partial class RegisterNewUser : Form

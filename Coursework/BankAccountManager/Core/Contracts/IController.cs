@@ -8,9 +8,9 @@
     {
         IReadOnlyCollection<IAccount> TakeAllAccounts();
         IReadOnlyCollection<IUser> TakeAllUsers();
-        string AddAccount(string accountType,SecureString personId,decimal balance,float interestRate, SecureString Iban);
+        string AddAccount(string accountType, SecureString personId, decimal balance, float interestRate, SecureString Iban);
 
-        string AddPerson(string firstName,string lastName,int age,SecureString ID);
+        string AddPerson(string firstName, string lastName, int age, SecureString ID);
 
         string Deposit(decimal amount, SecureString iban);
 
@@ -25,5 +25,6 @@
         string Report(SecureString id);
 
         string CreateNewUser(string password, string username);
+        void AddInterestToAllAccounts();
     }
 }

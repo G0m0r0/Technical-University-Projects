@@ -42,6 +42,8 @@
             this.AmounthTextBox = new System.Windows.Forms.TextBox();
             this.ActionLebel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Refresh
@@ -53,6 +55,7 @@
             this.Refresh.Text = "Refresh";
             this.Refresh.UseVisualStyleBackColor = true;
             this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
+
             // 
             // CloseButton
             // 
@@ -154,7 +157,7 @@
             // 
             // AmounthTextBox
             // 
-            this.AmounthTextBox.Location = new System.Drawing.Point(127, 182);
+            this.AmounthTextBox.Location = new System.Drawing.Point(113, 182);
             this.AmounthTextBox.Name = "AmounthTextBox";
             this.AmounthTextBox.Size = new System.Drawing.Size(245, 23);
             this.AmounthTextBox.TabIndex = 15;
@@ -162,7 +165,7 @@
             // ActionLebel
             // 
             this.ActionLebel.AutoSize = true;
-            this.ActionLebel.Location = new System.Drawing.Point(60, 185);
+            this.ActionLebel.Location = new System.Drawing.Point(51, 185);
             this.ActionLebel.Name = "ActionLebel";
             this.ActionLebel.Size = new System.Drawing.Size(61, 15);
             this.ActionLebel.TabIndex = 16;
@@ -178,15 +181,36 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 255);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Interest:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(113, 255);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 20;
+            this.textBox1.Text = "00:00:00";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Wallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(422, 450);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ActionLebel);
             this.Controls.Add(this.AmounthTextBox);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.IbanLabel);
             this.Controls.Add(this.BalanceTextBox);
             this.Controls.Add(this.Balance);
@@ -222,5 +246,7 @@
         private System.Windows.Forms.TextBox AmounthTextBox;
         private System.Windows.Forms.Label ActionLebel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

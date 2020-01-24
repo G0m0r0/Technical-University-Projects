@@ -5,7 +5,6 @@
     using BankAccountManager.Models.Transactions.Contracts;
     using System;
     using System.Collections.Generic;
-    using System.Drawing;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Security;
@@ -94,14 +93,6 @@
             {
                 ListTransactions.Items.RemoveAt(i--);
             }
-
-           // foreach (var kvp in transactionDictionary)
-           // {
-           //     foreach (var transaction in kvp.Value.OrderBy(x => x.DateTime))
-           //     {
-           //         CreateListView(transaction, ref number, kvp.Key);
-           //     }
-           // }
 
             if (comboBox1.SelectedIndex == 0)
             {

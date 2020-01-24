@@ -62,6 +62,7 @@
                         resultMessage = controller.AddPerson(firstName, lastName, age, personId);
                         break;
                     case "balanceofallaccounts":
+
                         resultMessage = controller.CalculateAllMoney();
                         break;
                     case "deposit":
@@ -91,7 +92,7 @@
                         CheckCorrectInformation(3, tokens.Length);
 
                         iban = MakeStringSecureString(tokens[1]);
-                        var amounthForOverdraft =decimal.Parse(tokens[2]);
+                        var amounthForOverdraft = decimal.Parse(tokens[2]);
 
                         resultMessage = controller.ActivateOverdraft(iban, amounthForOverdraft);
                         break;
@@ -118,8 +119,11 @@
 
                         //resultMessage=
                         break;
+                    case "addinterest":
+                        controller.AddInterestToAllAccounts();
+                        break;
                     default:
-                        throw new ArgumentException($"Command of type {command} does not exist!");
+                        throw new ArgumentException($"Command does not exist!");
                 }
             }
             catch (Exception ex)
@@ -138,7 +142,7 @@
 
         private void CheckCorrectInformation(int numOfNeededOperations, int operations)
         {
-            if(numOfNeededOperations!=operations)
+            if (numOfNeededOperations != operations)
             {
                 throw new ArgumentNullException("Not enough information!");
             }
