@@ -9,6 +9,7 @@
     using BankAccountManager.Models.Transactions.Contracts;
     using BankAccountManager.Models.Enums;
     using BankAccountManager.Models.Transactions;
+    using System.Linq;
 
     public abstract class Account : IAccount
     {
@@ -168,10 +169,66 @@
 
         public void AddInterest()
         {
-            var currentInterest = this.Balance * (1 + (decimal)this.interestRate / 100);
-            this.Balance += currentInterest;
+            var interestForDay = new List<decimal>();
+            decimal interestForMonth=0;
 
-            AddToTransactionHistory(currentInterest, "InterestIncome");
+            interestForDay.Add(this.Balance * (1 + (decimal)this.interestRate / 100));
+
+            if (interestForDay.Count > 27)
+                interestForMonth = TakeInterestForMonth(interestForDay);
+
+            if (interestForMonth != 0)
+            {
+                this.Balance += interestForMonth;
+                AddToTransactionHistory(interestForMonth, "InterestIncome");
+            }            
+        }
+
+        private decimal TakeInterestForMonth(List<decimal> interestForDay)
+        {
+            decimal interest = 0;
+            switch (DateTime.Now.Month)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    if (interestForDay.Count == 31)
+                    {
+                        interest /= interestForDay.Sum() / 31;
+                    }
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    if (interestForDay.Count == 30)
+                    {
+                        interest = interestForDay.Sum() / 30;
+                    }
+                    break;
+                case 2:
+                    if (DateTime.IsLeapYear(DateTime.Now.Year))
+                    {
+                        if (interestForDay.Count == 29)
+                        {
+                            interest = interestForDay.Sum() / 29;
+                        }
+                    }
+                    else
+                    {
+                        if (interestForDay.Count == 28)
+                        {
+                            interest = interestForDay.Sum() / 28;
+                        }
+                    }
+                    break;
+            }
+
+            return Math.Round(interest, 2);
         }
     }
 }

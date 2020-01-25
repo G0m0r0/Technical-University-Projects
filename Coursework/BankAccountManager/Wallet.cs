@@ -6,6 +6,7 @@
     using System.Windows.Forms;
     using System.Runtime.InteropServices;
     using System.Linq;
+    using System.Collections.Generic;
 
     public partial class Wallet : Form
     {
@@ -13,7 +14,7 @@
         private Transactions transactions;
         private readonly IEngine Engine;
         private System.Timers.Timer myTimer;
-        private int hours, minutes, seconds;
+        private int hours=0, minutes=0, seconds=0;
 
         public Wallet(IEngine engin)
         {
@@ -31,6 +32,7 @@
 
         private void OnTimeEven(object sender, System.Timers.ElapsedEventArgs e)
         {
+            var listOfInterestForDay = new List<decimal>();
             Invoke(new Action(() =>
             {
                 seconds++;
