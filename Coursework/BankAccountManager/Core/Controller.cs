@@ -13,6 +13,7 @@
     using System.Linq;
     using System.Text;
     using System.Runtime.InteropServices;
+    using BankAccountManager.IO;
 
     public class Controller : IController
     {
@@ -28,7 +29,7 @@
         //private List<IPerson> persons;
         private IPerson person;
         private IRepository<IAccount> accountRepository;
-        private IRepository<IUser> userRepository;
+        private UserRepository userRepository;
 
         // public IPerson Person => this.person;
         // public IRepository<IAccount> Account => this.accountRepository;
@@ -36,6 +37,15 @@
         {
             IUser user = new User(username, password);
             this.userRepository.Add(user);
+
+            List<IUser> users = new List<IUser>();
+            this.userRepository.accounts = users;
+
+            Serializer serializer = new Serializer();
+            serializer.SerializeObject("outputFile.txt", this.userRepository);
+
+            this.userRepository = serializer.DeSerializeObject("outputFile.txt");
+            users = this.userRepository.accounts;
 
 
             return $"Successfully added user {username}.";

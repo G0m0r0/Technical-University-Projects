@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "BankManagerLib/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BankManagerLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BankManagerLib.dll": {}
+        }
+      },
       "EntityFramework/6.4.0": {
         "type": "package",
         "dependencies": {
@@ -1378,6 +1387,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "BankManagerLib": "1.0.0",
           "EntityFramework": "6.4.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.1",
           "SortAlgorithms": "1.1.0"
@@ -1395,6 +1405,17 @@
     }
   },
   "libraries": {
+    "BankManagerLib/1.0.0": {
+      "sha512": "tleT5A3RwXLpvY5Nf/oo54nN3aORtaDud4X7DRKs16OoL0wZGS+laOYl9AFlCSoesjyBxU6WYT+l5sxpWti/Fg==",
+      "type": "package",
+      "path": "bankmanagerlib/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        "bankmanagerlib.1.0.0.nupkg.sha512",
+        "bankmanagerlib.nuspec",
+        "lib/netstandard2.0/BankManagerLib.dll"
+      ]
+    },
     "EntityFramework/6.4.0": {
       "sha512": "7jDmcQ3jaN5G7ZJC7Ecq161zQBs/5LqRzBdZ/I4XfmSvOwteGgNjOi30kthFador4Qjo3qUU6iOB1H04GIXrpg==",
       "type": "package",
@@ -2083,7 +2104,7 @@
       ]
     },
     "SortAlgorithms/1.1.0": {
-      "sha512": "GZWJmSAiTzfRf2u/JDLF0j4KbWFKT2S99pBcLlOLAtSWStiFXHHfbKZ6u4xY3+qhmxNwHpArWlkuKLtxOR8orQ==",
+      "sha512": "r6WRm/V+5KBxvvNrUfnDKGQgxCb3cXmXnf4JbUcx185S+b+qs8QmKg0ZjlWLbY79PqKCkah5aBBo+i9uZ59RNg==",
       "type": "package",
       "path": "sortalgorithms/1.1.0",
       "files": [

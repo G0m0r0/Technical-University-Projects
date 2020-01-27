@@ -16,8 +16,7 @@
         }
 
         private void Button1_Click(object sender, EventArgs e)
-        {
-
+        {            
             var fullName = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
             string firstName=string.Empty;
             string lastName=string.Empty;

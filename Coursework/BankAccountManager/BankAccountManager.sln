@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountManager", "BankA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountManagerConsole", "..\BankAccountManagerConsole\BankAccountManagerConsole.csproj", "{907D70C5-C476-4B65-83A2-FEA82D3FD321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAlgorithmsLibrary", "..\SortAlgorithmsLibrary\SortAlgorithmsLibrary.csproj", "{6C6507C4-A5CE-45DE-BB40-A3E6B32DE88A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortAlgorithmsLibrary", "..\SortAlgorithmsLibrary\SortAlgorithmsLibrary.csproj", "{6C6507C4-A5CE-45DE-BB40-A3E6B32DE88A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankManagerLib", "..\BankManagerLib\BankManagerLib.csproj", "{1E91758E-47A2-4472-98E8-BF9D35B8FCE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6C6507C4-A5CE-45DE-BB40-A3E6B32DE88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C6507C4-A5CE-45DE-BB40-A3E6B32DE88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C6507C4-A5CE-45DE-BB40-A3E6B32DE88A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E91758E-47A2-4472-98E8-BF9D35B8FCE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E91758E-47A2-4472-98E8-BF9D35B8FCE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E91758E-47A2-4472-98E8-BF9D35B8FCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E91758E-47A2-4472-98E8-BF9D35B8FCE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
