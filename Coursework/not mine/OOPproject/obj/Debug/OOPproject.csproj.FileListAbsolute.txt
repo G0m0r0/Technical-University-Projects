@@ -1,0 +1,31 @@
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\bin\Debug\OOPproject.exe.config
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\bin\Debug\OOPproject.exe
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\bin\Debug\OOPproject.pdb
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.csprojAssemblyReference.cache
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.Form1.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.Properties.Resources.resources
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.csproj.GenerateResource.cache
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.exe
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.pdb
+C:\Users\USER\Documents\Visual Studio 2017\Projects\OOPproject\OOPproject\obj\Debug\OOPproject.FormProperties.resources
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\bin\Debug\OOPproject.exe.config
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\bin\Debug\OOPproject.exe
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\bin\Debug\OOPproject.pdb
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\obj\Debug\OOPproject.csprojAssemblyReference.cache
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\obj\Debug\OOPproject.Form1.resources
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\obj\Debug\OOPproject.FormProperties.resources
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\obj\Debug\OOPproject.Properties.Resources.resources
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\obj\Debug\OOPproject.csproj.GenerateResource.cache
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\obj\Debug\OOPproject.exe
+C:\Users\danie\Documents\OOP Project\oppproject6\OOPproject\obj\Debug\OOPproject.pdb
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\bin\Debug\OOPproject.exe.config
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\bin\Debug\OOPproject.exe
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\bin\Debug\OOPproject.pdb
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\obj\Debug\OOPproject.csprojAssemblyReference.cache
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\obj\Debug\OOPproject.Form1.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\obj\Debug\OOPproject.FormProperties.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\obj\Debug\OOPproject.Properties.Resources.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\obj\Debug\OOPproject.csproj.GenerateResource.cache
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\obj\Debug\OOPproject.exe
+C:\Users\dimit\OneDrive\Desktop\New folder (3)\OOPproject\obj\Debug\OOPproject.pdb

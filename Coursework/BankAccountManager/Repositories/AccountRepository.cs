@@ -6,15 +6,21 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
+    using System.Runtime.Serialization;
     using System.Security;
 
-    public class AccountRepository : IRepository<IAccount>,IEnumerable<IAccount>,IAccountEnumerable
+    [Serializable()]
+    public class AccountRepository : IRepository<IAccount>,IEnumerable<IAccount>,IAccountEnumerable,ISerializable
     {
         public AccountRepository()
         {
             this.accounts = new List<IAccount>();
         }
-        private readonly List<IAccount> accounts;
+        public AccountRepository(SerializationInfo info, StreamingContext context)
+        {
+            this.accounts = (List<IAccount>)info.GetValue("accounts", typeof(List<IAccount>));
+        }
+        public List<IAccount> accounts { get; set; }
         public IReadOnlyCollection<IAccount> Models => this.accounts.AsReadOnly();
 
         public void Add(IAccount model)
@@ -75,6 +81,11 @@
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Accounts", this.accounts);
         }
     }
 }

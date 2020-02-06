@@ -4,9 +4,11 @@
     using BankAccountManager.Models.Person.Contracts;
     using System;
     using System.Collections.Generic;
+    using System.Runtime.Serialization;
     using System.Security;
 
-    public class Person : IPerson
+    [Serializable()]
+    public class Person : IPerson,ISerializable
     {
         private const int nameLenghtMax = 20;
         public Person(string firstName, string lastName, int age, SecureString id)
@@ -16,6 +18,13 @@
             this.Age = age;
             this.Id = id;
             this.accounts = new List<IAccount>();
+        }
+        public Person(SerializationInfo info, StreamingContext context)
+        {
+            this.FirstName= (string)info.GetValue("Firstname", typeof(string));
+            this.LastName = (string)info.GetValue("Lastname", typeof(string));
+            this.Age = (int)info.GetValue("age", typeof(int));
+            this.Id = (SecureString)info.GetValue("ID", typeof(SecureString));
         }
 
         private readonly List<IAccount> accounts;
@@ -121,6 +130,19 @@
             }
 
             return this.accounts.Remove(account);
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // this.FirstName = firstName;
+            // this.LastName = lastName;
+            // this.Age = age;
+            // this.Id = id;
+
+            info.AddValue("FirstName", this.FirstName);
+            info.AddValue("LastName", this.LastName);
+            info.AddValue("Age", this.Age);
+            info.AddValue("ID", this.Id);
         }
     }
 }

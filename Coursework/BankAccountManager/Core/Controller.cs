@@ -14,6 +14,7 @@
     using System.Text;
     using System.Runtime.InteropServices;
     using BankAccountManager.IO;
+    using BankAccountManager.IO.Contracts;
 
     public class Controller : IController
     {
@@ -28,7 +29,7 @@
 
         //private List<IPerson> persons;
         private IPerson person;
-        private IRepository<IAccount> accountRepository;
+        private AccountRepository accountRepository;
         private UserRepository userRepository;
 
         // public IPerson Person => this.person;
@@ -77,8 +78,17 @@
             {
                 throw new ArgumentException("Account type is not valid");
             }
-
+         
             this.accountRepository.Add(account);
+
+            List<IAccount> accounts = new List<IAccount>();
+            this.accountRepository.accounts = accounts;
+
+            Serializer1 serializer = new Serializer1();
+            serializer.SerializeObject("outputFile1.txt", this.accountRepository);
+
+            this.accountRepository = serializer.DeSerializeObject("outputFile1.txt");
+            accounts = this.accountRepository.accounts;
 
             return $"Successfully added {accountType}.";
         }

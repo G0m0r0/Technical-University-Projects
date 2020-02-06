@@ -34,30 +34,30 @@
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            Wallet wallet = new Wallet(this.Engin);
-            wallet.Show();
-            this.Hide(); 
+           // Wallet wallet = new Wallet(this.Engin);
+          //  wallet.Show();
+         //   this.Hide(); 
 
-        //  var userList = Engin.GetAllUsers();
-        //
-        //  var username = UserNameTextBox.Text;
-        //  var password = PasswordTextBox.Text;
-        //
-        //  var account = userList.SingleOrDefault(acc => acc.Username == username);
-        //
-        //  if (account == null)
-        //  {
-        //      throw new ArgumentException("User does not exist!");
-        //  }
-        //
-        //  if (account.Password != password)
-        //  {
-        //      throw new ArgumentException("Wrong password, try again!");
-        //  }
-        //
-        //  Wallet wallet = new Wallet(this.Engin);
-        //  wallet.Show();
-        //  this.Hide();
+          var userList = Engin.GetAllUsers();
+        
+          var username = UserNameTextBox.Text;
+          var password = PasswordTextBox.Text;
+        
+          var account = userList.SingleOrDefault(acc => acc.Username == username);
+        
+          if (account == null)
+          {
+              throw new ArgumentException("User does not exist!");
+          }
+        
+          if (account.Password != password)
+          {
+              throw new ArgumentException("Wrong password, try again!");
+          }
+        
+          Wallet wallet = new Wallet(this.Engin);
+          wallet.Show();
+          this.Hide();
         }
     }
 }

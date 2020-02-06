@@ -1,0 +1,35 @@
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe.config
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.pdb
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csprojAssemblyReference.cache
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Properties.Resources.resources
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.GenerateResource.cache
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.exe
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.pdb
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Create_Figure.resources
+C:\Users\dimit\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Scene.resources
+C:\Users\user\Desktop\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe.config
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.exe
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.pdb
+C:\Users\user\Desktop\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe
+C:\Users\user\Desktop\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.pdb
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Create_Figure.resources
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Properties.Resources.resources
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Scene.resources
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.GenerateResource.Cache
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csprojAssemblyReference.cache
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.PenSettings.resources
+C:\Users\user\Desktop\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.ShapeAttributes.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe.config
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.pdb
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csprojAssemblyReference.cache
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Create_Figure.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.PenSettings.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Properties.Resources.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Scene.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.ShapeAttributes.resources
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.GenerateResource.cache
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.exe
+C:\Users\dimit\OneDrive\Desktop\New folder (2)\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.pdb

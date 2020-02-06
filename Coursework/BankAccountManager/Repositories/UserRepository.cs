@@ -1,6 +1,5 @@
 ﻿namespace BankAccountManager.Repositories
 {
-    using BankAccountManager.Models.Person;
     using BankAccountManager.Models.Person.Contracts;
     using BankAccountManager.Repositories.Contracts;
     using System;
