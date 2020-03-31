@@ -1,0 +1,7 @@
+D:\C#\University\matrix line search\matrix line search\bin\Debug\matrix line search.exe.config
+D:\C#\University\matrix line search\matrix line search\bin\Debug\matrix line search.exe
+D:\C#\University\matrix line search\matrix line search\bin\Debug\matrix line search.pdb
+D:\C#\University\matrix line search\matrix line search\obj\Debug\matrix line search.csprojAssemblyReference.cache
+D:\C#\University\matrix line search\matrix line search\obj\Debug\matrix line search.csproj.CoreCompileInputs.cache
+D:\C#\University\matrix line search\matrix line search\obj\Debug\matrix line search.exe
+D:\C#\University\matrix line search\matrix line search\obj\Debug\matrix line search.pdb

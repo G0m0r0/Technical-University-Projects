@@ -1,0 +1,7 @@
+D:\C#\University\lessons\string manipulation\string manipulation\bin\Debug\string manipulation.exe.config
+D:\C#\University\lessons\string manipulation\string manipulation\bin\Debug\string manipulation.exe
+D:\C#\University\lessons\string manipulation\string manipulation\bin\Debug\string manipulation.pdb
+D:\C#\University\lessons\string manipulation\string manipulation\obj\Debug\string manipulation.csprojAssemblyReference.cache
+D:\C#\University\lessons\string manipulation\string manipulation\obj\Debug\string manipulation.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\string manipulation\string manipulation\obj\Debug\string manipulation.exe
+D:\C#\University\lessons\string manipulation\string manipulation\obj\Debug\string manipulation.pdb

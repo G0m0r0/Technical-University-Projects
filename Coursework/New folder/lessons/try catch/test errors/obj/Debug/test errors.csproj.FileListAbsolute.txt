@@ -1,0 +1,6 @@
+D:\C#\University\lessons\try catch\test errors\obj\Debug\test errors.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\try catch\test errors\bin\Debug\test errors.exe.config
+D:\C#\University\lessons\try catch\test errors\bin\Debug\test errors.exe
+D:\C#\University\lessons\try catch\test errors\bin\Debug\test errors.pdb
+D:\C#\University\lessons\try catch\test errors\obj\Debug\test errors.exe
+D:\C#\University\lessons\try catch\test errors\obj\Debug\test errors.pdb

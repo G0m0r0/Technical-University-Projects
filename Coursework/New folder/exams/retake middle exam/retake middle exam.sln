@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "retake middle exam", "retake middle exam\retake middle exam.csproj", "{70B9E674-9D9F-4A62-95A8-2BB357105172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "first group", "first group\first group.csproj", "{2679F379-E167-4871-832C-9FE2D5E1A763}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70B9E674-9D9F-4A62-95A8-2BB357105172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B9E674-9D9F-4A62-95A8-2BB357105172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B9E674-9D9F-4A62-95A8-2BB357105172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B9E674-9D9F-4A62-95A8-2BB357105172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2679F379-E167-4871-832C-9FE2D5E1A763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2679F379-E167-4871-832C-9FE2D5E1A763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2679F379-E167-4871-832C-9FE2D5E1A763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2679F379-E167-4871-832C-9FE2D5E1A763}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C27519BF-8F12-4346-A682-D22565E77C0B}
+	EndGlobalSection
+EndGlobal

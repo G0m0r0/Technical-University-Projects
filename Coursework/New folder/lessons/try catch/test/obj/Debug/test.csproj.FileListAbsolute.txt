@@ -1,0 +1,7 @@
+D:\C#\University\lessons\try catch\test\bin\Debug\test.exe.config
+D:\C#\University\lessons\try catch\test\bin\Debug\test.exe
+D:\C#\University\lessons\try catch\test\bin\Debug\test.pdb
+D:\C#\University\lessons\try catch\test\obj\Debug\test.csprojAssemblyReference.cache
+D:\C#\University\lessons\try catch\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\try catch\test\obj\Debug\test.exe
+D:\C#\University\lessons\try catch\test\obj\Debug\test.pdb

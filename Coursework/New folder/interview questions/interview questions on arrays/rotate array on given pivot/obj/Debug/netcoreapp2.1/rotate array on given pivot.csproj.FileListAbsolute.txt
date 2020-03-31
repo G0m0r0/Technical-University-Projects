@@ -1,0 +1,31 @@
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.deps.json
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.runtimeconfig.json
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.runtimeconfig.dev.json
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.dll
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.pdb
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.csproj.CoreCompileInputs.cache
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.AssemblyInfoInputs.cache
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.AssemblyInfo.cs
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.dll
+C:\Users\dimit\Desktop\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.pdb
+D:\C#\University\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.deps.json
+D:\C#\University\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.runtimeconfig.json
+D:\C#\University\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.runtimeconfig.dev.json
+D:\C#\University\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.dll
+D:\C#\University\interview questions\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.pdb
+D:\C#\University\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.csproj.CoreCompileInputs.cache
+D:\C#\University\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.AssemblyInfoInputs.cache
+D:\C#\University\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.AssemblyInfo.cs
+D:\C#\University\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.dll
+D:\C#\University\interview questions\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.pdb
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.deps.json
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.runtimeconfig.json
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.runtimeconfig.dev.json
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.dll
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\bin\Debug\netcoreapp2.1\rotate array on given pivot.pdb
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.csprojAssemblyReference.cache
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.csproj.CoreCompileInputs.cache
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.AssemblyInfoInputs.cache
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.AssemblyInfo.cs
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.dll
+D:\C#\University\interview questions\interview questions on arrays\rotate array on given pivot\obj\Debug\netcoreapp2.1\rotate array on given pivot.pdb

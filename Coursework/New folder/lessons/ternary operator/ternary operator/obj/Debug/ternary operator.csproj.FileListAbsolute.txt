@@ -1,0 +1,7 @@
+D:\C#\University\lessons\ternary operator\ternary operator\bin\Debug\ternary operator.exe.config
+D:\C#\University\lessons\ternary operator\ternary operator\bin\Debug\ternary operator.exe
+D:\C#\University\lessons\ternary operator\ternary operator\bin\Debug\ternary operator.pdb
+D:\C#\University\lessons\ternary operator\ternary operator\obj\Debug\ternary operator.csprojAssemblyReference.cache
+D:\C#\University\lessons\ternary operator\ternary operator\obj\Debug\ternary operator.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\ternary operator\ternary operator\obj\Debug\ternary operator.exe
+D:\C#\University\lessons\ternary operator\ternary operator\obj\Debug\ternary operator.pdb

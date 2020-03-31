@@ -1,0 +1,10 @@
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\bin\Debug\netcoreapp2.1\higest occurence of char.deps.json
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\bin\Debug\netcoreapp2.1\higest occurence of char.runtimeconfig.json
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\bin\Debug\netcoreapp2.1\higest occurence of char.runtimeconfig.dev.json
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\bin\Debug\netcoreapp2.1\higest occurence of char.dll
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\bin\Debug\netcoreapp2.1\higest occurence of char.pdb
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\obj\Debug\netcoreapp2.1\higest occurence of char.csproj.CoreCompileInputs.cache
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\obj\Debug\netcoreapp2.1\higest occurence of char.AssemblyInfoInputs.cache
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\obj\Debug\netcoreapp2.1\higest occurence of char.AssemblyInfo.cs
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\obj\Debug\netcoreapp2.1\higest occurence of char.dll
+C:\Users\dimit\Desktop\interview questions\higest occurence of char\obj\Debug\netcoreapp2.1\higest occurence of char.pdb

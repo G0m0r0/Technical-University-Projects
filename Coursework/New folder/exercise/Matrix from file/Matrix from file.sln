@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix from file", "Matrix from file\Matrix from file.csproj", "{881FFDAC-FE1F-41EB-8699-4500BE38BE4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{0854A07D-BA24-4EE7-8787-8B7DCD4945BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tets second", "tets second\tets second.csproj", "{05361F59-E320-49FC-B86E-495F7FE523A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{881FFDAC-FE1F-41EB-8699-4500BE38BE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881FFDAC-FE1F-41EB-8699-4500BE38BE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881FFDAC-FE1F-41EB-8699-4500BE38BE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881FFDAC-FE1F-41EB-8699-4500BE38BE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0854A07D-BA24-4EE7-8787-8B7DCD4945BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0854A07D-BA24-4EE7-8787-8B7DCD4945BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0854A07D-BA24-4EE7-8787-8B7DCD4945BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0854A07D-BA24-4EE7-8787-8B7DCD4945BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05361F59-E320-49FC-B86E-495F7FE523A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05361F59-E320-49FC-B86E-495F7FE523A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05361F59-E320-49FC-B86E-495F7FE523A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05361F59-E320-49FC-B86E-495F7FE523A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3738B6D-6F4C-4C3C-8472-D3AEEC3BA470}
+	EndGlobalSection
+EndGlobal

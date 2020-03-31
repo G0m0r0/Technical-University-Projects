@@ -1,0 +1,7 @@
+D:\C#\University\lessons\swap two numbers\swap with multiplication and divison\bin\Debug\swap with multiplication and divison.exe.config
+D:\C#\University\lessons\swap two numbers\swap with multiplication and divison\bin\Debug\swap with multiplication and divison.exe
+D:\C#\University\lessons\swap two numbers\swap with multiplication and divison\bin\Debug\swap with multiplication and divison.pdb
+D:\C#\University\lessons\swap two numbers\swap with multiplication and divison\obj\Debug\swap with multiplication and divison.csprojAssemblyReference.cache
+D:\C#\University\lessons\swap two numbers\swap with multiplication and divison\obj\Debug\swap with multiplication and divison.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\swap two numbers\swap with multiplication and divison\obj\Debug\swap with multiplication and divison.exe
+D:\C#\University\lessons\swap two numbers\swap with multiplication and divison\obj\Debug\swap with multiplication and divison.pdb

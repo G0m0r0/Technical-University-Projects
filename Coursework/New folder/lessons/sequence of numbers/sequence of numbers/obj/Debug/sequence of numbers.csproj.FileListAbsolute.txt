@@ -1,0 +1,7 @@
+D:\C#\My projects\sequence of numbers\sequence of numbers\bin\Debug\sequence of numbers.exe.config
+D:\C#\My projects\sequence of numbers\sequence of numbers\bin\Debug\sequence of numbers.exe
+D:\C#\My projects\sequence of numbers\sequence of numbers\bin\Debug\sequence of numbers.pdb
+D:\C#\My projects\sequence of numbers\sequence of numbers\obj\Debug\sequence of numbers.csprojAssemblyReference.cache
+D:\C#\My projects\sequence of numbers\sequence of numbers\obj\Debug\sequence of numbers.csproj.CoreCompileInputs.cache
+D:\C#\My projects\sequence of numbers\sequence of numbers\obj\Debug\sequence of numbers.exe
+D:\C#\My projects\sequence of numbers\sequence of numbers\obj\Debug\sequence of numbers.pdb

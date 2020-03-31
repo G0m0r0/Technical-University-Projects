@@ -1,0 +1,7 @@
+D:\C#\University\lessons\search in collections\search in collections\bin\Debug\search in collections.exe.config
+D:\C#\University\lessons\search in collections\search in collections\bin\Debug\search in collections.exe
+D:\C#\University\lessons\search in collections\search in collections\bin\Debug\search in collections.pdb
+D:\C#\University\lessons\search in collections\search in collections\obj\Debug\search in collections.csprojAssemblyReference.cache
+D:\C#\University\lessons\search in collections\search in collections\obj\Debug\search in collections.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\search in collections\search in collections\obj\Debug\search in collections.exe
+D:\C#\University\lessons\search in collections\search in collections\obj\Debug\search in collections.pdb

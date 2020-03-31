@@ -1,0 +1,6 @@
+D:\C#\My projects\Methods\greatest of two values\obj\Debug\greatest of two values.csproj.CoreCompileInputs.cache
+D:\C#\My projects\Methods\greatest of two values\bin\Debug\greatest of two values.exe.config
+D:\C#\My projects\Methods\greatest of two values\bin\Debug\greatest of two values.exe
+D:\C#\My projects\Methods\greatest of two values\bin\Debug\greatest of two values.pdb
+D:\C#\My projects\Methods\greatest of two values\obj\Debug\greatest of two values.exe
+D:\C#\My projects\Methods\greatest of two values\obj\Debug\greatest of two values.pdb

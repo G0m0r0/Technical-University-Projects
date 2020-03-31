@@ -1,0 +1,6 @@
+D:\C#\My projects\Methods\Math power\bin\Debug\Math power.exe.config
+D:\C#\My projects\Methods\Math power\bin\Debug\Math power.exe
+D:\C#\My projects\Methods\Math power\bin\Debug\Math power.pdb
+D:\C#\My projects\Methods\Math power\obj\Debug\Math power.csproj.CoreCompileInputs.cache
+D:\C#\My projects\Methods\Math power\obj\Debug\Math power.exe
+D:\C#\My projects\Methods\Math power\obj\Debug\Math power.pdb

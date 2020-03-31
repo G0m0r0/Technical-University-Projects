@@ -1,0 +1,7 @@
+C:\Users\dimit\source\repos\sort array\sort array\bin\Debug\sort array.exe.config
+C:\Users\dimit\source\repos\sort array\sort array\bin\Debug\sort array.exe
+C:\Users\dimit\source\repos\sort array\sort array\bin\Debug\sort array.pdb
+C:\Users\dimit\source\repos\sort array\sort array\obj\Debug\sort array.csprojAssemblyReference.cache
+C:\Users\dimit\source\repos\sort array\sort array\obj\Debug\sort array.csproj.CoreCompileInputs.cache
+C:\Users\dimit\source\repos\sort array\sort array\obj\Debug\sort array.exe
+C:\Users\dimit\source\repos\sort array\sort array\obj\Debug\sort array.pdb

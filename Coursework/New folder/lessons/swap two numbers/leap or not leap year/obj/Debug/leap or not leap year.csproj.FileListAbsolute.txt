@@ -1,0 +1,7 @@
+D:\C#\University\switch two numbers\leap or not leap year\bin\Debug\leap or not leap year.exe.config
+D:\C#\University\switch two numbers\leap or not leap year\bin\Debug\leap or not leap year.exe
+D:\C#\University\switch two numbers\leap or not leap year\bin\Debug\leap or not leap year.pdb
+D:\C#\University\switch two numbers\leap or not leap year\obj\Debug\leap or not leap year.csprojAssemblyReference.cache
+D:\C#\University\switch two numbers\leap or not leap year\obj\Debug\leap or not leap year.csproj.CoreCompileInputs.cache
+D:\C#\University\switch two numbers\leap or not leap year\obj\Debug\leap or not leap year.exe
+D:\C#\University\switch two numbers\leap or not leap year\obj\Debug\leap or not leap year.pdb

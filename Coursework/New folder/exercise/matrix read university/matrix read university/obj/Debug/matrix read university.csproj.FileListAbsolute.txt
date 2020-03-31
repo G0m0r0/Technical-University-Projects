@@ -1,0 +1,7 @@
+D:\C#\University\matrix read university\matrix read university\bin\Debug\matrix read university.exe.config
+D:\C#\University\matrix read university\matrix read university\bin\Debug\matrix read university.exe
+D:\C#\University\matrix read university\matrix read university\bin\Debug\matrix read university.pdb
+D:\C#\University\matrix read university\matrix read university\obj\Debug\matrix read university.csprojAssemblyReference.cache
+D:\C#\University\matrix read university\matrix read university\obj\Debug\matrix read university.csproj.CoreCompileInputs.cache
+D:\C#\University\matrix read university\matrix read university\obj\Debug\matrix read university.exe
+D:\C#\University\matrix read university\matrix read university\obj\Debug\matrix read university.pdb

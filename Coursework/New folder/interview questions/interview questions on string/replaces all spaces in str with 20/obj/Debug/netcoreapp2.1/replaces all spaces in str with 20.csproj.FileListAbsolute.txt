@@ -1,0 +1,10 @@
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\bin\Debug\netcoreapp2.1\replaces all spaces in str with 20.deps.json
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\bin\Debug\netcoreapp2.1\replaces all spaces in str with 20.runtimeconfig.json
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\bin\Debug\netcoreapp2.1\replaces all spaces in str with 20.runtimeconfig.dev.json
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\bin\Debug\netcoreapp2.1\replaces all spaces in str with 20.dll
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\bin\Debug\netcoreapp2.1\replaces all spaces in str with 20.pdb
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\obj\Debug\netcoreapp2.1\replaces all spaces in str with 20.csproj.CoreCompileInputs.cache
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\obj\Debug\netcoreapp2.1\replaces all spaces in str with 20.AssemblyInfoInputs.cache
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\obj\Debug\netcoreapp2.1\replaces all spaces in str with 20.AssemblyInfo.cs
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\obj\Debug\netcoreapp2.1\replaces all spaces in str with 20.dll
+C:\Users\dimit\Desktop\interview questions\replaces all spaces in str with 20\obj\Debug\netcoreapp2.1\replaces all spaces in str with 20.pdb

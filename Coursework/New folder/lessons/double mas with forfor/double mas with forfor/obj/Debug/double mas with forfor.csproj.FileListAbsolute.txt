@@ -1,0 +1,7 @@
+D:\C#\University\double mas with forfor\double mas with forfor\bin\Debug\double mas with forfor.exe.config
+D:\C#\University\double mas with forfor\double mas with forfor\bin\Debug\double mas with forfor.exe
+D:\C#\University\double mas with forfor\double mas with forfor\bin\Debug\double mas with forfor.pdb
+D:\C#\University\double mas with forfor\double mas with forfor\obj\Debug\double mas with forfor.csprojAssemblyReference.cache
+D:\C#\University\double mas with forfor\double mas with forfor\obj\Debug\double mas with forfor.csproj.CoreCompileInputs.cache
+D:\C#\University\double mas with forfor\double mas with forfor\obj\Debug\double mas with forfor.exe
+D:\C#\University\double mas with forfor\double mas with forfor\obj\Debug\double mas with forfor.pdb

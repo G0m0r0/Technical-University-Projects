@@ -1,0 +1,7 @@
+D:\C#\University\lessons\recursion\sum array\bin\Debug\sum array.exe.config
+D:\C#\University\lessons\recursion\sum array\bin\Debug\sum array.exe
+D:\C#\University\lessons\recursion\sum array\bin\Debug\sum array.pdb
+D:\C#\University\lessons\recursion\sum array\obj\Debug\sum array.csprojAssemblyReference.cache
+D:\C#\University\lessons\recursion\sum array\obj\Debug\sum array.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\recursion\sum array\obj\Debug\sum array.exe
+D:\C#\University\lessons\recursion\sum array\obj\Debug\sum array.pdb

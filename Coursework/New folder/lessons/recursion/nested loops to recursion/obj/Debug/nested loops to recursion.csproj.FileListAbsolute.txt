@@ -1,0 +1,7 @@
+D:\C#\University\lessons\recursion\nested loops to recursion\bin\Debug\nested loops to recursion.exe.config
+D:\C#\University\lessons\recursion\nested loops to recursion\bin\Debug\nested loops to recursion.exe
+D:\C#\University\lessons\recursion\nested loops to recursion\bin\Debug\nested loops to recursion.pdb
+D:\C#\University\lessons\recursion\nested loops to recursion\obj\Debug\nested loops to recursion.csprojAssemblyReference.cache
+D:\C#\University\lessons\recursion\nested loops to recursion\obj\Debug\nested loops to recursion.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\recursion\nested loops to recursion\obj\Debug\nested loops to recursion.exe
+D:\C#\University\lessons\recursion\nested loops to recursion\obj\Debug\nested loops to recursion.pdb

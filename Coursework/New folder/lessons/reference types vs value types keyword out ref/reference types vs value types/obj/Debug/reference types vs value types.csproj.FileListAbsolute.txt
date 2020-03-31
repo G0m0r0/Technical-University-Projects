@@ -1,0 +1,7 @@
+D:\C#\University\lessons\reference types vs value types\reference types vs value types\bin\Debug\reference types vs value types.exe.config
+D:\C#\University\lessons\reference types vs value types\reference types vs value types\bin\Debug\reference types vs value types.exe
+D:\C#\University\lessons\reference types vs value types\reference types vs value types\bin\Debug\reference types vs value types.pdb
+D:\C#\University\lessons\reference types vs value types\reference types vs value types\obj\Debug\reference types vs value types.csprojAssemblyReference.cache
+D:\C#\University\lessons\reference types vs value types\reference types vs value types\obj\Debug\reference types vs value types.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\reference types vs value types\reference types vs value types\obj\Debug\reference types vs value types.exe
+D:\C#\University\lessons\reference types vs value types\reference types vs value types\obj\Debug\reference types vs value types.pdb

@@ -1,0 +1,7 @@
+D:\C#\University\lessons\search in collections\binary search\bin\Debug\binary search.exe.config
+D:\C#\University\lessons\search in collections\binary search\bin\Debug\binary search.exe
+D:\C#\University\lessons\search in collections\binary search\bin\Debug\binary search.pdb
+D:\C#\University\lessons\search in collections\binary search\obj\Debug\binary search.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\search in collections\binary search\obj\Debug\binary search.exe
+D:\C#\University\lessons\search in collections\binary search\obj\Debug\binary search.pdb
+D:\C#\University\lessons\search in collections\binary search\obj\Debug\binary search.csprojAssemblyReference.cache

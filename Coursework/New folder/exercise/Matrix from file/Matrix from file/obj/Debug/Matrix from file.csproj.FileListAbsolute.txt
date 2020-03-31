@@ -1,0 +1,7 @@
+D:\C#\University\Matrix from file\Matrix from file\bin\Debug\Matrix from file.exe.config
+D:\C#\University\Matrix from file\Matrix from file\bin\Debug\Matrix from file.exe
+D:\C#\University\Matrix from file\Matrix from file\bin\Debug\Matrix from file.pdb
+D:\C#\University\Matrix from file\Matrix from file\obj\Debug\Matrix from file.csprojAssemblyReference.cache
+D:\C#\University\Matrix from file\Matrix from file\obj\Debug\Matrix from file.csproj.CoreCompileInputs.cache
+D:\C#\University\Matrix from file\Matrix from file\obj\Debug\Matrix from file.exe
+D:\C#\University\Matrix from file\Matrix from file\obj\Debug\Matrix from file.pdb

@@ -1,0 +1,6 @@
+D:\C#\University\Hello someone read from file\read write sting\bin\Debug\read write sting.exe.config
+D:\C#\University\Hello someone read from file\read write sting\bin\Debug\read write sting.exe
+D:\C#\University\Hello someone read from file\read write sting\bin\Debug\read write sting.pdb
+D:\C#\University\Hello someone read from file\read write sting\obj\Debug\read write sting.csproj.CoreCompileInputs.cache
+D:\C#\University\Hello someone read from file\read write sting\obj\Debug\read write sting.exe
+D:\C#\University\Hello someone read from file\read write sting\obj\Debug\read write sting.pdb

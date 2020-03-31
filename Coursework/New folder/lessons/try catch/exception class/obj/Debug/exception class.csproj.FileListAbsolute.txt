@@ -1,0 +1,6 @@
+D:\C#\University\lessons\try catch\exception class\bin\Debug\exception class.exe.config
+D:\C#\University\lessons\try catch\exception class\bin\Debug\exception class.exe
+D:\C#\University\lessons\try catch\exception class\bin\Debug\exception class.pdb
+D:\C#\University\lessons\try catch\exception class\obj\Debug\exception class.csproj.CoreCompileInputs.cache
+D:\C#\University\lessons\try catch\exception class\obj\Debug\exception class.exe
+D:\C#\University\lessons\try catch\exception class\obj\Debug\exception class.pdb

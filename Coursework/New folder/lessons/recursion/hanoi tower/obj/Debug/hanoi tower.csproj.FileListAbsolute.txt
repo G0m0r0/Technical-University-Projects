@@ -1,0 +1,7 @@
+D:\C#\University\recursion\hanoi tower\bin\Debug\hanoi tower.exe.config
+D:\C#\University\recursion\hanoi tower\bin\Debug\hanoi tower.exe
+D:\C#\University\recursion\hanoi tower\bin\Debug\hanoi tower.pdb
+D:\C#\University\recursion\hanoi tower\obj\Debug\hanoi tower.csprojAssemblyReference.cache
+D:\C#\University\recursion\hanoi tower\obj\Debug\hanoi tower.csproj.CoreCompileInputs.cache
+D:\C#\University\recursion\hanoi tower\obj\Debug\hanoi tower.exe
+D:\C#\University\recursion\hanoi tower\obj\Debug\hanoi tower.pdb
