@@ -5,43 +5,11 @@
     using System.Collections.Generic;
 
     public class NumberGenerator
-    {
-        private int endValueOfNum;
-        private int startValueOfNum;
+    { 
+        public List<int> GenerateSubSequenceAndAddToSequence(int lengthOfSequence,int start,int end)
+        {
+            checkValues(start, end);
 
-        public NumberGenerator(int startValueOfNum,int endValueOfNum)
-        {
-            this.StartValueOfNum = startValueOfNum;
-            this.EndValueOfNum = endValueOfNum;
-        }
-        public int StartValueOfNum
-        {
-            get => this.startValueOfNum;
-            private set
-            {
-                if (value >= this.endValueOfNum)
-                {
-                    throw new ArgumentException(String.Format(ExceptionMessages.ImposibleRange,value,this.EndValueOfNum));
-                }
-                this.startValueOfNum = value;
-            }
-        }
-
-        public int EndValueOfNum
-        {
-            get => this.endValueOfNum;
-            private set
-            {
-                if (value <= this.StartValueOfNum)
-                {
-                    throw new ArgumentException(String.Format(ExceptionMessages.ImposibleRange, value, this.EndValueOfNum));
-                }
-                this.endValueOfNum = value;
-            }
-        }
-
-        public List<int> generateSequence(int lengthOfSequence)
-        {
             List<int> sequnceNum = new List<int>();
             Random rnd = new Random();
 
@@ -52,17 +20,27 @@
 
             for (int i = 0; i < lengthOfSequence; i++)
             {
-                sequnceNum.Add(rnd.Next(this.startValueOfNum, this.endValueOfNum));
+                sequnceNum.Add(rnd.Next(start, end));
             }
 
             return sequnceNum;
         }
 
-        public int generateNumber()
+        public int GenerateNumberAndAddToSequence(int start,int end)
         {
+            checkValues(start, end);
+
             Random rnd = new Random();
 
-            return rnd.Next(this.startValueOfNum, this.endValueOfNum);
+            return rnd.Next(start, end);
+        }
+
+        public void checkValues(int start,int end)
+        {
+            if (start >= end)
+            {
+                throw new ArgumentException(String.Format(ExceptionMessages.ImposibleRange, start, end));
+            }
         }
     }
 }

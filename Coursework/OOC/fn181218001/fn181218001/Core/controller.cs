@@ -4,29 +4,52 @@
     using fn181218001.Utilities;
     using System;
     using System.Collections.Generic;
-    using System.Text;
-   
 
-    public class Controller
+    public class controller
     {
         private NumberGenerator numberGenerator;
-        public Controller(int start,int end)
+        private List<int> sequence;
+        public controller()
         {
-            this.numberGenerator = new NumberGenerator(start, end);
+            this.numberGenerator = new NumberGenerator();
+            this.sequence = new List<int>();
         }
 
-        public string GenerateSequence(int maxLengthSequence)
+        public string GenerateSubSequenceAndAddToSequence(int maxLengthSequence,int start,int end)
         {
-            List<int> sequence = this.numberGenerator.generateSequence(maxLengthSequence);
+            List<int> subSequence = this.numberGenerator.GenerateSubSequenceAndAddToSequence(maxLengthSequence,start,end);
 
-            return String.Format(OutputMessages.sequenceGenerated, string.Join(", ", sequence));
+            foreach (var num in subSequence)
+            {
+                this.sequence.Add(num);
+            }
+
+            return String.Format(OutputMessages.sequenceGenerated, 
+                string.Join(", ",subSequence), string.Join(", ", sequence));
         }
 
-        public string GenerateNumber()
+        public string GenerateNumberAndAddToSequence(int start,int end)
         {
-            int num = this.numberGenerator.generateNumber();
+            int num = this.numberGenerator.GenerateNumberAndAddToSequence(start, end);
+            sequence.Add(num);
 
-            return String.Format(OutputMessages.numberGenerated, num);
+            return String.Format(OutputMessages.numberGenerated, num, string.Join(", ", sequence));
+        }
+
+        public string Print()
+        {
+            string result = string.Empty;
+
+            if (this.sequence.Count == 0)
+            {
+                result = "Sequence is empty!";
+            }
+            else
+            {
+                result = "Full sequence:\n" + string.Join(", ", sequence);
+            }
+             
+            return result;
         }
     }
 }
