@@ -1,7 +1,6 @@
 ﻿namespace fn181218001.Core
 {
     using fn181218001.Core.Contracts;
-    using fn181218001.IO;
     using fn181218001.IO.Contracts;
     using fn181218001.Utilities;
     using System;
@@ -9,23 +8,28 @@
     {
         private IWriter writer;
         private IReader reader;
-        private controller controller;
+        private IController controller;
 
-        public Engine()
+        public Engine(IReader reader, IWriter writer)
         {
-            this.writer = new Writer();
-            this.reader = new Reader();
-            this.controller = new controller();
+            this.writer = writer;
+            this.reader = reader;
+            this.controller = new Controller();
         }
 
-        public void Run()
+        public void Run(string[] input)
         {
             this.writer.WriteLine(String.Format(OutputMessages.help));
             this.writer.WriteLine(String.Format(OutputMessages.exampleOptions));
+            this.writer.WriteLine(input[0]);
+            this.writer.WriteLine(input[1]);
 
             while (true)
             {
-                string[] input = reader.ReadLine().ToLower().Split();
+                if (input[0] == "")
+                {
+                    input = reader.ReadLine().ToLower().Split();
+                }                
 
                 if (input[0] == "--help")
                 {
@@ -59,6 +63,21 @@
                     }else if (input[0] == "print")
                     {
                         result = controller.Print();
+                    }else if (input[0] == "sort")
+                    {
+                        result = controller.Sort();
+                    }else if (input[0] == "saveoutputinfile")
+                    {
+                        controller.SaveOutputInFile();
+                    }else if (input[0] == "save")
+                    {
+                        result = controller.Save();
+                    }else if (input[0] == "load")
+                    {
+                        result=controller.Load();
+                    }else if (input[0] == "clear")
+                    {
+                        result=controller.Clear();
                     }
                     else
                     {

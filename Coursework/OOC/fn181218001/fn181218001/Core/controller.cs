@@ -1,15 +1,20 @@
 ﻿namespace fn181218001.Core
 {
+    using fn181218001.Core.Contracts;
     using fn181218001.Functionalities;
+    using fn181218001.IO;
+    using fn181218001.IO.Contracts;
     using fn181218001.Utilities;
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
 
-    public class controller
+    public class Controller:IController
     {
         private NumberGenerator numberGenerator;
         private List<int> sequence;
-        public controller()
+        public Controller()
         {
             this.numberGenerator = new NumberGenerator();
             this.sequence = new List<int>();
@@ -50,6 +55,52 @@
             }
              
             return result;
+        }
+
+        public string Sort()
+        {
+            sequence.Sort();
+
+            return String.Format(OutputMessages.sort, string.Join(", ",sequence));
+        }
+
+        public void SaveOutputInFile()
+        {
+            IWriter write = new FileWriter();
+
+            write.WriteLine(string.Join(", ", sequence));
+        }
+
+        public string Load()
+        {
+            var input = File.ReadAllLines(@"D:\Programming\University\Coursework\OOC\fn181218001\sequence.txt");
+
+            //lines of txt file
+            for (int i = 0; i < input.Length; i++)
+            {
+                var nums = input[0].Split(", ").Select(int.Parse).ToArray();
+                this.sequence.AddRange(nums);
+            
+            }
+
+            return string.Join(", ", sequence);
+        }
+
+        public string Save()
+        {
+            using (StreamWriter sequenceFile = new StreamWriter("D:\\Programming\\University\\Coursework\\OOC\\fn181218001\\sequence.txt"))
+            {                
+                    sequenceFile.WriteLine(string.Join(", ",this.sequence));
+            }
+
+            return OutputMessages.write;
+        }
+
+        public string Clear()
+        {
+            this.sequence.Clear();
+
+            return OutputMessages.clear;
         }
     }
 }
