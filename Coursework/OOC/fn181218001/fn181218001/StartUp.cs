@@ -9,17 +9,7 @@
     class StartUp
     {
         static void Main(string[] args)
-        {
-            try
-            {
-                Console.WriteLine(args[0]);
-                Console.WriteLine(args[1]);
-            }
-            catch
-            {
-
-            }
-          
+        {        
             IReader reader = new Reader();
             IWriter writer = new Writer(); 
 

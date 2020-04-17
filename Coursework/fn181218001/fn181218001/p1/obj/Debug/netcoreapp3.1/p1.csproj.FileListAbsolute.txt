@@ -1,0 +1,11 @@
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.exe
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.deps.json
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.runtimeconfig.json
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.runtimeconfig.dev.json
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.dll
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.pdb
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\obj\Debug\netcoreapp3.1\p1.csprojAssemblyReference.cache
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\obj\Debug\netcoreapp3.1\p1.AssemblyInfoInputs.cache
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\obj\Debug\netcoreapp3.1\p1.AssemblyInfo.cs
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\obj\Debug\netcoreapp3.1\p1.dll
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\obj\Debug\netcoreapp3.1\p1.pdb

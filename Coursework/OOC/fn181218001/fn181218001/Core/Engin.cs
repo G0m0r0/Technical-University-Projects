@@ -21,19 +21,17 @@
         {
             this.writer.WriteLine(String.Format(OutputMessages.help));
             this.writer.WriteLine(String.Format(OutputMessages.exampleOptions));
-            this.writer.WriteLine(input[0]);
-            this.writer.WriteLine(input[1]);
 
             while (true)
             {
-                if (input[0] == "")
+                if (input.Length==0)
                 {
                     input = reader.ReadLine().ToLower().Split();
                 }                
 
                 if (input[0] == "--help")
                 {
-                    this.writer.WriteLine(String.Format(OutputMessages.commands));
+                    this.writer.WriteLine(OutputMessages.commands);
                 }
 
                 if (input[0] == "exit")
@@ -81,17 +79,18 @@
                     }
                     else
                     {
-                        result = "Ivanlid command!";
+                        result = "Invalid command!";
                     }
                
 
                 this.writer.WriteLine(result);
+                input = reader.ReadLine().ToLower().Split();
                 }
                 catch (Exception ex)
                 {
                     this.writer.WriteLine(ex.Message);
                 }
             }
-        }
+       }
     }
 }

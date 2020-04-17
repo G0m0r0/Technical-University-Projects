@@ -23,6 +23,7 @@
         public string GenerateSubSequenceAndAddToSequence(int maxLengthSequence,int start,int end)
         {
             List<int> subSequence = this.numberGenerator.GenerateSubSequenceAndAddToSequence(maxLengthSequence,start,end);
+            
 
             foreach (var num in subSequence)
             {
