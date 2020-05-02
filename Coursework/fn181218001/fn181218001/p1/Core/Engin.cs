@@ -16,17 +16,17 @@ namespace p1.Core
 
         public void Run(string[] args)
         {
-            Console.WriteLine("Type -h for all commands:");
-            try
-            {
-                while (true)
-                {
+            //Console.WriteLine("Type -h for all commands:");
+           // try
+           // {
+                //while (true)
+                //{
                     string result = string.Empty;
 
-                    if (args.Length == 0)
-                    {
-                        args = Console.ReadLine().Split(" ");
-                    }
+                   // if (args.Length == 0)
+                  // {
+                  //     args = Console.ReadLine().Split(" ");
+                  //  }
 
                     switch (args[0])
                     {
@@ -51,14 +51,14 @@ namespace p1.Core
                             break;
                     }
 
-                    Console.WriteLine(result);
-                    args = Console.ReadLine().Split(" ");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                    //Console.WriteLine(result);
+                   // args = Console.ReadLine().Split(" ");
+            //  }
+           // }
+           // catch (Exception ex)
+           // {
+           //     Console.WriteLine(ex.Message);
+           // }
         }
     }
 }

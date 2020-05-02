@@ -94,3 +94,5 @@ D:\Programming\University\Coursework\fn181218001\fn181218001\p1_UnitTesting\obj\
 D:\Programming\University\Coursework\fn181218001\fn181218001\p1_UnitTesting\obj\Debug\netcoreapp3.1\t1_UnitTesting.csproj.CopyComplete
 D:\Programming\University\Coursework\fn181218001\fn181218001\p1_UnitTesting\obj\Debug\netcoreapp3.1\t1_UnitTesting.dll
 D:\Programming\University\Coursework\fn181218001\fn181218001\p1_UnitTesting\obj\Debug\netcoreapp3.1\t1_UnitTesting.pdb
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1_UnitTesting\obj\Debug\netcoreapp3.1\t1_UnitTesting.csproj.CoreCompileInputs.cache
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1_UnitTesting\obj\Debug\netcoreapp3.1\t1_UnitTesting.genruntimeconfig.cache
