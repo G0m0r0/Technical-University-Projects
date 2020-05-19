@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>dido</Authors>
+    <Company>mycompany</Company>
+    <Product>generator</Product>
+    <Description>gen, sort, create, exit</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>D:\Programming\NugetPackages\</OutputPath>
+  </PropertyGroup>
+
+</Project>

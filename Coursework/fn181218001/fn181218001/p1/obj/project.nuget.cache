@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "R3LeerciGbtRERDRBEx1FLUFUxuvqamAv/Vy0IF4pAgUHjAfH1KSPW+1pRJXVYRvtyiNVgNhnnR1ASFqU0CrFw==",
+  "dgSpecHash": "h0zLQc2W+PQWALWf23hZAfY2SnAHsHmAWAjxIpR1Abfc86dk4lSNWYry7apNkc1ZZjQgX2XSkGdhtIGdLlUOIA==",
   "success": true,
   "projectFilePath": "D:\\Programming\\University\\Coursework\\fn181218001\\fn181218001\\p1\\p1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\dimit\\.nuget\\packages\\sortalgorithms\\1.1.0\\sortalgorithms.1.1.0.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\d1\\1.0.0\\d1.1.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

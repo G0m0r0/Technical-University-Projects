@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-
-namespace p1.Core
+﻿namespace d1.Core
 {
+    using System;
+
     public class Engin
     {
-        private Controller controller;
+        private readonly Controller controller;
 
         public Engin()
         {
@@ -17,11 +14,11 @@ namespace p1.Core
         public void Run(string[] args)
         {
             //Console.WriteLine("Type -h for all commands:");
-           // try
-           // {
-                //while (true)
-                //{
-                    string result = string.Empty;
+            // try
+            // {
+            //while (true)
+            //{
+            string result = string.Empty;
 
                    // if (args.Length == 0)
                   // {
@@ -51,7 +48,7 @@ namespace p1.Core
                             break;
                     }
 
-                    //Console.WriteLine(result);
+                    Console.WriteLine(result);
                    // args = Console.ReadLine().Split(" ");
             //  }
            // }

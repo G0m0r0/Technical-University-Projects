@@ -5,7 +5,7 @@
 
     class StartUp
     {
-        static void Main(string[] args)
+        static void Main()
         {
             string path = 
                 @"D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.exe";

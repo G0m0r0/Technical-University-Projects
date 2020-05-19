@@ -1,0 +1,9 @@
+D:\Programming\University\Coursework\fn181218001\fn181218001\d1\obj\Debug\netstandard2.0\d1.csprojAssemblyReference.cache
+D:\Programming\University\Coursework\fn181218001\fn181218001\d1\obj\Debug\netstandard2.0\d1.AssemblyInfoInputs.cache
+D:\Programming\University\Coursework\fn181218001\fn181218001\d1\obj\Debug\netstandard2.0\d1.AssemblyInfo.cs
+D:\Programming\University\Coursework\fn181218001\fn181218001\d1\obj\Debug\netstandard2.0\d1.csproj.CoreCompileInputs.cache
+D:\Programming\NugetPackages\netstandard2.0\d1.deps.json
+D:\Programming\NugetPackages\netstandard2.0\d1.dll
+D:\Programming\NugetPackages\netstandard2.0\d1.pdb
+D:\Programming\University\Coursework\fn181218001\fn181218001\d1\obj\Debug\netstandard2.0\d1.dll
+D:\Programming\University\Coursework\fn181218001\fn181218001\d1\obj\Debug\netstandard2.0\d1.pdb

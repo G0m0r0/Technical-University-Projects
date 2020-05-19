@@ -1,11 +1,10 @@
 ﻿namespace p1
 {
-    using p1.Core;
     class StartUp
     {
         static void Main(string[] args)
         {
-            Engin engin = new Engin();
+            d1.Core.Engin engin = new d1.Core.Engin();
             engin.Run(args);
         }        
     }

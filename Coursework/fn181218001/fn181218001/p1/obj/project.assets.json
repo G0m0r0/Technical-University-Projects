@@ -1,11 +1,51 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "SortAlgorithms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SortAlgorithmsLibrary.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SortAlgorithmsLibrary.dll": {}
+        }
+      },
+      "d1/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/d1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/d1.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SortAlgorithms/1.1.0": {
+      "sha512": "r6WRm/V+5KBxvvNrUfnDKGQgxCb3cXmXnf4JbUcx185S+b+qs8QmKg0ZjlWLbY79PqKCkah5aBBo+i9uZ59RNg==",
+      "type": "package",
+      "path": "sortalgorithms/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/SortAlgorithmsLibrary.dll",
+        "sortalgorithms.1.1.0.nupkg.sha512",
+        "sortalgorithms.nuspec"
+      ]
+    },
+    "d1/1.0.0": {
+      "type": "project",
+      "path": "../d1/d1.csproj",
+      "msbuildProject": "../d1/d1.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "SortAlgorithms >= 1.1.0",
+      "d1 >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\dimit\\.nuget\\packages\\": {},
@@ -37,7 +77,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Programming\\University\\Coursework\\fn181218001\\fn181218001\\d1\\d1.csproj": {
+              "projectPath": "D:\\Programming\\University\\Coursework\\fn181218001\\fn181218001\\d1\\d1.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -48,6 +92,16 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "dependencies": {
+          "SortAlgorithms": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "d1": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
