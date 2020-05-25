@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "HU4wJmjUuv8HqvSuussOUjn5q2ME0mMBbKN/FxGh483D+iXvg1NZ9D8K8GXkQ57b/YhlPFrROiDqF9/kuzzCxg==",
+  "dgSpecHash": "zly/yLhnXnJiNnSb4RsYq+retT+Zsh0R09ZC77jeiv962Qh6GyGgBM9aqOEDJFfiucuLK6ymW5Zpp1gLIV3AUQ==",
   "success": true,
   "projectFilePath": "D:\\Programming\\University\\Coursework\\fn181218001\\fn181218001\\d2\\d2.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\dimit\\.nuget\\packages\\d1\\1.0.0\\d1.1.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],

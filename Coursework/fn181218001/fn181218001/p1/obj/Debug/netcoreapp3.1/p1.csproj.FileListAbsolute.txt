@@ -15,3 +15,5 @@ D:\Programming\University\Coursework\fn181218001\fn181218001\p1\obj\Debug\netcor
 D:\Programming\University\Coursework\fn181218001\fn181218001\p1\obj\Debug\netcoreapp3.1\p1.csproj.CoreCompileInputs.cache
 D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\SortAlgorithmsLibrary.dll
 D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\d1.pdb
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\d2.dll
+D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\d2.pdb

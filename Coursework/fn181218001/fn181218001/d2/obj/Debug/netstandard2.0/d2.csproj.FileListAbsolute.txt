@@ -6,3 +6,4 @@ D:\Programming\University\Coursework\fn181218001\fn181218001\d2\obj\Debug\netsta
 D:\Programming\University\Coursework\fn181218001\fn181218001\d2\obj\Debug\netstandard2.0\d2.AssemblyInfo.cs
 D:\Programming\University\Coursework\fn181218001\fn181218001\d2\obj\Debug\netstandard2.0\d2.dll
 D:\Programming\University\Coursework\fn181218001\fn181218001\d2\obj\Debug\netstandard2.0\d2.pdb
+D:\Programming\University\Coursework\fn181218001\fn181218001\d2\obj\Debug\netstandard2.0\d2.csproj.CoreCompileInputs.cache

@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "d1/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/d1.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/d1.dll": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -38,17 +29,6 @@
     }
   },
   "libraries": {
-    "d1/1.0.0": {
-      "sha512": "QWOy3EVoCFp98AkBfCPR2e6dRWiDjZ+aQgtDqKL3IJnSRD2wdLJ7GXBlyzWoZP7z571M3jfQf792p4KXMHA/Ug==",
-      "type": "package",
-      "path": "d1/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        "d1.1.0.0.nupkg.sha512",
-        "d1.nuspec",
-        "lib/netstandard2.0/d1.dll"
-      ]
-    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -195,8 +175,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.3",
-      "d1 >= 1.0.0"
+      "NETStandard.Library >= 2.0.3"
     ]
   },
   "packageFolders": {
@@ -246,10 +225,6 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
-          },
-          "d1": {
-            "target": "Package",
-            "version": "[1.0.0, )"
           }
         },
         "imports": [
