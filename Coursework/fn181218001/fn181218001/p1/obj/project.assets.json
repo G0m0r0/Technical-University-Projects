@@ -11,7 +11,7 @@
           "lib/netstandard2.0/SortAlgorithmsLibrary.dll": {}
         }
       },
-      "d1/1.0.0": {
+      "d1/1.2.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "compile": {
@@ -45,7 +45,7 @@
         "sortalgorithms.nuspec"
       ]
     },
-    "d1/1.0.0": {
+    "d1/1.2.0": {
       "type": "project",
       "path": "../d1/d1.csproj",
       "msbuildProject": "../d1/d1.csproj"
