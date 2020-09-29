@@ -1,0 +1,4 @@
+﻿1>------ Build started: Project: Transportation problem, Configuration: Debug Any CPU ------
+1>You are using a preview version of .NET Core. See: https://aka.ms/dotnet-core-preview
+1>Transportation problem -> D:\Programming\University\exercise\transportation problem\Transportation problem\Transportation problem\bin\Debug\netcoreapp3.1\Transportation problem.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

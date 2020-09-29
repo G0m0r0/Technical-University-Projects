@@ -33,7 +33,6 @@
         public string Save(string fileName)
         {
             ValidateTxtFile(fileName);
-
             using (StreamWriter sw = new StreamWriter($@"D:\Programming\University\Coursework\fn181218001\{fileName}"))
             {
                 sw.WriteLine(ParseSequenceToString(sequence));

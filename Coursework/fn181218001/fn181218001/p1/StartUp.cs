@@ -4,8 +4,9 @@
     {
         static void Main(string[] args)
         {
-            d2.Engine engin = new d2.Engine();
-            engin.Run(args);
+            // d2.Engine engine = new d2.Engine();
+            d1.Core.Engine engine = new d1.Core.Engine();
+            engine.Run(args);
         }        
     }
 }

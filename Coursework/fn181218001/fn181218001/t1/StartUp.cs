@@ -9,30 +9,40 @@
         {
             string path = 
                 @"D:\Programming\University\Coursework\fn181218001\fn181218001\p1\bin\Debug\netcoreapp3.1\p1.exe";
-            Process proc = new Process();
-            proc.StartInfo.FileName = "cmd.exe";
-            proc.StartInfo.RedirectStandardInput = true;
-            proc.StartInfo.RedirectStandardOutput = true;
-            proc.StartInfo.CreateNoWindow = false;
-            proc.StartInfo.UseShellExecute = false;
-            proc.Start();
 
-            proc.StandardInput.WriteLine($"{path} -h");
+            string output;
+            using (Process myProcess = new Process())
+            {
+                myProcess.StartInfo.FileName = "cmd.exe";
+                myProcess.StartInfo.RedirectStandardInput = true;
+                myProcess.StartInfo.RedirectStandardOutput = true;
+                myProcess.StartInfo.CreateNoWindow = false;
+                myProcess.StartInfo.UseShellExecute = false;
+                myProcess.Start();
 
-            proc.StandardInput.WriteLine($"{path} -g un.txt");
+                TestAllCommands(myProcess, path);
 
-            proc.StandardInput.WriteLine($"{path} -v un.txt");
+                myProcess.StandardInput.Close();
+                myProcess.WaitForExit();
+                output= myProcess.StandardOutput.ReadToEnd();
+            }
 
-            proc.StandardInput.WriteLine($"{path} -s un.txt st.txt");
+            Console.WriteLine(output);
+        }
 
-            proc.StandardInput.WriteLine($"{path} -v test2.txt");
+        private static void TestAllCommands(Process myProcess, string path)
+        {
+            myProcess.StandardInput.WriteLine($"{path} -h");
 
-            proc.StandardInput.WriteLine($"{path} -e");
+            myProcess.StandardInput.WriteLine($"{path} -g un.txt");
 
-            proc.StandardInput.Flush();
-            proc.StandardInput.Close();
-            proc.WaitForExit();
-            Console.WriteLine(proc.StandardOutput.ReadToEnd());
+            myProcess.StandardInput.WriteLine($"{path} -v un.txt");
+
+            myProcess.StandardInput.WriteLine($"{path} -s un.txt st.txt");
+
+            myProcess.StandardInput.WriteLine($"{path} -v test2.txt");
+
+            myProcess.StandardInput.WriteLine($"{path} -e");
         }
     }
 }
