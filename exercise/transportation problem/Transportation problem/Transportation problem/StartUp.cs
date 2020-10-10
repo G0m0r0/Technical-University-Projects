@@ -3,11 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.IO;
     using System.Linq;
+    using System.Text;
 
     class StartUp
     {
-        private static Dictionary<int, int>[,] table;
         private static List<int> producer = new List<int>();
         private static List<int> receiver = new List<int>();
         private static int[,] timeTable;
@@ -15,124 +16,27 @@
         static void Main()
         {
             Stopwatch stopWatch = Stopwatch.StartNew();
-            Console.Write("AT= ");
-            producer = Console.ReadLine().Split().Select(int.Parse).ToList();
-            Console.Write("B= ");
-            receiver = Console.ReadLine().Split().Select(int.Parse).ToList();
+            ReadData();
 
-            table = new Dictionary<int, int>[producer.Count(), receiver.Count()];
-            timeTable = new int[producer.Count(), receiver.Count()];
-            valueTable = new int[producer.Count(), receiver.Count()];
+            CreateMissingRowCol();
 
-            Console.WriteLine();
-            Console.WriteLine("Enter time table:");
             FillTimeTable();
+            Console.WriteLine();
             CalculateValues();
 
-            // CircleDataToFindMinTimeValue();
-
-            //Console.WriteLine();
-          //  PrintValueTable();
+            PrintValueTable();
 
             Console.WriteLine();
+            Console.WriteLine($"Max value: {TakeMaxValue()}");
+            Console.WriteLine();
             Console.WriteLine(stopWatch.Elapsed);
-        }
-
-        private static void CircleDataToFindMinTimeValue()
-        {
-            int indexI = 0;
-            int indexJ = 0;
-            int maxTime = FindMaxTimeWithValue(ref indexI, ref indexJ);
-
-            SquareAlgorithm(maxTime, indexI, indexJ);
-        }
-
-        private static void SquareAlgorithm(int maxTime, int indexI, int indexJ)
-        {
-            for (int j = indexI; j < valueTable.GetLength(0); j++)
-            {
-                if (valueTable[indexI, j] != -1)
-                {
-                    for (int k = 0; k < valueTable.GetLength(1); k++)
-                    {
-
-                    }
-                }
-            }
-        }
-        private static bool ValidCell(int x, int y)
-        {
-            if (x < 0 || y < 0)
-            {
-                return false;
-            }
-            if (x > valueTable.GetLength(0) - 1 || y > valueTable.GetLength(1) - 1)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private static int FindMaxTimeWithValue(ref int indexI, ref int indexJ)
-        {
-            int maxValueTime = int.MinValue;
-            for (int i = 0; i < timeTable.GetLength(0); i++)
-            {
-                for (int j = 0; j < timeTable.GetLength(1); j++)
-                {
-                    if (valueTable[i, j] > 0 && maxValueTime < timeTable[i, j])
-                    {
-                        maxValueTime = timeTable[i, j];
-                        indexI = i;
-                        indexJ = j;
-                    }
-                }
-            }
-
-            return maxValueTime;
-        }
-
-        private static void PrintValueTable()
-        {
-            Console.WriteLine("X0  B1  B2  B3");
-            for (int i = 0; i < valueTable.GetLength(0); i++)
-            {
-               // Console.Write($"A{++i} ");
-                // i--;
-                for (int j = 0; j < valueTable.GetLength(1); j++)
-                {
-                    if (valueTable[i, j] == -1)
-                    {
-                        Console.Write("  0 ");
-                    }
-                    else
-                    {
-                        Console.Write(valueTable[i, j] + "  ");
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-
-        private static void FillTimeTable()
-        {
-            for (int i = 0; i < producer.Count(); i++)
-            {
-                var row = Console.ReadLine().Split().Select(int.Parse).ToArray();
-                for (int j = 0; j < receiver.Count(); j++)
-                {
-                    timeTable[i, j] = row[j];
-                }
-            }
         }
 
         private static void CalculateValues()
         {
             int indexI = 0;
             int indexJ = 0;
-            int minValue = int.MaxValue;
-            while (GetIndexMinValueTimeTable(ref indexI, ref indexJ,ref minValue))
+            while (GetIndexMinValueTimeTable(ref indexI, ref indexJ))
             {
                 if (producer[indexI] < receiver[indexJ])
                 {
@@ -171,73 +75,151 @@
                             valueTable[j, indexJ] = -1;
                     }
                 }
-               // PrintValueTable();
-              //  Console.WriteLine();
             }
         }
 
-        private static bool HasIndexMinValueTimeTable(ref int indexI, ref int indexJ,ref int minValue)
+        private static bool GetIndexMinValueTimeTable(ref int indexI, ref int indexJ)
         {
-            minValue = int.MaxValue;
+            int minValue = int.MaxValue;
             bool hasMinValue = false;
 
             for (int i = 0; i < timeTable.GetLength(0); i++)
             {
                 for (int j = 0; j < timeTable.GetLength(1); j++)
                 {
-                        if (minValue >= timeTable[i, j] && valueTable[i, j] == 0)
-                        {
-                            indexI = i;
-                            indexJ = j;
-                            minValue = timeTable[i, j];
-                            hasMinValue = true;
-                        }
+                    if (minValue >= timeTable[i, j] && valueTable[i, j] == 0)
+                    {
+                        indexI = i;
+                        indexJ = j;
+                        minValue = timeTable[i, j];
+                        hasMinValue = true;
+                    }
                 }
             }
 
             return hasMinValue;
         }
 
-      //  private static void PrintTableData()
-      //  {
-      //      var rowString = new List<string>();
-      //
-      //      Console.WriteLine("Xo   B1    B2    B3");
-      //      for (int i = 0; i < table.GetLength(0); i++)
-      //      {
-      //          for (int j = 0; j < table.GetLength(1); j++)
-      //          {
-      //              var x = table[i, j]
-      //                  .Select(x =>
-      //                  (x.Key.ToString() + " " + x.Value.ToString()))
-      //                  .ToArray()[0];
-      //
-      //              rowString.Add(x);
-      //
-      //
-      //          }
-      //          Console.Write($"A{++i}  ");
-      //          Console.WriteLine(string.Join(", ", rowString));
-      //          rowString.Clear();
-      //      }
-      //  }
-
-        private static void FillTableWithData()
+        private static int TakeMaxValue()
         {
-            for (int i = 0; i < table.GetLength(0); i++)
-            {
-                var row = Console.ReadLine()
-                    .Split(", ")
-                    .Select(x => new Dictionary<int, int>()
-                               {
-                                    { int.Parse(x.Split()[0]), int.Parse(x.Split()[1]) }
-                               }).ToArray();
+            int maxTimeValue = int.MinValue;
 
-                for (int j = 0; j < table.GetLength(1); j++)
+            for (int i = 0; i < timeTable.GetLength(0); i++)
+            {
+                for (int j = 0; j < timeTable.GetLength(1); j++)
                 {
-                    table[i, j] = row[j];
+                    if (valueTable[i, j] > 0)
+                    {
+                        if (maxTimeValue < timeTable[i, j])
+                        {
+                            maxTimeValue = timeTable[i, j];
+                        }
+                    }
+                }
+            }
+
+            return maxTimeValue;
+        }
+
+        private static void CreateMissingRowCol()
+        {
+            int differentQuantities = producer.Sum() - receiver.Sum();
+
+            if (differentQuantities > 0)
+            {
+                receiver.Add(differentQuantities);
+            }
+            else if (differentQuantities < 0)
+            {
+                producer.Add(Math.Abs(differentQuantities));
+            }
+
+            timeTable = new int[producer.Count(), receiver.Count()];
+            valueTable = new int[producer.Count(), receiver.Count()];
+        }
+
+        private static void ReadData()
+        {
+            Console.Write("AT= ");
+            producer = File.ReadAllText("../../../ProducerValues.txt").Split().Select(int.Parse).ToList();
+            Console.Write(string.Join(' ', producer));
+            Console.WriteLine($"  Sum: {producer.Sum()}");
+            Console.Write("B= ");
+            receiver = File.ReadAllText("../../../ReceiverValues.txt").Split().Select(int.Parse).ToList();
+            Console.Write(string.Join(' ', receiver));
+            Console.WriteLine($"   Sum: {receiver.Sum()}");
+
+            Console.WriteLine();
+            Console.WriteLine("Enter time table:");
+        }
+
+        private static void PrintValueTable()
+        {
+            var sb = new StringBuilder();
+            sb.Append("   ");
+            for (int i = 1; i <= valueTable.GetLength(1); i++)
+            {
+                sb.Append($"B{i}   ");
+            }
+
+            Console.WriteLine(sb.ToString());
+            for (int i = 0; i < valueTable.GetLength(0); i++)
+            {
+                Console.Write($"A{++i} ");
+                i--;
+                for (int j = 0; j < valueTable.GetLength(1); j++)
+                {
+                    int valueLength = 5;
+                    if (j == 0)
+                    {
+                        valueLength = 5;
+                    }
+                    else
+                    {
+                        valueLength = valueTable[i, --j].ToString().Length - 1;
+                        j++;
+                    }
+
+                    if (valueTable[i, j] == -1)
+                    {
+                        Console.Write(new String(' ', 5 - valueLength) + "0");
+                    }
+                    else
+                    {
+                        Console.Write(new String(' ', 5 - valueLength) + valueTable[i, j]);
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void FillTimeTable()
+        {
+            var valuesRows = File.ReadAllText("../../../TimeValues.txt").Split(Environment.NewLine).ToList();
+
+            if (valuesRows.Count != producer.Count)
+            {
+                valuesRows.Add(string.Concat(Enumerable.Repeat("0 ", receiver.Count)));
+            }
+
+            for (int i = 0; i < producer.Count(); i++)
+            {
+                var row = valuesRows[i]
+                    .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse)
+                    .ToList();
+
+                if (row.Count != receiver.Count)
+                {
+                    row.Add(0);
                 }
 
+                for (int j = 0; j < receiver.Count(); j++)
+                {
+                    timeTable[i, j] = row[j];
+                    Console.Write($"{timeTable[i, j]} ");
+                }
+                Console.WriteLine();
             }
         }
     }

@@ -210,4 +210,102 @@
             return -1;
         }
     }
+    //   private static void CircleDataToFindMinTimeValue()
+    //   {
+    //       int indexI = 0;
+    //       int indexJ = 0;
+    //       int maxTime = FindMaxTimeWithValue(ref indexI, ref indexJ);
+    //
+    //       SquareAlgorithm(maxTime, indexI, indexJ);
+    //   }
+
+    //   private static void SquareAlgorithm(int maxTime, int indexI, int indexJ)
+    //   {
+    //       for (int j = indexI; j < valueTable.GetLength(0); j++)
+    //       {
+    //           if (valueTable[indexI, j] != -1)
+    //           {
+    //               for (int k = 0; k < valueTable.GetLength(1); k++)
+    //               {
+    //
+    //               }
+    //           }
+    //       }
+    //   }
+    //   private static bool ValidCell(int x, int y)
+    //   {
+    //       if (x < 0 || y < 0)
+    //       {
+    //           return false;
+    //       }
+    //       if (x > valueTable.GetLength(0) - 1 || y > valueTable.GetLength(1) - 1)
+    //       {
+    //           return false;
+    //       }
+    //
+    //       return true;
+    //   }
+
+    //   private static int FindMaxTimeWithValue(ref int indexI, ref int indexJ)
+    //   {
+    //       int maxValueTime = int.MinValue;
+    //       for (int i = 0; i < timeTable.GetLength(0); i++)
+    //       {
+    //           for (int j = 0; j < timeTable.GetLength(1); j++)
+    //           {
+    //               if (valueTable[i, j] > 0 && maxValueTime < timeTable[i, j])
+    //               {
+    //                   maxValueTime = timeTable[i, j];
+    //                   indexI = i;
+    //                   indexJ = j;
+    //               }
+    //           }
+    //       }
+    //
+    //       return maxValueTime;
+    //   }
+
+
+    //  private static void PrintTableData()
+    //  {
+    //      var rowString = new List<string>();
+    //
+    //      Console.WriteLine("Xo   B1    B2    B3");
+    //      for (int i = 0; i < table.GetLength(0); i++)
+    //      {
+    //          for (int j = 0; j < table.GetLength(1); j++)
+    //          {
+    //              var x = table[i, j]
+    //                  .Select(x =>
+    //                  (x.Key.ToString() + " " + x.Value.ToString()))
+    //                  .ToArray()[0];
+    //
+    //              rowString.Add(x);
+    //
+    //
+    //          }
+    //          Console.Write($"A{++i}  ");
+    //          Console.WriteLine(string.Join(", ", rowString));
+    //          rowString.Clear();
+    //      }
+    //  }
+
+    // private static void FillTableWithData()
+    // {
+    //     for (int i = 0; i < table.GetLength(0); i++)
+    //     {
+    //         var row = Console.ReadLine()
+    //             .Split(", ")
+    //             .Select(x => new Dictionary<int, int>()
+    //                        {
+    //                             { int.Parse(x.Split()[0]), int.Parse(x.Split()[1]) }
+    //                        }).ToArray();
+    //
+    //         for (int j = 0; j < table.GetLength(1); j++)
+    //         {
+    //             table[i, j] = row[j];
+    //         }
+    //
+    //     }
+    // }
 }
