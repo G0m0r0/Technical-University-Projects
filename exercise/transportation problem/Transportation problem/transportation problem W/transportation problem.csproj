@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Transportation_problem</RootNamespace>
+    <RootNamespace>transportation_problem_W</RootNamespace>
   </PropertyGroup>
 
 </Project>

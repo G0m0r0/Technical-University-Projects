@@ -1,4 +1,4 @@
-﻿namespace Transportation_problem
+﻿namespace Transportation_problem_W
 {
     using System;
     using System.Collections.Generic;
@@ -22,13 +22,12 @@
 
             FillTimeTable();
             Console.WriteLine();
-            CalculateValues();
 
+            CalculateValues();
             PrintValueTable();
 
-            Console.WriteLine();
-            Console.WriteLine($"Max value: {TakeMaxValue()}");
-            Console.WriteLine();
+            Console.WriteLine(Environment.NewLine + $"Max time value: {TakeMaxTimeValue()}" + Environment.NewLine);
+
             Console.WriteLine(stopWatch.Elapsed);
         }
 
@@ -100,7 +99,7 @@
             return hasMinValue;
         }
 
-        private static int TakeMaxValue()
+        private static int TakeMaxTimeValue()
         {
             int maxTimeValue = int.MinValue;
 
@@ -197,9 +196,11 @@
         {
             var valuesRows = File.ReadAllText("../../../TimeValues.txt").Split(Environment.NewLine).ToList();
 
+            string addedColOrRow = "nothing";
             if (valuesRows.Count != producer.Count)
             {
                 valuesRows.Add(string.Concat(Enumerable.Repeat("0 ", receiver.Count)));
+                addedColOrRow = "row";
             }
 
             for (int i = 0; i < producer.Count(); i++)
@@ -212,6 +213,7 @@
                 if (row.Count != receiver.Count)
                 {
                     row.Add(0);
+                    addedColOrRow = "col";
                 }
 
                 for (int j = 0; j < receiver.Count(); j++)
@@ -220,6 +222,11 @@
                     Console.Write($"{timeTable[i, j]} ");
                 }
                 Console.WriteLine();
+            }
+            if (addedColOrRow != "nothing")
+            {
+                Console.WriteLine();
+                Console.WriteLine($"Added one {addedColOrRow}!");
             }
         }
     }
