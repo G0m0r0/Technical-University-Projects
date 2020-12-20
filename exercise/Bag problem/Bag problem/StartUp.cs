@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     class Program
     {
@@ -11,45 +12,21 @@
         {
             InitializeBag();
 
-            int[] val = new int[] { bag.Products[0].Value, bag.Products[1].Value, bag.Products[2].Value };
-            int[] wt = new int[] { bag.Products[0].Weight, bag.Products[1].Weight, bag.Products[2].Weight };
-            int W = bag.MaxWeight;
-            int n = val.Length;
+            var bagValues = bag
+                .Products
+                .Select(x => x.Value)
+                .ToList();
 
-            Console.WriteLine(knapSack(W, wt, val, n));
-        }
+            var bagWeights = bag
+                .Products
+                .Select(x => x.Weight )
+                .ToList();
 
-        static int max(int a, int b)
-        {
-            return (a > b) ? a : b;
-        }
+            int maxValue = BagProblemMaxValue(bag.MaxWeight, bagWeights, bagValues, bagValues.Count);
 
-        // Returns the maximum value that can 
-        // be put in a knapsack of capacity W 
-        static int knapSack(int W, int[] wt,
-                            int[] val, int n)
-        {
-
-            // Base Case 
-            if (n == 0 || W == 0)
-                return 0;
-
-            // If weight of the nth item is 
-            // more than Knapsack capacity W, 
-            // then this item cannot be 
-            // included in the optimal solution 
-            if (wt[n - 1] > W)
-                return knapSack(W, wt,
-                                val, n - 1);
-
-            // Return the maximum of two cases: 
-            // (1) nth item included 
-            // (2) not included 
-            else
-                return max(val[n - 1]
-                           + knapSack(W - wt[n - 1], wt,
-                                      val, n - 1),
-                           knapSack(W, wt, val, n - 1));
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Answer= "+maxValue);
         }
 
         private static void InitializeBag()
@@ -72,6 +49,27 @@
             }
         }
 
+        static int BagProblemMaxValue(int maxWeight, List<int> bagWeights, List<int> bagValues, int numberValues)
+        {
+            if (numberValues == 0 || maxWeight == 0)
+            {
+                return 0;
+            }
+
+            if (bagWeights[numberValues - 1] > maxWeight)
+            {
+                return BagProblemMaxValue(maxWeight, bagWeights, bagValues, numberValues - 1);
+            }
+            else
+            {
+                return max(bagValues[numberValues - 1]
+                    + BagProblemMaxValue(maxWeight - bagWeights[numberValues - 1], 
+                           bagWeights,
+                           bagValues, numberValues - 1),
+                           BagProblemMaxValue(maxWeight, bagWeights, bagValues, numberValues - 1));
+            }
+        }
+
         private static void InitializeProduct()
         {
             Console.Write("Weight= ");
@@ -83,6 +81,13 @@
             var product = new Product(weight, value);
 
             bag.Products.Add(product);
+        }
+
+        static int max(int firstNumber, int secondNumber)
+        {
+            return (firstNumber > secondNumber) ?
+                firstNumber :
+                secondNumber;
         }
     }
 }
