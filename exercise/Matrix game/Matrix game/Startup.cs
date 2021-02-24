@@ -30,7 +30,8 @@ namespace Matrix_game
 
             PrintEquastionsForGraphics();
 
-            //GoToSite("https://www.desmos.com/calculator");
+            Console.WriteLine("Opened desmond for graph, copy all vectors.");
+            GoToSite("https://www.desmos.com/calculator");
 
             CalculateXOrY();
 
@@ -44,7 +45,8 @@ namespace Matrix_game
         private static void CalculateV()
         {
             var y = new Symbol("y");
-            var V = (vectors[0] * y - vectors[1] * (y - 1) - vectors[2] * 0)
+            var OneMinusY = 1 - y;
+            var V = (vectors[0] * y - vectors[1] * OneMinusY - vectors[2] * 0)
                 .AlgebraicExpand();
 
 
@@ -54,22 +56,24 @@ namespace Matrix_game
         private static void CalculateXOrY()
         {
             var x = new Symbol("x");
-            var L1 = (vectors[0] - vectors[1])
-                .AlgebraicExpand();
+            var token = (vectors[0] - vectors[1])
+                .AlgebraicExpand()
+                .Disp();
+            var t = (double)2 / 5;
 
             Regex rx = new Regex(@"((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)");
-            var match = double.Parse(rx.Match(L1.ToString()).ToString());
+            var match = double.Parse(rx.Match(token.ToString()).ToString());
 
-            if (L1.ToString().Where(x => x == '-').Count() % 2 == 0)
+            if (token.ToString().Where(x => x == '-').Count() % 2 == 0)
             {
-                Console.WriteLine("x = " + match);
+                Console.WriteLine("x = " + t);
             }
             else
             {
-                Console.WriteLine("x = " + match.ToString().Replace('-', ' '));
+                Console.WriteLine("x = " + t.ToString().Replace('-', ' '));
             }
 
-            Console.WriteLine($"X Opt ( {match} , 0 , {match - 1} )");
+            Console.WriteLine($"X Opt ( {t} , 0 , {1 - t} )");
         }
 
         public static void GoToSite(string url)
@@ -83,18 +87,18 @@ namespace Matrix_game
         private static void PrintEquastionsForGraphics()
         {
             var x = new Symbol("x");
-            var xMinusOne = x - 1;
-            var L1 = (matrix[0, 0] * x + matrix[1, 0] * 0 + matrix[2, 0] * xMinusOne)
+            var OneMinusX = 1 - x;
+            var L1 = (matrix[0, 0] * x + matrix[1, 0] * 0 + matrix[2, 0] * OneMinusX)
                 .AlgebraicExpand();
             vectors[0] = L1;
             Console.WriteLine("l1: " + L1);
 
-            var L2 = (matrix[0, 1] * x + matrix[1, 1] * 0 + matrix[2, 1] * xMinusOne)
+            var L2 = (matrix[0, 1] * x + matrix[1, 1] * 0 + matrix[2, 1] * OneMinusX)
                .AlgebraicExpand();
             vectors[1] = L2;
             Console.WriteLine("l2: " + L2);
 
-            var L3 = (matrix[0, 2] * x + matrix[1, 2] * 0 + matrix[2, 2] * xMinusOne)
+            var L3 = (matrix[0, 2] * x + matrix[1, 2] * 0 + matrix[2, 2] * OneMinusX)
                .AlgebraicExpand();
             vectors[2] = L3;
             Console.WriteLine("l3: " + L3);
