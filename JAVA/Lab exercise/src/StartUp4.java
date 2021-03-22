@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class StartUpDesign {
+public class StartUp4 {
 
 	public static void main(String[] args) {
 	   int kMax=50_000;
@@ -110,14 +110,14 @@ public class StartUpDesign {
 	private static double[] GradF(double[] x) {
 		double[] newArray=new double[2];
 		
-		newArray[0]=2*(x[0]-1);
-		newArray[1]=2*(x[1]-2);				
+		newArray[0]=3*x[0]*x[0]-3*x[1];
+		newArray[1]=3*x[1]*x[1]-3*x[0];				
 		
 		return newArray;
 	}
 
 	private static double F(double[] x) {
-		double f=Math.pow(x[0]-1,2)+Math.pow(x[1]-2, 2);
+		double f=Math.pow(x[0],3)+Math.pow(x[1], 3)-3*x[0]*x[1];
 		
 		return f;
 	}

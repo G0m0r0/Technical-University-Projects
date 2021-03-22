@@ -2,7 +2,7 @@ public class Task {
 
 	public static void main(String[] args) {		
 		
-		double x=-0.42;
+		double x=-1;
 		double epsx=0.001;
 		double epsf=0.001;
 		int kMax=500_000;
