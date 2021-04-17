@@ -1,16 +1,37 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
-public class StartUpStochastic {
+public class StartUp5 {
 
-	public static void main(String[] args) {
-	   int kMax=50_000;
-	   double epsF=0.001;
-	   double[] x=new double[] {0,0};
-	   int n=2;
-	   double c=7;
+	public static void main(String[] args) {		
+	   //int kMax=50_000;
+	   //double epsF=0.001;
+	   //double[] x=new double[] {0,0};
+	   //int n=2;
+	   //double c=7;
+		
+		Scanner myInput = new Scanner( System.in );
+		    
+		    double[] x=new double[2];
+		    System.out.print("x values: ");
+		    String s[]= myInput.nextLine().split(" ");
+		    for(int i =0;i < s.length;i++){	    	
+		        x[i]= Double.parseDouble(s[i]);
+		    }
+		    
+		    System.out.print("epsf= ");
+			double epsF=myInput.nextDouble();
+			System.out.print("kMax= ");
+			int kMax=myInput.nextInt();
+			System.out.print("c= ");
+			double c=myInput.nextDouble();
+			System.out.print("rangeMinW= ");
+			int rangeMin=myInput.nextInt();
+			System.out.print("rangeMaxW= ");
+			int rangeMax=myInput.nextInt();
 	   
-	   double[] w=RandomGenerator(n,x.length);
+	   double[] w=RandomGenerator(x.length,rangeMin,rangeMax);	   
 	   
 	   double f=F(x,w);	 
 	  
@@ -52,8 +73,8 @@ public class StartUpStochastic {
 			 }				
 		   
 		   f=fNext;
-		   x=xNext;
-		   w=RandomGenerator(n,x.length);
+		   x=xNext;		   
+		   w=RandomGenerator(x.length,rangeMin,rangeMax);	 
 		   oldResultGradF=resultGradF;
 	   }
 	   
@@ -65,13 +86,13 @@ public class StartUpStochastic {
 		}
 	}
 
-	private static double[] RandomGenerator(int n,int xLength) {
+	private static double[] RandomGenerator(int xLength, int rangeMin, int rangeMax) {
 		double[] arrDouble=new double[xLength];
 		
 		Random r = new Random();
 		
 		for(int i=0; i<xLength; i++) {
-			arrDouble[i]= 0 + (2*n - 0) * r.nextDouble();
+			arrDouble[i] = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
 		}
 		
 		return arrDouble;

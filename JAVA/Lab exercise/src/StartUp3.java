@@ -1,15 +1,33 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class StartUp3 {
 
 	public static void main(String[] args) {	
-	   int kMax=20_000;
-	   double epsX=0.00001;
-	   double epsF=0.00001;
-	   double[] x=new double[] {5,3,4};
-	   double c=5;
+	   //int kMax=20_000;
+	   //double epsX=0.00001;
+	   //double epsF=0.00001;
+	   //double[] x=new double[] {5,3,4};
+	  // double c=5;
+		Scanner myInput = new Scanner( System.in );
+		
+		double[] x=new double[3];
+	    System.out.print("x values: ");
+	    String s[]= myInput.nextLine().split(" ");
+	    for(int i =0;i < s.length;i++){	    	
+	        x[i]= Double.parseDouble(s[i]);
+	    }
+	    
+	    System.out.print("epsx= ");
+	    double epsX=myInput.nextDouble();
+	    System.out.print("epsf= ");
+		double epsF=myInput.nextDouble();
+		System.out.print("kMax= ");
+		int kMax=myInput.nextInt();
+		System.out.print("c= ");
+		double c=myInput.nextDouble();
 	   	   
 		double f1=F1(x);
 		double f2=F2(x);

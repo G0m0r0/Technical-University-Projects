@@ -1,15 +1,47 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class StartUp4 {
 
 	public static void main(String[] args) {
-	   int kMax=50_000;
-	   double epsX=0.001;
-	   double epsF=0.001;
-	   double[] x=new double[] {0,10};
-	   double[] a=new double[] {-10,-20}; //conditions for limit A
-	   double[] b=new double[] {10,20}; //conditions for limit B
-	   double c=2;
+	   //int kMax=50_000;
+	   //double epsX=0.001;
+	   //double epsF=0.001;
+	   //double[] x=new double[] {0,10};
+	   //double[] a=new double[] {-10,-20}; //conditions for limit A
+	   //double[] b=new double[] {10,20}; //conditions for limit B
+	   //double c=2;
+		Scanner myInput = new Scanner( System.in );		
+		    
+		    double[] x=new double[2];
+		    System.out.print("x values: ");
+		    String s1[]= myInput.nextLine().split(" ");
+		    for(int i =0;i < s1.length;i++){	    	
+		        x[i]= Double.parseDouble(s1[i]);
+		    }
+		    
+		    double[] a=new double[2];
+		    System.out.print("a interval: ");
+		    String s2[]= myInput.nextLine().split(" ");
+		    for(int i =0;i < s2.length;i++){	    	
+		        a[i]= Double.parseDouble(s2[i]);
+		    }
+		    
+		    double[] b=new double[2];
+		    System.out.print("b interval: ");
+		    String s3[]= myInput.nextLine().split(" ");
+		    for(int i =0;i < s3.length;i++){	    	
+		        b[i]= Double.parseDouble(s3[i]);
+		    }
+		    
+		    System.out.print("epsx= ");
+		    double epsX=myInput.nextDouble();
+		    System.out.print("epsf= ");
+			double epsF=myInput.nextDouble();
+			System.out.print("kMax= ");
+			int kMax=myInput.nextInt();
+			System.out.print("c= ");
+			double c=myInput.nextDouble();
 	   
 	   double f=F(x);	   	  	   	  
 	   

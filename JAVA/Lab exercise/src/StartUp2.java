@@ -1,13 +1,32 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class StartUp2 {
 
 	public static void main(String[] args) {
-	   int kMax=500_000;
-	   double epsX=0.001;
-	   double epsF=0.001;
-	   double[] x=new double[] {-10,10};
-	   double c=2;
+		Scanner myInput = new Scanner( System.in );
+		
+	   //int kMax=500_000;
+	   //double epsX=0.001;
+	   //double epsF=0.001;
+	   //double[] x=new double[] {-10,10};
+	   //double c=2;
+	    
+	    double[] x=new double[2];
+	    System.out.print("x values: ");
+	    String s[]= myInput.nextLine().split(" ");
+	    for(int i =0;i < s.length;i++){	    	
+	        x[i]= Double.parseDouble(s[i]);
+	    }
+	    
+	    System.out.print("epsx= ");
+	    double epsX=myInput.nextDouble();
+	    System.out.print("epsf= ");
+		double epsF=myInput.nextDouble();
+		System.out.print("kMax= ");
+		int kMax=myInput.nextInt();
+		System.out.print("c= ");
+		double c=myInput.nextDouble();
 	   
 	   double f=F(x);	   	  	   	  
 	   

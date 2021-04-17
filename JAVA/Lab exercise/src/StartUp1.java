@@ -1,12 +1,25 @@
+import java.util.Scanner;
+
 public class StartUp1 {
 
 	public static void main(String[] args) {		
-		
-		double x=-2;
-		double epsx=0.000000001;
-		double epsf=0.000000001;
-		int kMax=500_000;
-		double step=0.01;
+		Scanner myInput = new Scanner( System.in );
+	      
+		//double x=-2;
+		//double epsx=0.000000001;
+		//double epsf=0.000000001;
+		//int kMax=500_000;
+		//double step=0.01;
+		System.out.print("x= ");
+	    double x=myInput.nextDouble();
+	    System.out.print("epsx= ");
+	    double epsx=myInput.nextDouble();
+	    System.out.print("epsf= ");
+		double epsf=myInput.nextDouble();
+		System.out.print("kMax= ");
+		int kMax=myInput.nextInt();
+		System.out.print("alpha= ");
+		double step=myInput.nextDouble();
 		
 		//f=0.991375
 		//x=-2.75491
