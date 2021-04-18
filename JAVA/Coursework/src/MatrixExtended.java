@@ -1,14 +1,60 @@
 import java.util.Arrays;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class MatrixExtended {
 	int[][] matrix;
+	String fileName="test.txt";
 	
 	public MatrixExtended(int size) {
 		this.matrix=new int[size][size];
 	}
 	
+	public String WriteToFile() throws IOException {
+		StringBuilder sb = new StringBuilder(); 
+
+        for (int[] int1 : matrix) {
+            for (int j = 0; j < int1.length; j++) {
+                sb.append(int1[j]).append(' '); 
+            }
+            sb.append("\r\n"); 
+        }
+        
+        File yourFile = new File(this.fileName);
+        yourFile.createNewFile();
+
+        Path path = Paths.get("D:\\Programming\\University\\JAVA\\Coursework\\"+this.fileName); 
+
+        Files.write(path, sb.toString().getBytes());         		
+
+		
+		return "Matrix is saved to file!";
+	}
 	
+	public int[][] ReadFromFile() throws IOException {
+		int i = 0;
+		FileInputStream file = null;
+		file = new FileInputStream(this.fileName);
+
+		StringBuilder sb=new StringBuilder();
+
+		do {
+			i = file.read();
+		     sb.append((char) i);
+		   } while(i != -1);
+
+		   file.close();
+		   
+		   System.out.println("Matrix read from file is:");
+		   System.out.println(sb.toString());
+		   
+		   //TODO: convert sb to matrix
+
+		   return matrix;
+	}
 	
 	public void DisplayMinMaxOfRow() {		
 		int minElementOfRows = Arrays.stream(this.SumByRows())

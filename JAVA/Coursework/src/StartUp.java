@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -20,6 +21,16 @@ public class StartUp {
 		
 		matrixExtended.DisplayMinMaxOfRow();
 		matrixExtended.DisplayMinMaxOfColumn();
+		
+		
+		System.out.println();
+		try {
+			System.out.println(matrixExtended.WriteToFile());
+			matrixExtended.ReadFromFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		System.out.println("Matrix is: ");
 		matrixExtended.Print();
