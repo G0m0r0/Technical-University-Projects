@@ -18,11 +18,11 @@
             for (int i = 1; i <= monthsForProcreating; i++)
             {
                 //procreating every month
-                fibonacciSequence.Add(fibonacciSequence[fibonacciSequence.Count - 1] + fibonacciSequence[fibonacciSequence.Count - 2]);
+                fibonacciSequence.Add(fibonacciSequence[fibonacciSequence.Count - 1] + fibonacciSequence[fibonacciSequence.Count - 2]); 
             }
 
             Console.WriteLine(string.Join(" ", fibonacciSequence));
-            Console.WriteLine($"\nTotal rabbits alive {fibonacciSequence.TakeLast((int)Math.Floor(maxMonthsRabbitIsAlive)).Sum()}");
+            Console.WriteLine($"\nTotal rabbits alive {fibonacciSequence.TakeLast((int)Math.Floor(maxMonthsRabbitIsAlive)).Sum()}");        
             Console.WriteLine($"\nTotal rabbits dead " +
                 $"{fibonacciSequence.Sum() - fibonacciSequence.TakeLast((int)Math.Floor(maxMonthsRabbitIsAlive)).Sum()}");
             Console.WriteLine($"\nTotal rabbits born {fibonacciSequence.Sum()}");
