@@ -1,5 +1,1 @@
-﻿Build started...
-1>------ Build started: Project: fibunacci dying rates with months, Configuration: Debug Any CPU ------
-1>You are using a preview version of .NET. See: https://aka.ms/dotnet-core-preview
-1>fibunacci dying rates with months -> D:\Programming\University\Exercise\Fibonacci rabbits with dying rate\fibunacci dying rates with months\bin\Debug\netcoreapp3.1\fibunacci dying rates with months.dll
-========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+﻿

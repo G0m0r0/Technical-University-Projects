@@ -8,6 +8,9 @@
     {
         static void Main()
         {
+            //..............................
+            //This is only test program. Fibunacci dying rates with months is the real one.
+            //..............................
             var fibonacciSequence = new List<long>() { 0, 1 };
             Console.Write("Total years for reprocreating: ");
             var monthsForProcreating = double.Parse(Console.ReadLine()) * 12;
