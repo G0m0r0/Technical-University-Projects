@@ -1,5 +1,12 @@
 package ZooWorld;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +21,8 @@ import ZooWorld.Interfaces.IBird;
 import ZooWorld.Interfaces.IMammal;
 
 public class Zoo {
+	private static String fileName="zooWorld.txt";
+	
 	private static Animal[] arrayOfMammals = {
 			new Dog("Rex",2020), 
 		    new Cat("Garfield", 2010), 
@@ -26,6 +35,8 @@ public class Zoo {
 		};
 		
 	private static List<IAnimal> animalsList = Arrays.asList(arrayOfMammals);
+	static List<IAnimal> animals = new ArrayList<>();
+
 	
 	public static void DisplayAnimals() {
 		for (IAnimal CurrentAnimal : animalsList) {
@@ -77,5 +88,76 @@ public class Zoo {
 				}
 
 			}
+		}
+		
+		public static String WriteToFile() throws IOException {
+			StringBuilder sb = new StringBuilder(); 
+
+	        sb.append("Dog Rex 2020\n");
+	        sb.append("Cat Garfield 2010\n");
+	        sb.append("Frog Pesho1 2019 water\n");
+	        sb.append("Dog TRex 2021\n");
+	        sb.append("Frog Pesho2 2017 neither\n");
+	        sb.append("Jellyfish Nemo 2019\n");
+	        sb.append("Swallow AngryBird 2009\n");
+	        sb.append("Lizzard Oz 2002\n");
+	        
+	        File yourFile = new File(fileName);
+	        yourFile.createNewFile();
+
+	        Path path = Paths.get("D:\\Programming\\University\\JAVA\\Coursework\\"+fileName); 
+
+	        Files.write(path, sb.toString().getBytes());         		
+
+			
+			return "Animals are saved to file!";
+		}
+		
+		public static String ReadFromFile() throws IOException {
+			int i = 0;
+			FileInputStream file = null;
+			file = new FileInputStream(fileName);
+
+			StringBuilder sb=new StringBuilder();
+
+			do {
+				i = file.read();
+			     sb.append((char) i);
+			   } while(i != -1);
+
+			   file.close();
+			   
+			   var arrayOfObjectsString=sb.toString().split("\n");
+			   
+			   for(int j=0;j<arrayOfObjectsString.length;j++) {
+				   var tokens=arrayOfObjectsString[j].split(" ");
+				   
+				   IAnimal animal = null;
+				   
+				   switch(tokens[0]) {
+				   case "Cat":
+					   animal=new Cat(tokens[1],Integer. parseInt(tokens[2]));
+				     break;
+				   case "Dog":
+					   animal=new Dog(tokens[1],Integer. parseInt(tokens[2]));
+				     break;
+				   case "Frog":
+					   animal=new Frog(tokens[1],Integer. parseInt(tokens[2]),tokens[3]);
+					     break;
+				   case "Jellyfish":
+					   animal=new Jellyfish(tokens[1],Integer. parseInt(tokens[2]));
+					     break;
+				   case "Lizzard":
+					   animal=new Lizzard(tokens[1],Integer. parseInt(tokens[2]));
+					     break;
+				   case "Swallow":
+					   animal=new Swallow(tokens[1],Integer. parseInt(tokens[2]));
+					     break;
+				 }
+				   
+				   animals.add(animal);
+			   }
+			   
+			   return "Animals were read from file!";
 		}
 }
