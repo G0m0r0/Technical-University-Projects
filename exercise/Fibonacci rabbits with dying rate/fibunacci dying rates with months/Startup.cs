@@ -35,6 +35,7 @@
 
                 //time to procreate
                 ulong rabbitsBornForCurrentMonth;
+                ulong totalDeadRabbits = 0;
                 for (int i = 1; i <= monthsForProcreating; i++)
                 {
                     if (i >= maxMonthsRabbitIsAlive)
@@ -43,6 +44,8 @@
                         rabbitsBornForCurrentMonth =
                         fibonacciSequence[fibonacciSequence.Count - 1] +
                         fibonacciSequence[fibonacciSequence.Count - 2] - deadRabbitsToSubstract;
+
+                        totalDeadRabbits += deadRabbitsToSubstract;
                     }
                     else
                     {
@@ -59,8 +62,8 @@
 
                 DisplayOutputData(fibonacciSequence, 
                     fibonacciSequence.Last(), 
-                    fibonacciSequence2.Last(), 
-                    fibonacciSequence2.Last() - fibonacciSequence.Last(), 
+                    fibonacciSequence.Last()+totalDeadRabbits, 
+                    totalDeadRabbits, 
                     maxMonthsRabbitIsAlive);
 
                 DisplayMessage(ConsoleColor.Blue, 
