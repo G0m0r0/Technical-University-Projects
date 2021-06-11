@@ -23,7 +23,7 @@ import ZooWorld.Interfaces.IMammal;
 public class Zoo {
 	private static String fileName="zooWorld.txt";
 	
-	private static Animal[] arrayOfMammals = {
+	private static Animal[] arrayOfAnimals = {
 			new Dog("Rex",2020), 
 		    new Cat("Garfield", 2010), 
 		    new Frog("Pesho1",2019, "water"),
@@ -34,13 +34,13 @@ public class Zoo {
 		    new Lizzard("Oz",2002),
 		};
 		
-	private static List<IAnimal> animalsList = Arrays.asList(arrayOfMammals);
+	private static List<IAnimal> animalsList = Arrays.asList(arrayOfAnimals);
 	static List<IAnimal> animals = new ArrayList<>();
 
 	
 	public static void DisplayAnimals() {
 		for (IAnimal CurrentAnimal : animalsList) {
-		    System.out.println(CurrentAnimal.toString());
+		    System.out.println(CurrentAnimal.toString()); 
 		}
 	}
 		
