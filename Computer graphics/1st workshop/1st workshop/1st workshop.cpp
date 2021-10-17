@@ -10,6 +10,17 @@
 const int WIDTH = 800;
 const int HEIGHT = 600;
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow* window)
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+}
+
 int main()
 {
     //with opengl
@@ -29,7 +40,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     //window object
-    GLFWwindow* window = glfwCreateWindow(800,660,"GLFW windows",nullptr,nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH,HEIGHT,"GLFW windows",nullptr,nullptr);
 
     if (window == nullptr) {
         std::cout << "flfCreateWindows FAILED" << std::endl;
@@ -48,18 +59,30 @@ int main()
         return -1;
     }
 
+    glViewport(0, 0, WIDTH, HEIGHT);
+
+    //callback function on the window that gets called each time the window is resized
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
     float green = 0;
     while (!glfwWindowShouldClose(window))
     {
+        //input commands
+        processInput(window);
+
+        // rendering commands
         glClearColor(0, green ,0 ,1);
         green+=0.001;
         glClear(GL_COLOR_BUFFER_BIT);
-        glfwSwapBuffers(window);
+
+        // check and call events and swap the buffers
+        glfwSwapBuffers(window);  //swaps immediatly back with front buffer and grame is displayed instantly
         glfwPollEvents();
     }
 
     //std::cin.get();
     glfwTerminate();
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
