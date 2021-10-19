@@ -1,97 +1,159 @@
-// 1st workshop.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+
+#pragma comment(lib, "glfw3.lib")
+
+// GLAD
 #include <glad/glad.h>
+
+// GLFW
 #include <GLFW/glfw3.h>
 
-#pragma comment(lib,"glfw3.lib")
 
-const int WIDTH = 800;
-const int HEIGHT = 600;
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-    glViewport(0, 0, width, height);
-}
-
-void processInput(GLFWwindow* window)
-{
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-}
+const GLuint WIDTH = 800, HEIGHT = 600;
 
 int main()
 {
-    //with opengl
-    //library glfw
-    //library glaf
-    std::cout << "Hello World!\n";
+	std::cout << "Starting GLFW context, OpenGL 3.3" << std::endl;
+	// Init GLFW
+	glfwInit();
 
-    //main function where we will instantiate the GLFW window
-    if (glfwInit() == GLFW_FALSE) 
-    {
-        std::cout << "glfwInit FAILD" << std::endl;
-        return -1;
-    }
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "OpenGL Window", NULL, NULL);
+	glfwMakeContextCurrent(window);
+	if (window == NULL)
+	{
+		std::cout << "Failed to create GLFW window" << std::endl;
+		glfwTerminate();
+		return -1;
+	}
 
-    //window object
-    GLFWwindow* window = glfwCreateWindow(WIDTH,HEIGHT,"GLFW windows",nullptr,nullptr);
+	glfwSetKeyCallback(window, key_callback);
 
-    if (window == nullptr) {
-        std::cout << "flfCreateWindows FAILED" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
-    //for c++ NULL is equal to 0 
-    //null from c# is nullptr
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cout << "Failed to initialize OpenGL context" << std::endl;
+		glfwTerminate();
+		return -1;
+	}
 
-    glfwMakeContextCurrent(window);
+	// Define the viewport dimensions
+	glViewport(0, 0, WIDTH, HEIGHT);
 
-    //manages function pointers for OpenGL so we want to initialize GLAD before we call any OpenGL function
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
+	// vertext buffer object to draw
+	// Coordinates are in NDC (Normalized Device Coordinates) from -1 to 1
+	float vertices[] = {
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.0f,  0.5f, 0.0f
+	};
 
-    glViewport(0, 0, WIDTH, HEIGHT);
+	// A Vertex Array Object will store OpenGL's state 
+	unsigned vao;
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
 
-    //callback function on the window that gets called each time the window is resized
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	// Create a Vertex Buffer Object
+	unsigned int vbo;
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    float green = 0;
-    while (!glfwWindowShouldClose(window))
-    {
-        //input commands
-        processInput(window);
+	// Create a vertex shader
+	const char* vertextShaderSource = ""
+		"#version 330 core										\n"
+		"layout (location = 0) in vec3 aPos;					\n"
+		"														\n"
+		"void main() {											\n"
+		"	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);	\n"
+		"}";
+	unsigned vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, &vertextShaderSource, NULL);
+	glCompileShader(vertexShader);
 
-        // rendering commands
-        glClearColor(0, green ,0 ,1);
-        green+=0.001;
-        glClear(GL_COLOR_BUFFER_BIT);
+	// Check for compilation errors
+	int  success;
+	char infoLog[512];
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+		std::cout << "Vertex shader compilation error: " << infoLog << std::endl;
+	}
 
-        // check and call events and swap the buffers
-        glfwSwapBuffers(window);  //swaps immediatly back with front buffer and grame is displayed instantly
-        glfwPollEvents();
-    }
+	// Create a fragment shader
+	const char* fragmentShaderSource = ""
+		"#version 330 core								\n"
+		"out vec4 FragColor;							\n"
+		"												\n"
+		"void main() {									\n"
+		"	FragColor = vec4(0.4f, 0.3f, 0.6f, 1.0f);	\n"
+		"}\n\0";
 
-    //std::cin.get();
-    glfwTerminate();
-    return 0;
+	unsigned fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+	glCompileShader(fragmentShader);
+
+	// Check for compilation errors
+	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+		std::cout << "Fragment shader compilation error: " << infoLog << std::endl;
+	}
+
+	// Create a shader program that links the shaders together
+	unsigned shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
+
+	// Check for linker errors
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+	if (!success) {
+		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+		std::cout << "Linker error: " << infoLog << std::endl;
+	}
+
+	// Free the shaders - they're linked in the shader program, so we don't need them
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+
+	glUseProgram(shaderProgram);
+
+	// Map the vertex attributes
+	glVertexAttribPointer(0 /*location=0*/, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), NULL);
+	glEnableVertexAttribArray(0);
+
+	while (!glfwWindowShouldClose(window))
+	{
+		glfwPollEvents();
+
+		// Render
+		// Clear the colorbuffer
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		GLenum mode = GL_TRIANGLES; // GL_TRIANGLES GL_POINTS GL_LINE_STRIP GL_LINE_LOOP
+		glDrawArrays(mode, 0 /*start index in the vbo*/, sizeof(vertices) / sizeof(vertices[0]) /*number of vertices*/);
+
+		// Swap the screen buffers
+		glfwSwapBuffers(window);
+	}
+
+	// Terminates GLFW, clearing any resources allocated by GLFW.
+	glfwTerminate();
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	std::cout << key << std::endl;
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, GL_TRUE);
+}
