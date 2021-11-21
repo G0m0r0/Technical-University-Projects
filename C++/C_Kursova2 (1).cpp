@@ -1,4 +1,3 @@
-#include <iostream>
 using namespace std;
 #include <list>
 #include <iterator>
@@ -6,12 +5,13 @@ using namespace std;
 #include <iostream>
 #include <string>
 
-class Interface {
+class Ivehicle {
 public:
 	virtual void show() = 0;
 	virtual int get_typicalParameter() = 0;
 };
-class vehicle : public Interface {
+
+class vehicle : public Ivehicle {
 public:
 	int wheels;
 	int passengers;
@@ -39,10 +39,8 @@ class truck : public vehicle {
 public:
 	int cargo;
 	char vt = 't';
-	truck(int w, int p, int c)
+	truck(int w, int p, int c) :vehicle(w, p)
 	{
-		wheels = w;
-		passengers = p;
 		cargo = c;
 	};
 	truck()
@@ -65,10 +63,8 @@ class automobile : public vehicle {
 public:
 	int car_hp;
 	char vt = 'a';
-	automobile(int w, int p, int t)
+	automobile(int w, int p, int t) :vehicle(w, p)
 	{
-		wheels = w;
-		passengers = p;
 		car_hp = t;
 	};
 	automobile()
@@ -89,26 +85,32 @@ public:
 
 class container {
 public:
-	list <vehicle> collection;
-	void addVehicleTest(int wheels, int passengers, int typicalParameter, char type)
+	list <vehicle*> collection;
+	void addVehicleTest(vehicle* a)
 	{
-		if (type == 't')
-		{
-			truck t(wheels, passengers, typicalParameter);
-			collection.push_back(t);
-
-		}
-		else if (type == 'a')
-		{
-			automobile a(wheels, passengers, typicalParameter);
-			collection.push_back(a);
-		}
+		collection.push_back(a);
 	};
+	//void addVehicleTest(int wheels, int passengers, int typicalParameter, char type)
+	//{
+	//	if (type == 't')
+	//	{
+	//		truck t(wheels, passengers, typicalParameter);
+	//		collection.push_back(t);
+	//
+	//	}
+	//	else if (type == 'a')
+	//	{
+	//		automobile a(wheels, passengers, typicalParameter);
+	//		collection.push_back(a);
+	//	}
+	//};
 	void addVehicle() {
+		vehicle *test;
 		int a, b, c;
 		string type;
 		cout << "Enter the type of the vehicle (a for automobile, t for truck):";
-		getline(cin, type);
+		cin >> type;
+	//	getline(cin, type);
 		if (type == "a")
 		{
 			cout << "Enter a number of wheels:";
@@ -119,9 +121,10 @@ public:
 			cout << endl;
 			cout << "Enter the horse powers for the automobile:";
 			cin >> c;
-			cout << endl;
+			cout << endl;		
 			automobile au(a, b, c);
-			collection.push_back(au);
+			test = &au;			
+			addVehicleTest(test);
 			cout << "Ready!" << endl;
 		}
 		else if (type == "t")
@@ -136,26 +139,40 @@ public:
 			cin >> c;
 			cout << endl;
 			truck t(a, b, c);
-			collection.push_back(t);
+			test = &t;
+			addVehicleTest(test);
 			cout << "Ready!" << endl;
 		}
 	};
 	void showAllVehicles()
 	{
-		for (auto x : collection) {
-			x.show();
+		for (vehicle* x : collection) {
+			x->show();
 		}
 	};
 };
 int main()
 {
-	truck t1(18, 2, 3200);
-	truck t2(6, 3, 1200);
-	automobile c(4,6,120);
-	container a;
-	a.addVehicleTest(t1.get_wheels(), t1.get_pass(), t1.get_typicalParameter(), t1.get_vt());
-	a.addVehicleTest(t2.get_wheels(), t2.get_pass(), t2.get_typicalParameter(), t2.get_vt());
-	a.addVehicleTest(c.get_wheels(), c.get_pass(), c.get_typicalParameter(), c.get_vt());
+
+//vehicle *test1;
+//truck t1(18, 2, 3200);
+//test1 = &t1;
+//vehicle *test2;
+//truck t2(6, 3, 1200);
+//test2 = &t2 ;
+//vehicle *test3;
+//automobile c1(4,6,120);
+//test3 = &c1;
+//vehicle *test4;
+//automobile c2(1, 6, 120);
+//test4 = &c2;
+container a;
+//a.addVehicleTest(test1);
+//a.addVehicleTest(test2);
+//a.addVehicleTest(test3);
+//a.addVehicleTest(test4);
+    a.addVehicle();   
 	//a.addVehicle();
 	a.showAllVehicles();
+	cout << "k";
 }
