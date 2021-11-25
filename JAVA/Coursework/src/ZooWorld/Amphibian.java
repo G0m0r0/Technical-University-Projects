@@ -19,5 +19,5 @@ public abstract class Amphibian extends Animal {
 	@Override
     public String toString() {
 		return super.toString()+ " This animal prefers "+this.PreferedPlace()+".";
-    }
+	}
 }

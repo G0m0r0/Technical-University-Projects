@@ -2,6 +2,9 @@
 #include <string>
 #include <list>
 #include <iterator>
+#include <vector>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 class IAnimal {
@@ -67,7 +70,7 @@ public:
 		string message = GetName() + " is born " + to_string(CalculateBornYear()) + " he is " + to_string(age)
 			+ " years old. " + IsAnimalHungry() + "\n"
 			+ "It makes, " + MakeSound() + "\n"
-			+ "Usually " + Sleep();
+			+ "Usually " + Sleep() + "\n";
 		return message;
 	}
 
@@ -149,6 +152,10 @@ private: void SetSize(int s) {
 	size = s;
 };
 
+public: int GetSize() {
+	return size;
+}
+
 public:
 	string MakeSound()override {
 		hunger -= 20;
@@ -182,77 +189,89 @@ public:
 
 class PetManager {
 public:
-	list<Animal*> animals;
-	list<string> animalsStr;
+	vector< unique_ptr<Animal>> animals;
 	PetManager() {
-		animals = list<Animal*>();
-		animalsStr = list<string>();
+		animals = vector< unique_ptr<Animal>>();
 	};
 
 	void CreatePet(string type) {
-		//cout << "Name: ";
-		//string name = "";
-		//cin >> name;
-		//
-		//cout << "Age: ";
-		//int age = 0;
-		//cin >> age;
+		cout << "Name: ";
+		string name = "";
+		cin >> name;
 
-		Animal* animal;
-		string message="";
+		cout << "Age: ";
+		int age = 0;
+		cin >> age;
 
 		if (type == "dog") {
-			//cout << "Size in %: ";
-			//int size = 0;
-			//cin >> size;
+			cout << "Size in %: ";
+			int size = 0;
+			cin >> size;
 
-			Dog dog = Dog("ivan", 3, 30);
 			//Dog dog = Dog(name, age, size);
-			animal = &dog;
-			message = dog.Print();						
+			animals.push_back(make_unique<Dog>(name, age, size));
 		}
 		else if (type == "cat") {
-			Cat cat = Cat("penka", 3);
-			//Cat cat = Cat(name, age);
-			animal = &cat;
-			message = cat.Print();
+			animals.push_back(make_unique<Cat>(name, age));
 		}
 
-		animalsStr.push_back(message);
-		animals.push_back(animal);
+		cout << endl;
 	}
 
 	void FeedAllAnimals() {
-		for (auto* animal : animals)
-			cout << animal->Eat() << endl;
+		for (int i = 0; i < animals.size(); i++) {
+			cout << animals.at(i).get()->Eat() << endl;
+		}
 	}
 
 	void SleepAll() {
-		for (auto* animal : animals)
-			cout << animal->Sleep() << endl;
+		for (int i = 0; i < animals.size(); i++) {
+			cout << animals.at(i).get()->Sleep() << endl;
+		}
 	}
 
 	void MakeAllAnimalsCreateSound() {
-		for (auto* animal : animals)
-			cout << animal->MakeSound() << endl;
+		for (int i = 0; i < animals.size(); i++) {
+			cout << animals.at(i).get()->MakeSound() << endl;
+		}
 	}
 
 	void Print() {
-		for (auto animal : animalsStr)
-			cout << animal << endl<<endl;
+		for (int i = 0; i < animals.size(); i++) {
+			cout << animals.at(i).get()->Print() << endl;
+		}
 	}
+
+	void SaveData()
+	{
+		ofstream file;
+		file.open("Animals.txt");
+
+		for (auto i = 0; i < animals.size(); i++) {
+			file << animals.at(i).get()->Print() << endl;
+		}
+
+		file.close();
+		cout << "Successfully saved to file!" << endl;
+	};
 };
 
 int main()
 {
-	//cout << "Create cat or dog: ";
-	//string type = "";
-	//cin >> type;
+	cout << "Enter number of animals to create: ";
+	int count = 0;
+	cin >> count;
+
 	PetManager animals = PetManager();
-	animals.CreatePet("dog");
-	animals.CreatePet("dog");
-	//animals.CreatePet("cat");
-	//animals.CreatePet(type);
+	for (auto i = 0; i < count; i++)
+	{
+		cout << "Create cat or dog: ";
+		string type = "";
+		cin >> type;
+		animals.CreatePet(type);
+	}
+
+	cout << endl;
 	animals.MakeAllAnimalsCreateSound();
 	cout << endl;
 	animals.SleepAll();
@@ -260,4 +279,6 @@ int main()
 	animals.FeedAllAnimals();
 	cout << endl;
 	animals.Print();
+	cout << endl;
+	animals.SaveData();
 }
