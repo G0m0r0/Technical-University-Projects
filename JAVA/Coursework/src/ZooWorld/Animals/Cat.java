@@ -1,5 +1,4 @@
 package ZooWorld.Animals;
-
 import ZooWorld.Mammal;
 
 public class Cat extends Mammal{

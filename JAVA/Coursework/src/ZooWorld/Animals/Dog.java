@@ -1,4 +1,6 @@
 package ZooWorld.Animals;
+import java.util.Iterator;
+
 import ZooWorld.Mammal;
 
 public class Dog extends Mammal{
@@ -7,9 +9,12 @@ public class Dog extends Mammal{
 		super(name, bornYear);
 		// TODO Auto-generated constructor stub
 	}
+	
+		
 
 	@Override
 	public String Sound() {		
+		
 		this.Hunger-=5;
 		
 		return "Bark! Bark!";

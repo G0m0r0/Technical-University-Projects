@@ -11,7 +11,7 @@ public class StartUp {
 	   
 		double f1=F1(x);
 		double f2=F2(x);
-		
+		   
 		double f=0;	
 		if(f1>f2) {
 			f=F1(x);

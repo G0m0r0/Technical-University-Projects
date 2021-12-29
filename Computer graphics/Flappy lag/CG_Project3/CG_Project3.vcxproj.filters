@@ -35,6 +35,15 @@
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chimney.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\wall.jpg">
@@ -47,6 +56,18 @@
       <Filter>Resources</Filter>
     </Image>
     <Image Include="Resources\back.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\chimney1.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\chimney2.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bird.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\chimney.png">
       <Filter>Resources</Filter>
     </Image>
   </ItemGroup>

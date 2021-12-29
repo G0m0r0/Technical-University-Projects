@@ -20,11 +20,368 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+//arrays
+#include<vector>
+
+// sound
+//#include <irrklang/irrKlang.h>
+//using namespace irrklang;
+
 using namespace std;
 using namespace glm;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+vec3 ControlBird(GLFWwindow* window);
+vec3 ChimneyMove(GLFWwindow* window);
+void WindowSettings(GLFWwindow*& window);
 void on_error(int code, const char* text);
+
+#include "ShaderProgram.hpp"
+
+// Vertex buffer object to draw
+struct Vertex
+{
+	float x, y, z;
+	float r, g, b;
+	float s, t;
+	Vertex(float x, float y, float z, float r, float g, float b, float s, float t)
+		:x(x), y(y), z(z), r(r), g(g), b(b), s(s), t(t) {}
+};
+
+class Drawable
+{
+protected:
+	unsigned m_vao;
+
+public:
+	Drawable()
+	{
+		m_vao = 0;
+	}
+
+	~Drawable()
+	{
+		glDeleteVertexArrays(1, &m_vao);
+	}
+
+	// Override to create the VAO. Save it to m_vao.
+	virtual void CreateVAO() = 0;
+
+	virtual void Animate(float timeDelta) {}
+	//virtual void Draw(ShaderProgram& shader) = 0;
+};
+
+class Chimney : public Drawable {
+public:
+	vector<Vertex> chimneyVertices;
+	vec3 chimneyPosition;
+	vec3 chimneyDirection;
+
+public:
+	Chimney(vec3 chimneyPosition) : Drawable(), chimneyPosition(chimneyPosition)
+	{
+		// positions    // colors         // texture coords
+		chimneyVertices.push_back(Vertex(-0.2f, -0.1f, 0.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
+		chimneyVertices.push_back(Vertex(0.2f, -0.1f, 0.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
+		chimneyVertices.push_back(Vertex(-0.2f, 0.1f, 0.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
+		chimneyVertices.push_back(Vertex(0.2f, 0.1f, 0.0f, .00f, .50f, .20f, 1.0f, 1.f)); // top left 		
+	};
+
+	void Animate() {
+		chimneyPosition += chimneyDirection;
+	}
+
+	void Move(GLFWwindow* window) {
+		chimneyDirection = ChimneyMove(window);
+	}
+
+	virtual void CreateVAO()
+	{
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
+
+		unsigned int vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, chimneyVertices.size() * sizeof(Vertex), chimneyVertices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		{
+			int width, height, nrChannels;
+			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/chimney.jpg", &width, &height, &nrChannels, 0), stbi_image_free);
+			if (!data)
+				throw exception("Failed to load texture");
+
+			unsigned texture;
+			glGenTextures(1, &texture);
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, texture);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data.get());
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+	}
+
+	virtual void Draw(ShaderProgram& shader, float rotation, float scaleY)
+	{
+		mat4 model = mat4(1.0f);
+		glUniform1i(glGetUniformLocation(shader.ID, "ourTexture"), 1);
+		glBindVertexArray(m_vao);
+		model = translate(model, chimneyPosition);
+		model = rotate(model, rotation, vec3(0.f, 0.f, 1.f));
+
+		model = scale(model, vec3(1, scaleY, 1));
+		//chimneyPosition.y*= scaleY;
+		//TODO: check if its a problem for collisions
+
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, chimneyVertices.size());
+		glBindVertexArray(0);
+	}
+
+	vec3& Position() { return chimneyPosition; }
+
+	float xMax() const { return chimneyPosition.x + 0.1f; }
+	float xMin() const { return chimneyPosition.x - 0.1f; }
+	float yMax() const { return chimneyPosition.y + 0.05f; }
+	float yMin() const { return chimneyPosition.y - 0.05f; }
+};
+
+class Bird : public Drawable {
+public:
+	vector<Vertex> birdVertices;
+	vec3 birdPosition;
+	vec3 birdDirection;
+
+public:
+	Bird(vec3 birdPosition) : Drawable(), birdPosition(birdPosition)
+	{
+		// positions    // colors         // texture coords
+		birdVertices.push_back(Vertex(-0.13f, -0.13f, 0.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
+		birdVertices.push_back(Vertex(0.13f, -0.13f, 0.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
+		birdVertices.push_back(Vertex(-0.13f, 0.13f, 0.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
+		birdVertices.push_back(Vertex(0.13f, 0.13f, 0.0f, .00f, .50f, .20f, 1.0f, 1.f)); // top left 		
+	};
+
+	void Animate() {
+		birdPosition += birdDirection * 1.4f;
+
+		BirdBorders();
+	}
+
+	void Move(GLFWwindow* window) {
+		birdDirection = ControlBird(window);
+	}
+
+	virtual void CreateVAO()
+	{
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
+
+		unsigned int vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, birdVertices.size() * sizeof(Vertex), birdVertices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		{
+			int width, height, nrChannels;
+			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/bird.png", &width, &height, &nrChannels, 0), stbi_image_free);
+			if (!data)
+				throw exception("Failed to load texture");
+
+			unsigned texture;
+			glGenTextures(1, &texture);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, texture);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.get());
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+	}
+
+	virtual void Draw(ShaderProgram& shader)
+	{
+		glUniform1i(glGetUniformLocation(shader.ID, "ourTexture"), 0);
+		glBindVertexArray(m_vao);
+		mat4 model = mat4(1.0f);
+		model = translate(model, birdPosition);
+
+		RotateBird(model);
+
+		//model = scale(model, vec3(1.3, 1.3, 1));
+		//TODO: CHECK if its a problem for collisions
+
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, birdVertices.size());
+		glBindVertexArray(0);
+	}
+
+	vec3& Position() { return birdPosition; }
+
+	float xMax() const { return birdPosition.x + 0.13f; }
+	float xMin() const { return birdPosition.x - 0.13f; }
+	float yMax() const { return birdPosition.y + 0.13f; }
+	float yMin() const { return birdPosition.y - 0.13f; }
+
+private:
+	float birdPostionOldY = birdPosition.y;
+	void RotateBird(mat4& model)
+	{
+		if (birdPosition.y < birdPostionOldY) {
+			model = rotate(model, -0.5f, vec3(0.f, 0.f, 1.f));
+		}
+		else if (birdPosition.y > birdPostionOldY) {
+			model = rotate(model, 0.5f, vec3(0.f, 0.f, 1.f));
+		}
+
+		birdPostionOldY = birdPosition.y;
+	}
+
+	void BirdBorders()
+	{
+		if (birdPosition.x < -2) {
+			birdPosition.x = -2;
+		}
+		else if (birdPosition.x > 0.6) {
+			birdPosition.x = 0.6f;
+		}
+
+		if (birdPosition.y < -1) {
+			birdPosition.y = -1;
+			//TODO: dying when falls below
+		}
+		else if (birdPosition.y > 1) {
+			birdPosition.y = 1;
+		}
+	}
+
+};
+
+
+class Game
+{
+	vector<unique_ptr<Chimney>> chimneys;
+
+public:
+	Bird bird = Bird(vec3(-2, 0, 0.0f));
+
+	void GenerateChimney() {
+		for (size_t i = 0; i < 30; i++)
+		{
+			int indX = i - 1;
+			chimneys.push_back(make_unique<Chimney>(vec3(indX, -1.05, 0.f)));
+			chimneys.push_back(make_unique<Chimney>(vec3(indX, 1.05, 0.f)));
+		}
+
+		GenerateChimneySizes();
+	}
+
+	unique_ptr<ShaderProgram> shader;
+
+	void SetView(const mat4& view)
+	{
+		glUniformMatrix4fv(glGetUniformLocation(shader->ID, "view"), 1, GL_FALSE, value_ptr(view));
+	}
+
+	void SetProjection(const mat4& proj)
+	{
+		glUniformMatrix4fv(glGetUniformLocation(shader->ID, "projection"), 1, GL_FALSE, value_ptr(proj));
+	}
+
+	int count = 0;
+	void Animate(GLFWwindow* window)
+	{
+		bird.Move(window);
+		bird.Animate();
+
+		for (size_t i = 0; i < chimneys.size(); i++)
+		{
+			chimneys.at(i)->Move(window);
+			chimneys.at(i)->Animate();
+
+			//cout << "bird xMin: " << bird.xMin() << endl;
+			//cout << "bird xMax: " << bird.xMax() << endl;
+			//cout << "bird yMin: " << bird.yMin() << endl;
+			//cout << "bird yMax: " << bird.yMax() << endl;
+			//
+			//cout << "chimney xMin: " << chimneys.at(i)->xMin() << endl;
+			//cout << "chimney xMax: " << chimneys.at(i)->xMax() << endl;
+			//cout << "chimney yMin: " << chimneys.at(i)->yMin() << endl;
+			//cout << "chimney yMax: " << chimneys.at(i)->yMax() << endl;
+		}
+	}
+
+	void Score()
+	{
+
+	}
+
+private:
+	int lengthChimney[60];
+	void GenerateChimneySizes() {
+		for (size_t i = 0; i < 30; i++)
+		{
+			int rnd = rand() % 11 + 2; //generets size from 2 to 12 
+
+			lengthChimney[i] = rnd;
+			lengthChimney[59 - i] = 12 - rnd + 2; //2 for starting size 12 for eding size
+		}
+	}
+
+	int arrSize = sizeof(lengthChimney) / sizeof(lengthChimney[0]);
+
+public:
+	void Draw()
+	{
+		bird.Draw(*shader);
+
+		for (size_t i = 0; i < chimneys.size(); i++)
+		{
+			if (i % 2 == 0)
+				chimneys.at(i)->Draw(*shader, 0, lengthChimney[i]);
+			else
+				chimneys.at(i)->Draw(*shader, -3.145f, lengthChimney[arrSize - i]);
+		}
+	}
+
+	void CreateVAOs()
+	{
+		GenerateChimney();
+		shader.reset(new ShaderProgram("Shaders/mvp.vert", "Shaders/fragment.frag"));
+		shader->use();
+
+		bird.CreateVAO();
+		for (size_t i = 0; i < chimneys.size(); i++)
+		{
+			chimneys.at(i)->CreateVAO();
+		}
+	}
+
+	Game::~Game()
+	{
+	}
+};
 
 const GLuint WIDTH = 1280, HEIGHT = 720;
 
@@ -36,222 +393,41 @@ int main()
 
 	try
 	{
-		stbi_set_flip_vertically_on_load(true);// Tell stb to filp images so that 0.0 is at the bottom of the y-axis
+		GLFWwindow* window;
+		WindowSettings(window);
 
-		glfwSetErrorCallback(on_error);
+		Game Game;
 
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-		GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "OpenGL Window", NULL, NULL);
-		glfwMakeContextCurrent(window);
-		if (window == NULL)
-			throw exception("Failed to create GLFW window");
-
+		glfwSetWindowUserPointer(window, (void*)&Game);
 		glfwSetKeyCallback(window, key_callback);
 
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-			throw exception("Failed to initialize OpenGL context");
+		Game.CreateVAOs();
 
-		// Define the viewport dimensions
-		glViewport(0, 0, WIDTH, HEIGHT);
+		// View
+		mat4 view;
+		view = translate(view, vec3(0.0f, 0.0f, -3.0f));
+		//view = translate(view, vec3(0.0f, -100.0f, -180.0f));
+		//view = rotate(view, radians(90.0f), vec3(1.0f, 0.0f, 0.0f));
 
-		// Vertex buffer object to draw
-		struct Vertex
-		{
-			float x, y, z;
-			float r, g, b;
-			float s, t;
-			Vertex(float x, float y, float z, float r, float g, float b, float s, float t)
-				:x(x), y(y), z(z), r(r), g(g), b(b), s(s), t(t) {}
-		};
-		// Coordinates are in NDC (Normalized Device Coordinates) from -1 to 1
-		Vertex vertices[] = {
-			// positions          // colors           // texture coords
-			Vertex(-0.09f, -0.09f, 0.0f, .00f, .50f, .20f, 0.0f, 0.f ), // top right
-			Vertex( 0.09f, -0.09f, 0.0f, .00f, .50f, .20f, 1.0f, 0.f ), // bottom right
-			Vertex(-0.09f,  0.09f, 0.0f, .00f, .50f, .20f, 0.0f, 1.f), // bottom left
-			Vertex( 0.09f,  0.09f, 0.0f, .00f, .50f, .20f, 1.0f, 1.f ), // top left 
-		};
+		// Projection
+		mat4 projection;
+		projection = perspective(radians(45.0f), (float)WIDTH / HEIGHT, 1.0f, 1200.0f);
 
-		// A Vertex Array Object will store OpenGL's state 
-		unsigned vao;
-		glGenVertexArrays(1, &vao);
-		glBindVertexArray(vao);
+		Game.SetView(view);
+		Game.SetProjection(projection);
 
-		// Create a Vertex Buffer Object
-		unsigned int vbo;
-		glGenBuffers(1, &vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-#define PERSPECTIVE
-#ifndef PERSPECTIVE
-		ShaderProgram shader("Shaders/vertex.vert", "Shaders/multitextures.frag");
-#else
-		ShaderProgram shader("Shaders/mvp.vert", "Shaders/multitextures.frag");
-#endif
-		shader.use();
-
-		// Map the vertex attributes
-		glVertexAttribPointer(0 /*location=0*/, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
-		glEnableVertexAttribArray(0);
-		glEnableVertexAttribArray(1);
-		glEnableVertexAttribArray(2);
-
-		// Load the textures
-		{
-			// bird
-			int width, height, nrChannels;
-			shared_ptr<unsigned char> pBackTex = shared_ptr<unsigned char>(stbi_load("Resources/back.jpg", &width, &height, &nrChannels, 0), stbi_image_free);
-			int width2, height2, nrChannels2;
-			shared_ptr<unsigned char> pBirdTex = shared_ptr<unsigned char>(stbi_load("Resources/bird.png", &width2, &height2, &nrChannels2, 0), stbi_image_free);
-		
-			if (!pBackTex || !pBirdTex)
-				throw exception("Failed to load texture");
-
-			// Generate texture objects
-			unsigned textures[2];
-			glGenTextures(2, textures);
-
-			// Activate Texture unit
-			//back
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, textures[0]);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //foggy
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			// We can set a border color and use it with GL_CLAMP_TO_BORDER for GL_TEXTURE_WRAP_S
-			//float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
-			//glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
-
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pBackTex.get());
-			glGenerateMipmap(GL_TEXTURE_2D);
-
-			//bird
-			glActiveTexture(GL_TEXTURE1 /*GL_TEXTURE0 + 1*/);
-			glBindTexture(GL_TEXTURE_2D, textures[1]);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width2, height2, 0, GL_RGBA, GL_UNSIGNED_BYTE, pBirdTex.get());
-			glGenerateMipmap(GL_TEXTURE_2D);
-
-			// Assign textures to texture samplers in the fragment shader
-			glUniform1i(glGetUniformLocation(shader.ID, "texture1"), 0);
-			glUniform1i(glGetUniformLocation(shader.ID, "texture2"), 1);
-
-			/*unsigned int texture;
-			glGenTextures(1, &texture);
-			glBindTexture(GL_TEXTURE_2D, texture);
-			// set the texture wrapping/filtering options (on the currently bound texture object)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			// load and generate the texture
-			int width3, height3, nrChannels3;
-			unsigned char* data = stbi_load("chimney1.jpg", &width3, &height3, &nrChannels3, 0);
-			if (data)
-			{
-				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width3, height3, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-				glGenerateMipmap(GL_TEXTURE_2D);
-			}
-			else
-			{
-				cout << "Failed to load texture" << endl;
-			}
-			stbi_image_free(data); */
-		}		
-
-		float upDown = 0;
-		float boost = -0.95f;
 		while (!glfwWindowShouldClose(window))
 		{
 			glfwPollEvents();
 
 			// Render
+			glClear(GL_DEPTH_BUFFER_BIT);
 			// Clear the colorbuffer
 			glClearColor(0, 0.9f, 1, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-#ifndef PERSPECTIVE
-			mat4 trans = mat4(1.0f);
-			//trans = translate(trans, vec3(0.5f, -0.5f, 0.f));
-			//trans = rotate(trans, radians(45.f), vec3(0.f, 0.f, 1.f));
-			//trans = scale(trans, vec3(0.5, 0.5, 1.));
-
-			glUniformMatrix4fv(glGetUniformLocation(shader.ID, "transform"), 1, GL_FALSE, value_ptr(trans));
-#else // LATER //CAMERA
-
-			// Model
-			mat4 model;
-			//model = rotate(model, radians(-55.0f), vec3(1.0f, 0.0f, 0.0f));
-			model = translate(model, vec3(boost, upDown, 0.f));
-
-			// View
-			mat4 view;
-			// note that we're translating the scene in the reverse direction of where we want to move
-			 view = translate(view, vec3(0.0f, 0.0f, -1.5f));
-
-			// Projection
-			mat4 projection;
-			projection = perspective(radians(45.0f), (float)WIDTH / HEIGHT, 0.1f, 100.0f);
-
-			//model = translate(model, vec3(0.5f, -0.5f, 0.f));
-			//model = rotate(model, 0.5f, vec3(0.f, 0.f, 0.2f));
-			//model = scale(model, vec3(0.5, 0.5, 1.));
-
-			if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-			{
-				upDown += 0.02;				
-				boost += 0.005;
-				model = rotate(model, 0.5f, vec3(0.f, 0.f, 0.2f));
-			}
-			else if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS) //make game harder
-			{
-				boost += 0.02;				
-			}
-			else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //make game harder
-			{
-				boost -= 0.01;				
-			}
-			else
-			{
-				upDown -= 0.005;				
-				model = rotate(model, -0.3f, vec3(0.f, 0.f, 0.2f));
-				//TODO: dying when falls below
-			}
-
-			if (upDown >= 0.5) {
-				upDown = 0.5;
-			}else if (upDown <= -0.5) {
-				upDown = -0.5;
-			}
-
-			if (boost >= 0.5) {
-				boost = 0.5;
-			}else if (boost <= -1) {
-				boost = -1;
-			}
-			
-			glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
-			glUniformMatrix4fv(glGetUniformLocation(shader.ID, "view"), 1, GL_FALSE, value_ptr(view));
-			glUniformMatrix4fv(glGetUniformLocation(shader.ID, "projection"), 1, GL_FALSE, value_ptr(projection));
-#endif
-
-			GLenum mode = GL_TRIANGLE_STRIP; // GL_TRIANGLES GL_POINTS GL_LINE_STRIP GL_LINE_LOOP
-			glDrawArrays(mode, 0 /*start index in the vbo*/, sizeof(vertices) / sizeof(vertices[0]) /*number of vertices*/);
+			Game.Animate(window);
+			Game.Draw();
 
 			// Swap the screen buffers
 			glfwSwapBuffers(window);
@@ -269,9 +445,70 @@ int main()
 	return 0;
 }
 
+void WindowSettings(GLFWwindow*& window)
+{
+	stbi_set_flip_vertically_on_load(true);// Tell stb to filp images so that 0.0 is at the bottom of the y-axis
+
+	glfwSetErrorCallback(on_error);
+
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+	window = glfwCreateWindow(WIDTH, HEIGHT, "OpenGL Window", NULL, NULL);
+	glfwMakeContextCurrent(window);
+	if (window == NULL)
+		throw exception("Failed to create GLFW window");
+
+	glfwSetKeyCallback(window, key_callback);
+
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+		throw exception("Failed to initialize OpenGL context");
+
+	// Define the viewport dimensions
+	glViewport(0, 0, WIDTH, HEIGHT);
+}
+
+vec3 ChimneyMove(GLFWwindow* window)
+{
+	glm::vec3 result;
+
+	result.x -= 0.005f;
+
+	return result;
+}
+
+vec3 ControlBird(GLFWwindow* window)
+{
+	glm::vec3 result;
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		result.y += 0.03f;
+		result.x += 0.01f;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) //make game harder
+	{
+		result.x += 0.01f;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) //make game harder
+	{
+		result.x -= 0.01f;
+		//TODO: game logic consume coins for going back
+	}
+	else
+	{
+		result.y -= 0.005f;
+	}
+	//GLFW_MOUSE_BUTTON_LEFT
+
+	return result;
+}
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-	cout << key << endl;
+	//cout << key << endl;
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 }
