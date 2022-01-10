@@ -71,6 +71,73 @@ public:
 	//virtual void Draw(ShaderProgram& shader) = 0;
 };
 
+class BackGround : public Drawable {
+public:
+	vector<Vertex> chimneyVertices;
+	vec3 chimneyPosition;
+
+public:
+	BackGround(vec3 chimneyPosition) : Drawable(), chimneyPosition(chimneyPosition)
+	{
+		// positions    // colors         // texture coords
+		chimneyVertices.push_back(Vertex(-1.f, -1.f, -1.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
+		chimneyVertices.push_back(Vertex(1.f, -1.f, -1.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
+		chimneyVertices.push_back(Vertex(-1.f, 1.f, -1.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
+		chimneyVertices.push_back(Vertex(1.f, 1.f, -1.0f, .00f, .50f, .20f, 1.0f, 1.f)); // top left 		
+	};
+
+	virtual void CreateVAO()
+	{
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
+
+		unsigned int vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, chimneyVertices.size() * sizeof(Vertex), chimneyVertices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		{
+			int width, height, nrChannels;
+			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/background.jpg", &width, &height, &nrChannels, 0), stbi_image_free);
+			if (!data)
+				throw exception("Failed to load texture");
+
+			unsigned texture;
+			glGenTextures(1, &texture);
+			glActiveTexture(GL_TEXTURE2);
+			glBindTexture(GL_TEXTURE_2D, texture);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.get());
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+	}
+
+	virtual void Draw(ShaderProgram& shader)
+	{
+		mat4 model = mat4(1.0f);
+		glUniform1i(glGetUniformLocation(shader.ID, "ourTexture"), 2);
+		glBindVertexArray(m_vao);
+		model = translate(model, chimneyPosition);
+
+		model = scale(model, vec3(2.95, 1.65, 1));
+
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, chimneyVertices.size());
+		glBindVertexArray(0);
+	}
+};
+
 class Chimney : public Drawable {
 public:
 	vector<Vertex> chimneyVertices;
@@ -132,6 +199,7 @@ public:
 		}
 	}
 
+	float otherScaleY = 0;
 	virtual void Draw(ShaderProgram& shader, float rotation, float scaleY)
 	{
 		mat4 model = mat4(1.0f);
@@ -141,8 +209,7 @@ public:
 		model = rotate(model, rotation, vec3(0.f, 0.f, 1.f));
 
 		model = scale(model, vec3(1, scaleY, 1));
-		//chimneyPosition.y*= scaleY;
-		//TODO: check if its a problem for collisions
+		otherScaleY = scaleY;
 
 		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, chimneyVertices.size());
@@ -151,10 +218,10 @@ public:
 
 	vec3& Position() { return chimneyPosition; }
 
-	float xMax() const { return chimneyPosition.x + 0.1f; }
-	float xMin() const { return chimneyPosition.x - 0.1f; }
-	float yMax() const { return chimneyPosition.y + 0.05f; }
-	float yMin() const { return chimneyPosition.y - 0.05f; }
+	float xMax() const { return chimneyPosition.x + 0.2f; }
+	float xMin() const { return chimneyPosition.x - 0.2; }
+	float yMax() const { return chimneyPosition.y + 0.1 * otherScaleY; }
+	float yMin() const { return chimneyPosition.y - 0.1 * otherScaleY; }
 };
 
 class Bird : public Drawable {
@@ -229,9 +296,6 @@ public:
 
 		RotateBird(model);
 
-		//model = scale(model, vec3(1.3, 1.3, 1));
-		//TODO: CHECK if its a problem for collisions
-
 		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, birdVertices.size());
 		glBindVertexArray(0);
@@ -240,9 +304,9 @@ public:
 	vec3& Position() { return birdPosition; }
 
 	float xMax() const { return birdPosition.x + 0.13f; }
-	float xMin() const { return birdPosition.x - 0.13f; }
-	float yMax() const { return birdPosition.y + 0.13f; }
-	float yMin() const { return birdPosition.y - 0.13f; }
+	float xMin() const { return birdPosition.x - 0.13; }
+	float yMax() const { return birdPosition.y + 0.13; }
+	float yMin() const { return birdPosition.y - 0.13; }
 
 private:
 	float birdPostionOldY = birdPosition.y;
@@ -285,11 +349,12 @@ class Game
 
 public:
 	Bird bird = Bird(vec3(-2, 0, 0.0f));
+	BackGround background = BackGround(vec3(0, 0, 0));
 
 	void GenerateChimney() {
 		for (size_t i = 0; i < 30; i++)
 		{
-			int indX = i - 1;
+			int indX = i + 1;
 			chimneys.push_back(make_unique<Chimney>(vec3(indX, -1.05, 0.f)));
 			chimneys.push_back(make_unique<Chimney>(vec3(indX, 1.05, 0.f)));
 		}
@@ -309,34 +374,6 @@ public:
 		glUniformMatrix4fv(glGetUniformLocation(shader->ID, "projection"), 1, GL_FALSE, value_ptr(proj));
 	}
 
-	int count = 0;
-	void Animate(GLFWwindow* window)
-	{
-		bird.Move(window);
-		bird.Animate();
-
-		for (size_t i = 0; i < chimneys.size(); i++)
-		{
-			chimneys.at(i)->Move(window);
-			chimneys.at(i)->Animate();
-
-			//cout << "bird xMin: " << bird.xMin() << endl;
-			//cout << "bird xMax: " << bird.xMax() << endl;
-			//cout << "bird yMin: " << bird.yMin() << endl;
-			//cout << "bird yMax: " << bird.yMax() << endl;
-			//
-			//cout << "chimney xMin: " << chimneys.at(i)->xMin() << endl;
-			//cout << "chimney xMax: " << chimneys.at(i)->xMax() << endl;
-			//cout << "chimney yMin: " << chimneys.at(i)->yMin() << endl;
-			//cout << "chimney yMax: " << chimneys.at(i)->yMax() << endl;
-		}
-	}
-
-	void Score()
-	{
-
-	}
-
 private:
 	int lengthChimney[60];
 	void GenerateChimneySizes() {
@@ -348,16 +385,86 @@ private:
 			lengthChimney[59 - i] = 12 - rnd + 2; //2 for starting size 12 for eding size
 		}
 	}
+	int indexChimneyNotToDisplay = 0;
+
+public:
+	void Animate(GLFWwindow* window)
+	{
+		bird.Move(window);
+		bird.Animate();
+
+		bool isup = false;
+		bool isdown = false;
+		for (size_t i = indexChimneyNotToDisplay; i < chimneys.size(); i++) //TODO: dont draw all
+		{
+			if (chimneys.at(i)->xMin() < -3) {
+				indexChimneyNotToDisplay = i;
+			}
+
+			chimneys.at(i)->Move(window);
+			chimneys.at(i)->Animate();
+
+			CollisionWithChimney(i, isdown, isup);
+		}
+
+		if (isup)
+		{
+			cout << "You hit upper chimney!" << endl;
+			exit(1);
+		}			
+		else
+			cout << endl;
+		if (isdown)
+		{
+			cout << "You hit down chimney!" << endl;
+			exit(1);
+		}			
+		else
+			cout << endl;
+	}
+
+	void CollisionWithChimney(const size_t& i, bool& isdown, bool& isup)
+	{
+		if (i % 2 == 0) {
+			if (bird.xMax() > chimneys.at(i)->xMin()
+				&& bird.yMin() < chimneys.at(i)->yMax()
+				&& bird.xMin() < chimneys.at(i)->xMax()) {
+				isdown = true;
+				//TODO: dying
+			}
+		}
+		else
+		{
+			if (bird.xMax() > chimneys.at(i)->xMin()
+				&& bird.yMax() > chimneys.at(i)->yMin()
+				&& bird.xMin() < chimneys.at(i)->xMax()) {
+				isup = true;
+				//TODO: dying
+			}
+		}
+	}
+
+	void Score()
+	{
+
+	}
 
 	int arrSize = sizeof(lengthChimney) / sizeof(lengthChimney[0]);
 
-public:
 	void Draw()
 	{
+		background.Draw(*shader);
 		bird.Draw(*shader);
 
 		for (size_t i = 0; i < chimneys.size(); i++)
 		{
+			if (chimneys.at(i)->xMin() < -3) {
+				continue;
+			}
+
+			if (chimneys.at(i)->xMax() > 3) {
+				break;
+			}
 			if (i % 2 == 0)
 				chimneys.at(i)->Draw(*shader, 0, lengthChimney[i]);
 			else
@@ -367,9 +474,11 @@ public:
 
 	void CreateVAOs()
 	{
-		GenerateChimney();
 		shader.reset(new ShaderProgram("Shaders/mvp.vert", "Shaders/fragment.frag"));
 		shader->use();
+
+		background.CreateVAO();
+		GenerateChimney();
 
 		bird.CreateVAO();
 		for (size_t i = 0; i < chimneys.size(); i++)
@@ -423,7 +532,7 @@ int main()
 			// Render
 			glClear(GL_DEPTH_BUFFER_BIT);
 			// Clear the colorbuffer
-			glClearColor(0, 0.9f, 1, 1.0f);
+			glClearColor(1, 0.9f, 1, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			Game.Animate(window);
@@ -472,21 +581,21 @@ void WindowSettings(GLFWwindow*& window)
 
 vec3 ChimneyMove(GLFWwindow* window)
 {
-	glm::vec3 result;
+	vec3 result;
 
-	result.x -= 0.005f;
+	result.x -= 0.01f;
 
 	return result;
 }
 
 vec3 ControlBird(GLFWwindow* window)
 {
-	glm::vec3 result;
+	vec3 result;
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
 		result.y += 0.03f;
-		result.x += 0.01f;
+		result.x += 0.001f;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) //make game harder
 	{

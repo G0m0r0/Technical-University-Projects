@@ -165,9 +165,6 @@ xcopy /Y /I "$(ProjectDir)Resources" "$(TargetDir)Resources\"</Command>
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Chimney.h" />
-    <ClInclude Include="Drawable.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="ShaderProgram.hpp" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
