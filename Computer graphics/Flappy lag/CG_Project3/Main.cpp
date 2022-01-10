@@ -123,6 +123,43 @@ public:
 		}
 	}
 
+	virtual void CreateVAOPunk()
+	{
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
+
+		unsigned int vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, chimneyVertices.size() * sizeof(Vertex), chimneyVertices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		{
+			int width, height, nrChannels;
+			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/background1.jpg", &width, &height, &nrChannels, 0), stbi_image_free);
+			if (!data)
+				throw exception("Failed to load texture");
+
+			unsigned texture;
+			glGenTextures(1, &texture);
+			glActiveTexture(GL_TEXTURE2);
+			glBindTexture(GL_TEXTURE_2D, texture);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.get());
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+	}
+
 	virtual void Draw(ShaderProgram& shader)
 	{
 		mat4 model = mat4(1.0f);
@@ -181,6 +218,43 @@ public:
 		{
 			int width, height, nrChannels;
 			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/chimney.jpg", &width, &height, &nrChannels, 0), stbi_image_free);
+			if (!data)
+				throw exception("Failed to load texture");
+
+			unsigned texture;
+			glGenTextures(1, &texture);
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, texture);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data.get());
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+	}
+
+	virtual void CreateVAOPunk()
+	{
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
+
+		unsigned int vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, chimneyVertices.size() * sizeof(Vertex), chimneyVertices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		{
+			int width, height, nrChannels;
+			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/chimney2.jpg", &width, &height, &nrChannels, 0), stbi_image_free);
 			if (!data)
 				throw exception("Failed to load texture");
 
@@ -287,6 +361,43 @@ public:
 		}
 	}
 
+	virtual void CreateVAOPunk()
+	{
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
+
+		unsigned int vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, birdVertices.size() * sizeof(Vertex), birdVertices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		{
+			int width, height, nrChannels;
+			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/bird1.png", &width, &height, &nrChannels, 0), stbi_image_free);
+			if (!data)
+				throw exception("Failed to load texture");
+
+			unsigned texture;
+			glGenTextures(1, &texture);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, texture);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.get());
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+	}
+
 	virtual void Draw(ShaderProgram& shader)
 	{
 		glUniform1i(glGetUniformLocation(shader.ID, "ourTexture"), 0);
@@ -345,11 +456,13 @@ private:
 
 class Game
 {
-	vector<unique_ptr<Chimney>> chimneys;
+private:
+	bool punkMod = false;
 
 public:
 	Bird bird = Bird(vec3(-2, 0, 0.0f));
 	BackGround background = BackGround(vec3(0, 0, 0));
+	vector<unique_ptr<Chimney>> chimneys;
 
 	void GenerateChimney() {
 		for (size_t i = 0; i < 30; i++)
@@ -385,7 +498,7 @@ private:
 			lengthChimney[59 - i] = 12 - rnd + 2; //2 for starting size 12 for eding size
 		}
 	}
-	int indexChimneyNotToDisplay = 0;
+	int indexChimneyNotToDisplayBack = 0;
 
 public:
 	void Animate(GLFWwindow* window)
@@ -395,10 +508,10 @@ public:
 
 		bool isup = false;
 		bool isdown = false;
-		for (size_t i = indexChimneyNotToDisplay; i < chimneys.size(); i++) //TODO: dont draw all
+		for (size_t i = indexChimneyNotToDisplayBack; i < chimneys.size(); i++) //TODO: dont draw all
 		{
 			if (chimneys.at(i)->xMin() < -3) {
-				indexChimneyNotToDisplay = i;
+				indexChimneyNotToDisplayBack = i;
 			}
 
 			chimneys.at(i)->Move(window);
@@ -412,15 +525,12 @@ public:
 			cout << "You hit upper chimney!" << endl;
 			exit(1);
 		}			
-		else
-			cout << endl;
+		
 		if (isdown)
 		{
 			cout << "You hit down chimney!" << endl;
 			exit(1);
 		}			
-		else
-			cout << endl;
 	}
 
 	void CollisionWithChimney(const size_t& i, bool& isdown, bool& isup)
@@ -443,28 +553,60 @@ public:
 			}
 		}
 	}
+private: 
+	int scoreMax = 0;
 
+public:
 	void Score()
 	{
+		for (size_t i = 0; i < chimneys.size(); i++)
+		{
+			if (chimneys.at(i)->xMin() < -3) {
+				indexChimneyNotToDisplayBack = i;
+			}
 
+			if (chimneys.at(i)->xMax() > 3) {
+				break;
+			}
+
+			if (scoreMax < i&&bird.xMax()>chimneys.at(i)->xMax()) {
+				scoreMax++;
+				cout << "Score: " << i << " points." << endl;
+				break;
+			}
+		}
 	}
 
 	int arrSize = sizeof(lengthChimney) / sizeof(lengthChimney[0]);
 
 	void Draw()
 	{
+
 		background.Draw(*shader);
 		bird.Draw(*shader);
 
 		for (size_t i = 0; i < chimneys.size(); i++)
 		{
 			if (chimneys.at(i)->xMin() < -3) {
-				continue;
+				indexChimneyNotToDisplayBack = i;
 			}
 
 			if (chimneys.at(i)->xMax() > 3) {
 				break;
 			}
+
+			if (indexChimneyNotToDisplayBack == 5&&punkMod==0) {
+				punkMod = true;
+				bird.CreateVAOPunk();
+				background.CreateVAOPunk();
+
+				for (size_t i = 0; i < chimneys.size(); i++)
+				{
+					chimneys.at(i)->CreateVAOPunk();
+				}
+			}
+
+
 			if (i % 2 == 0)
 				chimneys.at(i)->Draw(*shader, 0, lengthChimney[i]);
 			else
@@ -537,6 +679,7 @@ int main()
 
 			Game.Animate(window);
 			Game.Draw();
+			Game.Score();
 
 			// Swap the screen buffers
 			glfwSwapBuffers(window);
