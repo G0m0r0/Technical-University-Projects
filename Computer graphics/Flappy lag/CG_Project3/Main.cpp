@@ -73,17 +73,17 @@ public:
 
 class BackGround : public Drawable {
 public:
-	vector<Vertex> chimneyVertices;
-	vec3 chimneyPosition;
+	vector<Vertex> backVertices;
+	vec3 backPosition;
 
 public:
-	BackGround(vec3 chimneyPosition) : Drawable(), chimneyPosition(chimneyPosition)
+	BackGround(vec3 backPosition) : Drawable(), backPosition(backPosition)
 	{
 		// positions    // colors         // texture coords
-		chimneyVertices.push_back(Vertex(-1.f, -1.f, -1.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
-		chimneyVertices.push_back(Vertex(1.f, -1.f, -1.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
-		chimneyVertices.push_back(Vertex(-1.f, 1.f, -1.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
-		chimneyVertices.push_back(Vertex(1.f, 1.f, -1.0f, .00f, .50f, .20f, 1.0f, 1.f)); // top left 		
+		backVertices.push_back(Vertex(-1.f, -1.f, -1.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
+		backVertices.push_back(Vertex(1.f, -1.f, -1.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
+		backVertices.push_back(Vertex(-1.f, 1.f, -1.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
+		backVertices.push_back(Vertex(1.f, 1.f, -1.0f, .00f, .50f, .20f, 1.0f, 1.f)); // top left 		
 	};
 
 	virtual void CreateVAO()
@@ -94,7 +94,7 @@ public:
 		unsigned int vbo;
 		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, chimneyVertices.size() * sizeof(Vertex), chimneyVertices.data(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, backVertices.size() * sizeof(Vertex), backVertices.data(), GL_STATIC_DRAW);
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
@@ -131,7 +131,7 @@ public:
 		unsigned int vbo;
 		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, chimneyVertices.size() * sizeof(Vertex), chimneyVertices.data(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, backVertices.size() * sizeof(Vertex), backVertices.data(), GL_STATIC_DRAW);
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
@@ -165,12 +165,87 @@ public:
 		mat4 model = mat4(1.0f);
 		glUniform1i(glGetUniformLocation(shader.ID, "ourTexture"), 2);
 		glBindVertexArray(m_vao);
-		model = translate(model, chimneyPosition);
+		model = translate(model, backPosition);
 
 		model = scale(model, vec3(2.95, 1.65, 1));
 
 		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, chimneyVertices.size());
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, backVertices.size());
+		glBindVertexArray(0);
+	}
+};
+
+class Start : public Drawable {
+public:
+	vector<Vertex> startVertices;
+	vec3 startDirection;
+	vec3 startPosition;
+
+public:
+	Start(vec3 chimneyPosition) : Drawable(), startPosition(chimneyPosition)
+	{
+		// positions    // colors         // texture coords
+		startVertices.push_back(Vertex(-0.6f, -0.2f, -1.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
+		startVertices.push_back(Vertex(0.6f, -0.2f, -1.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
+		startVertices.push_back(Vertex(-0.6f, 0.2f, -1.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
+		startVertices.push_back(Vertex(0.6f, 0.2f, -1.0f, .00f, .50f, .20f, 1.0f, 1.f)); // top left 		
+	};
+
+	virtual void CreateVAO()
+	{
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
+
+		unsigned int vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, startVertices.size() * sizeof(Vertex), startVertices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), NULL);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, s));
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		{
+			int width, height, nrChannels;
+			shared_ptr<unsigned char> data = shared_ptr<unsigned char>(stbi_load("Resources/start.jpg", &width, &height, &nrChannels, 0), stbi_image_free);
+			if (!data)
+				throw exception("Failed to load texture");
+
+			unsigned texture;
+			glGenTextures(1, &texture);
+			glActiveTexture(GL_TEXTURE3);
+			glBindTexture(GL_TEXTURE_2D, texture);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.get());
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+	}
+
+	void Animate() {
+		startPosition += startDirection;
+	}
+
+	void Move(GLFWwindow* window) {
+		startDirection = ChimneyMove(window);
+	}
+
+	virtual void Draw(ShaderProgram& shader)
+	{
+		mat4 model = mat4(1.0f);
+		glUniform1i(glGetUniformLocation(shader.ID, "ourTexture"), 3);
+		glBindVertexArray(m_vao);
+
+		model = translate(model, startPosition);
+
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, value_ptr(model));
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, startVertices.size());
 		glBindVertexArray(0);
 	}
 };
@@ -462,6 +537,7 @@ private:
 public:
 	Bird bird = Bird(vec3(-2, 0, 0.0f));
 	BackGround background = BackGround(vec3(0, 0, 0));
+	Start start = Start(vec3(-1.5f, 1.f, 0));
 	vector<unique_ptr<Chimney>> chimneys;
 
 	void GenerateChimney() {
@@ -506,6 +582,11 @@ public:
 		bird.Move(window);
 		bird.Animate();
 
+		if (start.startPosition.x > -5) {
+			start.Move(window);
+			start.Animate();
+		}
+
 		bool isup = false;
 		bool isdown = false;
 		for (size_t i = indexChimneyNotToDisplayBack; i < chimneys.size(); i++) //TODO: dont draw all
@@ -524,13 +605,13 @@ public:
 		{
 			cout << "You hit upper chimney!" << endl;
 			exit(1);
-		}			
-		
+		}
+
 		if (isdown)
 		{
 			cout << "You hit down chimney!" << endl;
 			exit(1);
-		}			
+		}
 	}
 
 	void CollisionWithChimney(const size_t& i, bool& isdown, bool& isup)
@@ -540,7 +621,6 @@ public:
 				&& bird.yMin() < chimneys.at(i)->yMax()
 				&& bird.xMin() < chimneys.at(i)->xMax()) {
 				isdown = true;
-				//TODO: dying
 			}
 		}
 		else
@@ -549,11 +629,10 @@ public:
 				&& bird.yMax() > chimneys.at(i)->yMin()
 				&& bird.xMin() < chimneys.at(i)->xMax()) {
 				isup = true;
-				//TODO: dying
 			}
 		}
 	}
-private: 
+private:
 	int scoreMax = 0;
 
 public:
@@ -561,19 +640,19 @@ public:
 	{
 		for (size_t i = 0; i < chimneys.size(); i++)
 		{
-			if (chimneys.at(i)->xMin() < -3) {
-				indexChimneyNotToDisplayBack = i;
-			}
+			//if (chimneys.at(i)->xMin() < -3) {
+			//	indexChimneyNotToDisplayBack = i;
+			//}
 
 			if (chimneys.at(i)->xMax() > 3) {
 				break;
 			}
-
-			if (scoreMax < i&&bird.xMax()>chimneys.at(i)->xMax()) {
-				scoreMax++;
-				cout << "Score: " << i << " points." << endl;
-				break;
-			}
+			if (i % 2 != 0)
+				if (scoreMax < i + 1 && bird.xMax()>chimneys.at(i)->xMax()) {
+					scoreMax++;
+					cout << "Score: " << scoreMax << " points." << endl;
+					break;
+				}
 		}
 	}
 
@@ -581,9 +660,11 @@ public:
 
 	void Draw()
 	{
-
 		background.Draw(*shader);
 		bird.Draw(*shader);
+
+		if (start.startPosition.x > -5)
+			start.Draw(*shader);
 
 		for (size_t i = 0; i < chimneys.size(); i++)
 		{
@@ -595,8 +676,9 @@ public:
 				break;
 			}
 
-			if (indexChimneyNotToDisplayBack == 5&&punkMod==0) {
+			if (indexChimneyNotToDisplayBack == 10 && punkMod == 0) {
 				punkMod = true;
+				cout << "Punk mode is active!";
 				bird.CreateVAOPunk();
 				background.CreateVAOPunk();
 
@@ -606,20 +688,28 @@ public:
 				}
 			}
 
-
-			if (i % 2 == 0)
-				chimneys.at(i)->Draw(*shader, 0, lengthChimney[i]);
-			else
-				chimneys.at(i)->Draw(*shader, -3.145f, lengthChimney[arrSize - i]);
+			if (chimneys.at(i)->xMin() > -3)
+				if (i % 2 == 0)
+					chimneys.at(i)->Draw(*shader, 0, lengthChimney[i]);
+				else
+					chimneys.at(i)->Draw(*shader, -3.145f, lengthChimney[arrSize - i]);
 		}
 	}
+
+	bool displayStart = true;
 
 	void CreateVAOs()
 	{
 		shader.reset(new ShaderProgram("Shaders/mvp.vert", "Shaders/fragment.frag"));
 		shader->use();
 
+		if (displayStart)
+		{
+			displayStart = false;
+		}
 		background.CreateVAO();
+		start.CreateVAO();
+
 		GenerateChimney();
 
 		bird.CreateVAO();
