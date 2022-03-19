@@ -39,6 +39,7 @@ void on_error(int code, const char* text);
 #include "ShaderProgram.hpp"
 
 // Vertex buffer object to draw
+//use same
 struct Vertex
 {
 	float x, y, z;
@@ -46,8 +47,8 @@ struct Vertex
 	float s, t;
 	Vertex(float x, float y, float z, float r, float g, float b, float s, float t)
 		:x(x), y(y), z(z), r(r), g(g), b(b), s(s), t(t) {}
-};
-
+}; 
+//use same
 class Drawable
 {
 protected:
@@ -69,8 +70,8 @@ public:
 
 	virtual void Animate(float timeDelta) {}
 	//virtual void Draw(ShaderProgram& shader) = 0;
-};
-
+}; 
+//delete
 class BackGround : public Drawable {
 public:
 	vector<Vertex> backVertices;
@@ -174,7 +175,7 @@ public:
 		glBindVertexArray(0);
 	}
 };
-
+//delete
 class Start : public Drawable {
 public:
 	vector<Vertex> startVertices;
@@ -249,7 +250,7 @@ public:
 		glBindVertexArray(0);
 	}
 };
-
+//change your object
 class Chimney : public Drawable {
 public:
 	vector<Vertex> chimneyVertices;
@@ -259,7 +260,7 @@ public:
 public:
 	Chimney(vec3 chimneyPosition) : Drawable(), chimneyPosition(chimneyPosition)
 	{
-		// positions    // colors         // texture coords
+											// positions    // colors         // texture coords
 		chimneyVertices.push_back(Vertex(-0.2f, -0.1f, 0.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
 		chimneyVertices.push_back(Vertex(0.2f, -0.1f, 0.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
 		chimneyVertices.push_back(Vertex(-0.2f, 0.1f, 0.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
@@ -372,7 +373,7 @@ public:
 	float yMax() const { return chimneyPosition.y + 0.1 * otherScaleY; }
 	float yMin() const { return chimneyPosition.y - 0.1 * otherScaleY; }
 };
-
+//change your object
 class Bird : public Drawable {
 public:
 	vector<Vertex> birdVertices;
@@ -382,7 +383,7 @@ public:
 public:
 	Bird(vec3 birdPosition) : Drawable(), birdPosition(birdPosition)
 	{
-		// positions    // colors         // texture coords
+										// positions    // colors         // texture coords
 		birdVertices.push_back(Vertex(-0.13f, -0.13f, 0.0f, .00f, .50f, .20f, 0.0f, 0.f)); // top right
 		birdVertices.push_back(Vertex(0.13f, -0.13f, 0.0f, .00f, .50f, .20f, 1.0f, 0.f)); // bottom right
 		birdVertices.push_back(Vertex(-0.13f, 0.13f, 0.0f, .00f, .50f, .20f, 0.0f, 1.f)); // bottom left
@@ -525,10 +526,8 @@ private:
 			birdPosition.y = 1;
 		}
 	}
-
 };
-
-
+//delete inside methods and change with your logic
 class Game
 {
 private:
@@ -746,7 +745,7 @@ int main()
 
 		// View
 		mat4 view;
-		view = translate(view, vec3(0.0f, 0.0f, -3.0f));
+		view = translate(view, vec3(0.0f, 0.0f, -3.0f)); 
 		//view = translate(view, vec3(0.0f, -100.0f, -180.0f));
 		//view = rotate(view, radians(90.0f), vec3(1.0f, 0.0f, 0.0f));
 
@@ -764,7 +763,7 @@ int main()
 			// Render
 			glClear(GL_DEPTH_BUFFER_BIT);
 			// Clear the colorbuffer
-			glClearColor(1, 0.9f, 1, 1.0f);
+			glClearColor(1, 0.f, 1, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			Game.Animate(window);
