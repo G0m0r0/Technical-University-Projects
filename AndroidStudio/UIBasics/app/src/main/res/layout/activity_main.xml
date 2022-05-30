@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:text="Hello world!"
         android:layout_margin="100dp"
-        android:id="@+id/txtWelcome"/>
+        android:id="@+id/txtHello"/>
 
 </RelativeLayout>

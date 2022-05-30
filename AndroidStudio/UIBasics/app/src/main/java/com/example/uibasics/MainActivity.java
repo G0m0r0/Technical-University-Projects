@@ -3,18 +3,18 @@ package com.example.uibasics;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView txtHello;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    public  void onHelloBtnClicked(View view){
-        TextView txtWelcome = findViewById(R.id.txtWelcome);
-        txtWelcome.setText("Hello Again!");
+        txtHello=findViewById(R.id.txtHello);
+        txtHello.setText(getString(R.string.hello));
     }
 }

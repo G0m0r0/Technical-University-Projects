@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ListOfObjects</string>
+
+  <!--  <String-array name="students">
+        <item>Mike</item>
+        <item>John</item>
+        <item>Gosho</item>
+        <item>Niko</item>
+    </String-array> -->
+</resources>
