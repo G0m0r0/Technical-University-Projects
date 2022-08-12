@@ -1,7 +1,0 @@
-D:\C#\University\first test\first test\bin\Debug\first test.exe.config
-D:\C#\University\first test\first test\bin\Debug\first test.exe
-D:\C#\University\first test\first test\bin\Debug\first test.pdb
-D:\C#\University\first test\first test\obj\Debug\first test.csprojAssemblyReference.cache
-D:\C#\University\first test\first test\obj\Debug\first test.csproj.CoreCompileInputs.cache
-D:\C#\University\first test\first test\obj\Debug\first test.exe
-D:\C#\University\first test\first test\obj\Debug\first test.pdb

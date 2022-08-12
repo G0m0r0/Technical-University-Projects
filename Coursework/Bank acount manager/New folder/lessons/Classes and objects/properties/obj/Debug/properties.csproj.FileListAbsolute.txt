@@ -1,7 +1,0 @@
-D:\C#\University\lessons\Classes and objects\properties\bin\Debug\properties.exe.config
-D:\C#\University\lessons\Classes and objects\properties\bin\Debug\properties.exe
-D:\C#\University\lessons\Classes and objects\properties\bin\Debug\properties.pdb
-D:\C#\University\lessons\Classes and objects\properties\obj\Debug\properties.csprojAssemblyReference.cache
-D:\C#\University\lessons\Classes and objects\properties\obj\Debug\properties.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\Classes and objects\properties\obj\Debug\properties.exe
-D:\C#\University\lessons\Classes and objects\properties\obj\Debug\properties.pdb

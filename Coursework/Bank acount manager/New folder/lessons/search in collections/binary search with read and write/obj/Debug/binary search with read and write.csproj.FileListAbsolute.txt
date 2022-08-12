@@ -1,7 +1,0 @@
-D:\C#\University\lessons\search in collections\binary search with read and write\obj\Debug\binary search with read and write.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\search in collections\binary search with read and write\bin\Debug\binary search with read and write.exe.config
-D:\C#\University\lessons\search in collections\binary search with read and write\bin\Debug\binary search with read and write.exe
-D:\C#\University\lessons\search in collections\binary search with read and write\bin\Debug\binary search with read and write.pdb
-D:\C#\University\lessons\search in collections\binary search with read and write\obj\Debug\binary search with read and write.exe
-D:\C#\University\lessons\search in collections\binary search with read and write\obj\Debug\binary search with read and write.pdb
-D:\C#\University\lessons\search in collections\binary search with read and write\obj\Debug\binary search with read and write.csprojAssemblyReference.cache

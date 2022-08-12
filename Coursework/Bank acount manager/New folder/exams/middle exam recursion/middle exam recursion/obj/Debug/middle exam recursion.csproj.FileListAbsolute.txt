@@ -1,7 +1,0 @@
-D:\C#\University\middle exam recursion\middle exam recursion\bin\Debug\middle exam recursion.exe.config
-D:\C#\University\middle exam recursion\middle exam recursion\bin\Debug\middle exam recursion.exe
-D:\C#\University\middle exam recursion\middle exam recursion\bin\Debug\middle exam recursion.pdb
-D:\C#\University\middle exam recursion\middle exam recursion\obj\Debug\middle exam recursion.csprojAssemblyReference.cache
-D:\C#\University\middle exam recursion\middle exam recursion\obj\Debug\middle exam recursion.csproj.CoreCompileInputs.cache
-D:\C#\University\middle exam recursion\middle exam recursion\obj\Debug\middle exam recursion.exe
-D:\C#\University\middle exam recursion\middle exam recursion\obj\Debug\middle exam recursion.pdb

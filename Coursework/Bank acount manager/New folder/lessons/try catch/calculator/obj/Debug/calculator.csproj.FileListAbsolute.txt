@@ -1,7 +1,0 @@
-D:\C#\University\lessons\try catch\calculator\bin\Debug\calculator.exe.config
-D:\C#\University\lessons\try catch\calculator\bin\Debug\calculator.exe
-D:\C#\University\lessons\try catch\calculator\bin\Debug\calculator.pdb
-D:\C#\University\lessons\try catch\calculator\obj\Debug\calculator.csprojAssemblyReference.cache
-D:\C#\University\lessons\try catch\calculator\obj\Debug\calculator.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\try catch\calculator\obj\Debug\calculator.exe
-D:\C#\University\lessons\try catch\calculator\obj\Debug\calculator.pdb

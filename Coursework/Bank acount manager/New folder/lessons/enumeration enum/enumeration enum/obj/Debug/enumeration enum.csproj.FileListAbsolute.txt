@@ -1,7 +1,0 @@
-D:\C#\University\lessons\enumeration enum\enumeration enum\bin\Debug\enumeration enum.exe.config
-D:\C#\University\lessons\enumeration enum\enumeration enum\bin\Debug\enumeration enum.exe
-D:\C#\University\lessons\enumeration enum\enumeration enum\bin\Debug\enumeration enum.pdb
-D:\C#\University\lessons\enumeration enum\enumeration enum\obj\Debug\enumeration enum.csprojAssemblyReference.cache
-D:\C#\University\lessons\enumeration enum\enumeration enum\obj\Debug\enumeration enum.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\enumeration enum\enumeration enum\obj\Debug\enumeration enum.exe
-D:\C#\University\lessons\enumeration enum\enumeration enum\obj\Debug\enumeration enum.pdb

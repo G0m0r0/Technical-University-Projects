@@ -1,7 +1,0 @@
-D:\C#\University\lessons\search in collections\binary search with bool\bin\Debug\binary search with bool.exe.config
-D:\C#\University\lessons\search in collections\binary search with bool\bin\Debug\binary search with bool.exe
-D:\C#\University\lessons\search in collections\binary search with bool\bin\Debug\binary search with bool.pdb
-D:\C#\University\lessons\search in collections\binary search with bool\obj\Debug\binary search with bool.csprojAssemblyReference.cache
-D:\C#\University\lessons\search in collections\binary search with bool\obj\Debug\binary search with bool.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\search in collections\binary search with bool\obj\Debug\binary search with bool.exe
-D:\C#\University\lessons\search in collections\binary search with bool\obj\Debug\binary search with bool.pdb

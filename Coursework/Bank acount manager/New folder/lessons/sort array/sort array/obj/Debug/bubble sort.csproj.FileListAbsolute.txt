@@ -1,7 +1,0 @@
-D:\C#\University\lessons\sort array\sort array\bin\Debug\sort array.exe.config
-D:\C#\University\lessons\sort array\sort array\bin\Debug\sort array.exe
-D:\C#\University\lessons\sort array\sort array\bin\Debug\sort array.pdb
-D:\C#\University\lessons\sort array\sort array\obj\Debug\bubble sort.csprojAssemblyReference.cache
-D:\C#\University\lessons\sort array\sort array\obj\Debug\bubble sort.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\sort array\sort array\obj\Debug\sort array.exe
-D:\C#\University\lessons\sort array\sort array\obj\Debug\sort array.pdb

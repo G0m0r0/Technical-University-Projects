@@ -1,6 +1,0 @@
-D:\C#\My projects\Methods\Math operations\bin\Debug\Math operations.exe.config
-D:\C#\My projects\Methods\Math operations\bin\Debug\Math operations.exe
-D:\C#\My projects\Methods\Math operations\bin\Debug\Math operations.pdb
-D:\C#\My projects\Methods\Math operations\obj\Debug\Math operations.csproj.CoreCompileInputs.cache
-D:\C#\My projects\Methods\Math operations\obj\Debug\Math operations.exe
-D:\C#\My projects\Methods\Math operations\obj\Debug\Math operations.pdb

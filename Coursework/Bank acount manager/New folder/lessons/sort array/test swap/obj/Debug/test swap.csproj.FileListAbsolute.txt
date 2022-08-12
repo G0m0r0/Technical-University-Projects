@@ -1,7 +1,0 @@
-C:\Users\dimit\source\repos\sort array\test swap\bin\Debug\test swap.exe.config
-C:\Users\dimit\source\repos\sort array\test swap\bin\Debug\test swap.exe
-C:\Users\dimit\source\repos\sort array\test swap\bin\Debug\test swap.pdb
-C:\Users\dimit\source\repos\sort array\test swap\obj\Debug\test swap.csprojAssemblyReference.cache
-C:\Users\dimit\source\repos\sort array\test swap\obj\Debug\test swap.csproj.CoreCompileInputs.cache
-C:\Users\dimit\source\repos\sort array\test swap\obj\Debug\test swap.exe
-C:\Users\dimit\source\repos\sort array\test swap\obj\Debug\test swap.pdb

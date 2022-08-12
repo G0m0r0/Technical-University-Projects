@@ -1,6 +1,0 @@
-D:\C#\My projects\Methods\Caculate rectangle area-overloading\bin\Debug\Caculate rectangle area-overloading.exe.config
-D:\C#\My projects\Methods\Caculate rectangle area-overloading\bin\Debug\Caculate rectangle area-overloading.exe
-D:\C#\My projects\Methods\Caculate rectangle area-overloading\bin\Debug\Caculate rectangle area-overloading.pdb
-D:\C#\My projects\Methods\Caculate rectangle area-overloading\obj\Debug\Caculate rectangle area-overloading.csproj.CoreCompileInputs.cache
-D:\C#\My projects\Methods\Caculate rectangle area-overloading\obj\Debug\Caculate rectangle area-overloading.exe
-D:\C#\My projects\Methods\Caculate rectangle area-overloading\obj\Debug\Caculate rectangle area-overloading.pdb

@@ -1,7 +1,0 @@
-D:\C#\University\switch two numbers\foreach\bin\Debug\@foreach.exe.config
-D:\C#\University\switch two numbers\foreach\bin\Debug\@foreach.exe
-D:\C#\University\switch two numbers\foreach\bin\Debug\@foreach.pdb
-D:\C#\University\switch two numbers\foreach\obj\Debug\foreach.csprojAssemblyReference.cache
-D:\C#\University\switch two numbers\foreach\obj\Debug\foreach.csproj.CoreCompileInputs.cache
-D:\C#\University\switch two numbers\foreach\obj\Debug\@foreach.exe
-D:\C#\University\switch two numbers\foreach\obj\Debug\@foreach.pdb

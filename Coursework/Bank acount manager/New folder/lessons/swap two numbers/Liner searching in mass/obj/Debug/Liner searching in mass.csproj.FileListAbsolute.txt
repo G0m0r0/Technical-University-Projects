@@ -1,7 +1,0 @@
-D:\C#\University\switch two numbers\Liner searching in mass\bin\Debug\Liner searching in mass.exe.config
-D:\C#\University\switch two numbers\Liner searching in mass\bin\Debug\Liner searching in mass.exe
-D:\C#\University\switch two numbers\Liner searching in mass\bin\Debug\Liner searching in mass.pdb
-D:\C#\University\switch two numbers\Liner searching in mass\obj\Debug\Liner searching in mass.csprojAssemblyReference.cache
-D:\C#\University\switch two numbers\Liner searching in mass\obj\Debug\Liner searching in mass.csproj.CoreCompileInputs.cache
-D:\C#\University\switch two numbers\Liner searching in mass\obj\Debug\Liner searching in mass.exe
-D:\C#\University\switch two numbers\Liner searching in mass\obj\Debug\Liner searching in mass.pdb

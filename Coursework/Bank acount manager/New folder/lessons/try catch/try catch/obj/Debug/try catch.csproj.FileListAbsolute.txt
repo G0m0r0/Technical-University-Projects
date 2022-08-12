@@ -1,7 +1,0 @@
-D:\C#\University\lessons\try catch\try catch\bin\Debug\try catch.exe.config
-D:\C#\University\lessons\try catch\try catch\bin\Debug\try catch.exe
-D:\C#\University\lessons\try catch\try catch\bin\Debug\try catch.pdb
-D:\C#\University\lessons\try catch\try catch\obj\Debug\try catch.csprojAssemblyReference.cache
-D:\C#\University\lessons\try catch\try catch\obj\Debug\try catch.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\try catch\try catch\obj\Debug\try catch.exe
-D:\C#\University\lessons\try catch\try catch\obj\Debug\try catch.pdb

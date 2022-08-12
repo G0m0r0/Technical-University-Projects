@@ -1,7 +1,0 @@
-D:\C#\University\lessons\recursion\reversed array\bin\Debug\reversed array.exe.config
-D:\C#\University\lessons\recursion\reversed array\bin\Debug\reversed array.exe
-D:\C#\University\lessons\recursion\reversed array\bin\Debug\reversed array.pdb
-D:\C#\University\lessons\recursion\reversed array\obj\Debug\reversed array.csprojAssemblyReference.cache
-D:\C#\University\lessons\recursion\reversed array\obj\Debug\reversed array.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\recursion\reversed array\obj\Debug\reversed array.exe
-D:\C#\University\lessons\recursion\reversed array\obj\Debug\reversed array.pdb

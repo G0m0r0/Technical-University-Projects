@@ -1,7 +1,0 @@
-D:\C#\My projects\counter of char\ReadTOENd\bin\Debug\ReadTOENd.exe.config
-D:\C#\My projects\counter of char\ReadTOENd\bin\Debug\ReadTOENd.exe
-D:\C#\My projects\counter of char\ReadTOENd\bin\Debug\ReadTOENd.pdb
-D:\C#\My projects\counter of char\ReadTOENd\obj\Debug\ReadTOENd.csprojAssemblyReference.cache
-D:\C#\My projects\counter of char\ReadTOENd\obj\Debug\ReadTOENd.csproj.CoreCompileInputs.cache
-D:\C#\My projects\counter of char\ReadTOENd\obj\Debug\ReadTOENd.exe
-D:\C#\My projects\counter of char\ReadTOENd\obj\Debug\ReadTOENd.pdb

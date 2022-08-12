@@ -1,6 +1,0 @@
-D:\C#\University\switch two numbers\recursion\bin\Debug\recursion.exe.config
-D:\C#\University\switch two numbers\recursion\bin\Debug\recursion.exe
-D:\C#\University\switch two numbers\recursion\bin\Debug\recursion.pdb
-D:\C#\University\switch two numbers\recursion\obj\Debug\recursion.csproj.CoreCompileInputs.cache
-D:\C#\University\switch two numbers\recursion\obj\Debug\recursion.exe
-D:\C#\University\switch two numbers\recursion\obj\Debug\recursion.pdb

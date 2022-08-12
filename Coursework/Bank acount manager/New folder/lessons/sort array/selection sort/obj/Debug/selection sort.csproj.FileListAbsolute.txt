@@ -1,7 +1,0 @@
-D:\C#\University\lessons\sort array\selection sort\bin\Debug\selection sort.exe.config
-D:\C#\University\lessons\sort array\selection sort\bin\Debug\selection sort.exe
-D:\C#\University\lessons\sort array\selection sort\bin\Debug\selection sort.pdb
-D:\C#\University\lessons\sort array\selection sort\obj\Debug\selection sort.csprojAssemblyReference.cache
-D:\C#\University\lessons\sort array\selection sort\obj\Debug\selection sort.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\sort array\selection sort\obj\Debug\selection sort.exe
-D:\C#\University\lessons\sort array\selection sort\obj\Debug\selection sort.pdb

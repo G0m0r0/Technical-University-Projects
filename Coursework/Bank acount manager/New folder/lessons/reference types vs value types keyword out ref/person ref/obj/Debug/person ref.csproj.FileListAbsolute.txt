@@ -1,6 +1,0 @@
-D:\C#\University\lessons\reference types vs value types\person ref\bin\Debug\person ref.exe.config
-D:\C#\University\lessons\reference types vs value types\person ref\bin\Debug\person ref.exe
-D:\C#\University\lessons\reference types vs value types\person ref\bin\Debug\person ref.pdb
-D:\C#\University\lessons\reference types vs value types\person ref\obj\Debug\person ref.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\reference types vs value types\person ref\obj\Debug\person ref.exe
-D:\C#\University\lessons\reference types vs value types\person ref\obj\Debug\person ref.pdb

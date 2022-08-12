@@ -1,6 +1,0 @@
-D:\C#\My projects\Methods\Print triangle\bin\Debug\Print triangle.exe.config
-D:\C#\My projects\Methods\Print triangle\bin\Debug\Print triangle.exe
-D:\C#\My projects\Methods\Print triangle\bin\Debug\Print triangle.pdb
-D:\C#\My projects\Methods\Print triangle\obj\Debug\Print triangle.csproj.CoreCompileInputs.cache
-D:\C#\My projects\Methods\Print triangle\obj\Debug\Print triangle.exe
-D:\C#\My projects\Methods\Print triangle\obj\Debug\Print triangle.pdb

@@ -1,7 +1,0 @@
-D:\C#\University\lessons\swap two numbers\swap with c\bin\Debug\swap with c.exe.config
-D:\C#\University\lessons\swap two numbers\swap with c\bin\Debug\swap with c.exe
-D:\C#\University\lessons\swap two numbers\swap with c\bin\Debug\swap with c.pdb
-D:\C#\University\lessons\swap two numbers\swap with c\obj\Debug\swap with c.csprojAssemblyReference.cache
-D:\C#\University\lessons\swap two numbers\swap with c\obj\Debug\swap with c.csproj.CoreCompileInputs.cache
-D:\C#\University\lessons\swap two numbers\swap with c\obj\Debug\swap with c.exe
-D:\C#\University\lessons\swap two numbers\swap with c\obj\Debug\swap with c.pdb

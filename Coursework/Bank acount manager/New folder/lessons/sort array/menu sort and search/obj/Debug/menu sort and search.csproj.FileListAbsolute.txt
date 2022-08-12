@@ -1,7 +1,0 @@
-C:\Users\dimit\source\repos\sort array\menu sort and search\bin\Debug\menu sort and search.exe.config
-C:\Users\dimit\source\repos\sort array\menu sort and search\bin\Debug\menu sort and search.exe
-C:\Users\dimit\source\repos\sort array\menu sort and search\bin\Debug\menu sort and search.pdb
-C:\Users\dimit\source\repos\sort array\menu sort and search\obj\Debug\menu sort and search.csprojAssemblyReference.cache
-C:\Users\dimit\source\repos\sort array\menu sort and search\obj\Debug\menu sort and search.csproj.CoreCompileInputs.cache
-C:\Users\dimit\source\repos\sort array\menu sort and search\obj\Debug\menu sort and search.exe
-C:\Users\dimit\source\repos\sort array\menu sort and search\obj\Debug\menu sort and search.pdb

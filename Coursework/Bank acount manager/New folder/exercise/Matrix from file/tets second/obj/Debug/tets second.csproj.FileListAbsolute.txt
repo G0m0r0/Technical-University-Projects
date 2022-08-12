@@ -1,6 +1,0 @@
-D:\C#\University\Matrix from file\tets second\bin\Debug\tets second.exe.config
-D:\C#\University\Matrix from file\tets second\bin\Debug\tets second.exe
-D:\C#\University\Matrix from file\tets second\bin\Debug\tets second.pdb
-D:\C#\University\Matrix from file\tets second\obj\Debug\tets second.csproj.CoreCompileInputs.cache
-D:\C#\University\Matrix from file\tets second\obj\Debug\tets second.exe
-D:\C#\University\Matrix from file\tets second\obj\Debug\tets second.pdb

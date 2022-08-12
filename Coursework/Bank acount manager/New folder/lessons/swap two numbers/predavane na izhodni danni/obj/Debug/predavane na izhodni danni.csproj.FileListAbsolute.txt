@@ -1,6 +1,0 @@
-D:\C#\University\switch two numbers\predavane na izhodni danni\bin\Debug\predavane na izhodni danni.exe.config
-D:\C#\University\switch two numbers\predavane na izhodni danni\bin\Debug\predavane na izhodni danni.exe
-D:\C#\University\switch two numbers\predavane na izhodni danni\bin\Debug\predavane na izhodni danni.pdb
-D:\C#\University\switch two numbers\predavane na izhodni danni\obj\Debug\predavane na izhodni danni.csproj.CoreCompileInputs.cache
-D:\C#\University\switch two numbers\predavane na izhodni danni\obj\Debug\predavane na izhodni danni.exe
-D:\C#\University\switch two numbers\predavane na izhodni danni\obj\Debug\predavane na izhodni danni.pdb

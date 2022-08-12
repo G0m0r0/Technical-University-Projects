@@ -1,7 +1,0 @@
-D:\C#\University\min element\min element\bin\Debug\min element.exe.config
-D:\C#\University\min element\min element\bin\Debug\min element.exe
-D:\C#\University\min element\min element\bin\Debug\min element.pdb
-D:\C#\University\min element\min element\obj\Debug\min element.csprojAssemblyReference.cache
-D:\C#\University\min element\min element\obj\Debug\min element.csproj.CoreCompileInputs.cache
-D:\C#\University\min element\min element\obj\Debug\min element.exe
-D:\C#\University\min element\min element\obj\Debug\min element.pdb

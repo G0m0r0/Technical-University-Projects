@@ -1,7 +1,0 @@
-D:\C#\My projects\Methods\Multiply Evens by Odds\bin\Debug\Multiply Evens by Odds.exe.config
-D:\C#\My projects\Methods\Multiply Evens by Odds\bin\Debug\Multiply Evens by Odds.exe
-D:\C#\My projects\Methods\Multiply Evens by Odds\bin\Debug\Multiply Evens by Odds.pdb
-D:\C#\My projects\Methods\Multiply Evens by Odds\obj\Debug\Multiply Evens by Odds.csprojAssemblyReference.cache
-D:\C#\My projects\Methods\Multiply Evens by Odds\obj\Debug\Multiply Evens by Odds.csproj.CoreCompileInputs.cache
-D:\C#\My projects\Methods\Multiply Evens by Odds\obj\Debug\Multiply Evens by Odds.exe
-D:\C#\My projects\Methods\Multiply Evens by Odds\obj\Debug\Multiply Evens by Odds.pdb

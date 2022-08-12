@@ -1,7 +1,0 @@
-D:\C#\My projects\counter of char\read all file\bin\Debug\read all file.exe.config
-D:\C#\My projects\counter of char\read all file\bin\Debug\read all file.exe
-D:\C#\My projects\counter of char\read all file\bin\Debug\read all file.pdb
-D:\C#\My projects\counter of char\read all file\obj\Debug\test with streamReader.csprojAssemblyReference.cache
-D:\C#\My projects\counter of char\read all file\obj\Debug\test with streamReader.csproj.CoreCompileInputs.cache
-D:\C#\My projects\counter of char\read all file\obj\Debug\read all file.exe
-D:\C#\My projects\counter of char\read all file\obj\Debug\read all file.pdb

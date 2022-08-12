@@ -1,7 +1,0 @@
-D:\C#\My projects\Methods\Methods\bin\Debug\Methods.exe.config
-D:\C#\My projects\Methods\Methods\bin\Debug\Methods.exe
-D:\C#\My projects\Methods\Methods\bin\Debug\Methods.pdb
-D:\C#\My projects\Methods\Methods\obj\Debug\Methods.csprojAssemblyReference.cache
-D:\C#\My projects\Methods\Methods\obj\Debug\Methods.csproj.CoreCompileInputs.cache
-D:\C#\My projects\Methods\Methods\obj\Debug\Methods.exe
-D:\C#\My projects\Methods\Methods\obj\Debug\Methods.pdb

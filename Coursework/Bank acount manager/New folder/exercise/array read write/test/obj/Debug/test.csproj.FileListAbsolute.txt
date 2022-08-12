@@ -1,7 +1,0 @@
-D:\C#\My projects\array read write\test\bin\Debug\test.exe.config
-D:\C#\My projects\array read write\test\bin\Debug\test.exe
-D:\C#\My projects\array read write\test\bin\Debug\test.pdb
-D:\C#\My projects\array read write\test\obj\Debug\test.csprojAssemblyReference.cache
-D:\C#\My projects\array read write\test\obj\Debug\test.csproj.CoreCompileInputs.cache
-D:\C#\My projects\array read write\test\obj\Debug\test.exe
-D:\C#\My projects\array read write\test\obj\Debug\test.pdb

@@ -1,6 +1,0 @@
-D:\C#\My projects\Methods\Orders\bin\Debug\Orders.exe.config
-D:\C#\My projects\Methods\Orders\bin\Debug\Orders.exe
-D:\C#\My projects\Methods\Orders\bin\Debug\Orders.pdb
-D:\C#\My projects\Methods\Orders\obj\Debug\Orders.csproj.CoreCompileInputs.cache
-D:\C#\My projects\Methods\Orders\obj\Debug\Orders.exe
-D:\C#\My projects\Methods\Orders\obj\Debug\Orders.pdb
